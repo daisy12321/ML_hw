@@ -1,0 +1,32 @@
+%%% 1.1 & 1.2 %%%%
+% self-implement function on gradient descend
+% constant step size
+% convex quadratic function
+[x, f] = graddesc(@(x)(x(1)-1)^2 + (x(2)+0.5)^2, @(x)2*(x(1)-1) + 2*(x(2)+0.5), [1.5,0], 0.1, 0.0001)
+%fn = @(x)(x(1)+x(2)-0.5)^2;
+figure;
+ezsurf('(x-1)^2 + (y+0.5)^2')
+
+
+% compare to Matlab native function:
+[x2, f2] = fminunc(@(x)(x(1)+x(2)-0.5)^2, [1,1])
+% x3 = fminunc(@(x)norm(x-1)^2,11.0)
+% fun = @(x)3*x(1)^2 + 2*x(1)*x(2) + x(2)^2 - 4*x(1) + 5*x(2);
+
+
+%%% 2.1
+[X, Y] = bishopCurveData();
+[X_full w] = bishopCurveFit(X, Y, 3);
+y_1 = @(x) -0.6729+4.8266*x-0.4855*x.^2+0.0312*x.^3
+
+x_1 = 0:0.1:33.5;
+
+plot(x_1,y_1(x_1))
+
+figure;
+
+plot(X, Y, 'o', 'MarkerSize', 10);
+hold on;
+plot(
+xlabel('x');
+ylabel('y');

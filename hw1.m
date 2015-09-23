@@ -20,15 +20,10 @@ M = 9;
 format short
 % Using our function
 [X_full, w0, w_other] = bishopCurveFit(X, Y, M);
-a = [w0 w_other'];
-%y_1 = @(x) w0 + w(1)*x + w(2)*x.^2 + w(3)*x.^3
 
-% using polyfit
-w = polyfit(X, Y, M-1);
-w = fliplr(w);
-w0 = w(1);
-w_other = w(2:length(w));
-b = [w0 w_other];
+% using polyfit to verify
+w_polyfit = fliplr(polyfit(X, Y, M-1));
+% Same as [w0, w_other]!
 
 % generate points for plotting
 x_1 = (0:0.01:1.0);

@@ -136,30 +136,27 @@ hw1_plot(w_ridge,@bishopXPoly);
 hold off;
 legend('Points', 'OLS', 'Ridge regression, lambda = 100')
 
+M = 1;
+X_full = bishopXPoly(X, M);
+w_ridge = ridge_reg(X_full, Y, M, 0.05);
 figure;
 hold on;
-plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 M = 3;
 X_full = bishopXPoly(X, M);
 w = bishopCurveFit(X_full, Y, M);
 hw1_plot(w, @bishopXPoly);
-M = 1;
-X_full = bishopXPoly(X, M);
-w_ridge = ridge_reg(X_full, Y, M, 0.05);
+plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 hw1_plot(w_ridge,@bishopXPoly);
 hold off;
 legend('Points', 'OLS', 'Ridge regression, M=1, lambda=0.05')
 
-figure;
-hold on;
-plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
-M = 3;
-X_full = bishopXPoly(X, M);
-w = bishopCurveFit(X_full, Y, M);
-hw1_plot(w, @bishopXPoly);
 M = 5;
 X_full = bishopXPoly(X, M);
 w_ridge = ridge_reg(X_full, Y, M, 0.05);
+figure;
+hold on;
+plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
+hw1_plot(w, @bishopXPoly);
 hw1_plot(w_ridge,@bishopXPoly);
 hold off;
 legend('Points', 'OLS', 'Ridge regression, M=5, lambda=0.05')

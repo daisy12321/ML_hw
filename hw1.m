@@ -103,8 +103,8 @@ hold off;
 
 %%%% 3.1 %%%%
 M = 3;
-w_ridge = ridge_reg(X_full, Y, M, 0.05);
 
+w_ridge = ridge_reg(X_full, Y, M, 0.05);
 figure;
 hold on;
 plot(X, Y, 'o', 'MarkerSize', 10,'color','b');

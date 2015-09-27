@@ -59,46 +59,48 @@ options = optimoptions(@fminunc,'Display','iter');
 
 %%%%%%%%%%%%
 %%% 2.1 %%%%
-global X Y M;
+global X X_full Y M;
 [X, Y] = bishopCurveData();
 M = 3;
 X_full = bishopXPoly(X, M);
-format short
 % Using our function
-[w] = bishopCurveFit(X, Y, M);
+w = bishopCurveFit(X_full, Y, M);
 % using polyfit to verify
 w_polyfit = fliplr(polyfit(X, Y, M));
-% Same as [w0, w_other]!
-
+% Same as w!
 
 
 %%%% 2.2 %%%%
 sse_calc = SSE(w)
 sse_derivative = SSE_derivative(w)
-% verified: at optimal solution w, SSE derivative is basically 0
 fin_diff(@SSE, w, 0.001)
-w_init = randn(size(w));
-w_converge = grad_desc_2(@SSE, w_init, 0.01, 1e-6);
+% verified: at optimal solution w, SSE derivative is basically 0
+
+w_init = zeros(size(w));
+w_converge = grad_desc_2(@SSE, w, 0.01, 1e-8);
 % compare the formula fitted w vs. the GD algorithm 
 
-% generate points for plotting
-x_1 = (0:0.01:1.0);
-y_1 = zeros(1,length(x_1)) + w(1);
-y_2 = zeros(1,length(x_1)) + w_converge(1); 
-for i = 1:M
-    y_1 = y_1 + w(i+1) * (x_1 .^ i);
-    y_2 = y_2 + w_converge(i+1) * (x_1 .^ i);
-end
-
 figure;
-plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 hold on;
-plot(x_1,y_1);
-plot(x_1,y_2);
-legend('Points', 'Direct solve','Gradient descend')
-xlabel('x');
-ylabel('y');
+plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
+hw1_plot(w, @bishopXPoly);
+hw1_plot(w_converge,@bishopXPoly);
 hold off;
+legend('Points', 'Direct solve','Gradient descend')
 
 %%%% 2.3 %%%% 
 %%% using the sin basis function
+M = 4;
+X_full2 = bishopXSin(X, M);
+w = bishopCurveFit(X_full2, Y, M);
+
+figure;
+hold on;
+plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
+hw1_plot(w, @bishopXSin);
+hold off;
+
+
+%%%% 3.1 %%%%
+w = ridge_reg(X_full, Y, M, 0.01)
+

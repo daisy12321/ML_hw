@@ -1,0 +1,9 @@
+function hw1_plot(w)
+    % generate points for plotting
+    x_1 = (0:0.01:1.0);
+    y_1 = 
+    figure;
+    plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
+    plot(x_1,y_1);
+    hold on;
+    xlabel('x'); ylabel('y');

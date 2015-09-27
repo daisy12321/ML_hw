@@ -76,45 +76,40 @@ sse_derivative = SSE_derivative(w)
 fin_diff(@SSE, w, 0.001)
 % verified: at optimal solution w, SSE derivative is basically 0
 
-w_init = randn(size(w));
-w_converge = grad_desc_2(@SSE, w_init, 0.01, 1e-6);
+w_init = zeros(size(w));
+w_converge = grad_desc_2(@SSE, w, 0.01, 1e-8);
 % compare the formula fitted w vs. the GD algorithm 
 
-% generate points for plotting
-x_1 = (0:0.01:1.0);
-y_1 = zeros(1,length(x_1)) + w(1);
-y_2 = zeros(1,length(x_1)) + w_converge(1); 
-for i = 1:M
-    y_1 = y_1 + w(i+1) * (x_1 .^ i);
-    y_2 = y_2 + w_converge(i+1) * (x_1 .^ i);
-end
-
 figure;
-plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 hold on;
-plot(x_1,y_1);
-plot(x_1,y_2);
-legend('Points', 'Direct solve','Gradient descend')
-xlabel('x');
-ylabel('y');
+plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
+hw1_plot(w, @bishopXPoly);
+hw1_plot(w_converge,@bishopXPoly);
 hold off;
+legend('Points', 'Direct solve','Gradient descend')
 
 %%%% 2.3 %%%% 
 %%% using the sin basis function
-M = 2
+M = 4;
 X_full2 = bishopXSin(X, M);
 w = bishopCurveFit(X_full2, Y, M);
 
-x_1 = (0:0.01:1.0);
-y_sin = zeros(1,length(x_1)) + w(1);
-for i = 1:M
-    y_sin = y_sin + w(i+1) * sin(2*pi*i*x_1);
-end
+figure;
+hold on;
+plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
+hw1_plot(w, @bishopXSin);
+hold off;
+
+
+%%%% 3.1 %%%%
+M = 3;
+w_ridge = ridge_reg(X_full, Y, M, 0.05);
 
 figure;
-plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 hold on;
-plot(x_1,y_sin);
-legend('Points', 'Sin basis')
-xlabel('x'); ylabel('y');
+plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
+hw1_plot(w, @bishopXPoly);
+hw1_plot(w_ridge,@bishopXPoly);
 hold off;
+legend('Points', 'OLS','Ridge regression')
+

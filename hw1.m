@@ -108,8 +108,30 @@ w_ridge = ridge_reg(X_full, Y, M, 0.05);
 figure;
 hold on;
 plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
-hw1_plot(w, @bishopXPoly);
+% hw1_plot(w, @bishopXPoly);
 hw1_plot(w_ridge,@bishopXPoly);
 hold off;
-legend('Points', 'OLS','Ridge regression')
+legend('Points', 'OLS Ridge regression, lambda = 0.05')
+
+M = 3;
+w_ridge = ridge_reg(X_full, Y, M, 0.0001);
+
+figure;
+hold on;
+plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
+% hw1_plot(w, @bishopXPoly);
+hw1_plot(w_ridge,@bishopXPoly);
+hold off;
+legend('Points', 'OLS Ridge regression, lambda = 0.0001')
+
+M = 3;
+w_ridge = ridge_reg(X_full, Y, M, 100);
+
+figure;
+hold on;
+plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
+% hw1_plot(w, @bishopXPoly);
+hw1_plot(w_ridge,@bishopXPoly);
+hold off;
+legend('Points', 'OLS Ridge regression, lambda = 100')
 

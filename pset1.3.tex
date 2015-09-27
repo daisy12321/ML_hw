@@ -11,8 +11,12 @@ Ridge regression is the particular case of regularized least squares with a quad
 The closed-form solution of this problem is well-known, and can be derived by setting the gradient of (\ref{eq:ridge_error_fn}) equal to zero.  The optimal solution for $\M{w}$ is provided by Bishop (2006), page 145:
 
 \begin{equation} \label{eq:ridge_sol}
-\M{w} = (\lambda \M{I} + \Phi^T \Phi)^{-1} \Phi^T \M{t}
+\M{w}_{ridge} = (\lambda \M{I} + \Phi^T \Phi)^{-1} \Phi^T \M{t}
 \end{equation}
+
+We coded this method in MatLab and tested our program using data from Bishop Figure 1.4, varying the parameters of $\lambda$ and $M$.  For the extreme cases, we observed that if $\lambda \leq 0.0001$, then $\M{w}_{ridge} \approx \M{w}_{OLS}$, and if $\lambda \geq 100$, then $\M{w}_{ridge} \approx \M{0}$.
+
+
 
 % Reference: Bishop (2006), pages 144-145
 

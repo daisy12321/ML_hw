@@ -1,3 +1,18 @@
 %!TEX root = pset1.tex
 
 \section{Ridge Regression}\label{sec:ridge_reg}
+
+\subsection{Implementation}
+Ridge regression is the particular case of regularized least squares with a quadratic regularizer term.  The error function that we aim to minimize over is given by:
+\begin{equation} \label{eq:ridge_error_fn}
+\frac{1}{2} \sum_{n=1}^{N} (t_n - \M{w}^T \phi (\M{x}_n) )^2 + \frac{\lambda}{2} \M{w}^T \M{w}
+\end{equation}
+
+The closed-form solution of this problem is well-known, and can be derived by setting the gradient of (\ref{eq:ridge_error_fn}) equal to zero.  The optimal solution for $\M{w}$ is provided by Bishop (2006), page 145:
+
+\begin{equation} \label{eq:ridge_sol}
+\M{w} = (\lambda \M{I} + \Phi^T \Phi)^{-1} \Phi^T \M{t}
+\end{equation}
+
+% Reference: Bishop (2006), pages 144-145
+

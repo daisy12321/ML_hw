@@ -51,9 +51,7 @@ grad_analytic = grad([1, 2]) %compare with analytic
 
 [x, f] = grad_desc(fun3, grad3, 0.1, 0.01, 1e-10)
 [x, f] = grad_desc_2(fun3, 0.1, 0.01, 1e-10)
-% all match!
-
-
+% all mat
 %%% 1.4 %%%%
 
 

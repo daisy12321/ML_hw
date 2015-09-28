@@ -6,11 +6,15 @@ fun = @(x) 3*x(1)^2 + 2*x(1)*x(2) + x(2)^2 - 4*x(1) + 5*x(2)
 grad = @(x)[6*x(1) + 2*x(2) - 4, 2*x(1) + 2*x(2) + 5]
 [x, f] = grad_desc(fun, grad, [1.0 -2.0], 0.1, 1e-10)
 % plot the contour and the optimum point
-figure;
+h = figure;
 ezcontour('3*x^2 + 2*x*y + y^2 - 4*x + 5*y', [-10, 10], [-10, 10])
 hold on;
 plot(x(1), x(2), '+','color','r');
 hold off;
+set(h,'Units','Inches');
+pos = get(h,'Position');
+set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+print(h, 'hw1_2_1.pdf', '-dpdf', '-r0')
 
 % negative of guassian pdf
 sigma = 1

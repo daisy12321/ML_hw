@@ -189,4 +189,4 @@ set(h_legend,'FontSize',14);
 set(h6,'Units','Inches');
 pos = get(h6,'Position');
 set(h6,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-print(h3, 'hw1_3_1b.pdf', '-dpdf', '-r0')
+print(h6, 'hw1_3_1b.pdf', '-dpdf', '-r0')

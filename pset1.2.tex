@@ -3,4 +3,35 @@
 \section{Linear Basis Function Regression}\label{sec:lin_basis_fn_reg}
 
 \subsection{MLE for Polynomial Basis Function Regression}
-We implemented a maximum likelihood estimator for a linear regression with polynomial basis functions, using the formula $\V w = (\M X'\M X)^{-1} \M X'\M Y$. Note that in \texttt{MATLAB} we instead of using the inverse function. The replicated plots are as follows:
+We implemented a maximum likelihood estimator for a linear regression with polynomial basis functions, using the formula $\V w = (\M X'\M X)^{-1} \M X'\M Y$. The replicated weight vectors are close to what is reported in Table 1.1, and the plots we generated in Figure \ref{fig:bishop_poly_fit} match the ones in Bishop well:
+
+\begin{figure}[h!]
+\centering
+    \begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[scale=0.4]{hw1_2.pdf}
+	\caption{Replication of Bishop 1.4, using polynomial basis function up to degree $M$.}\label{fig:bishop_poly_fit}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[scale=0.4]{hw1_2_2.pdf}
+	\caption{Comparing the estimates using MLE equation or numeric gradient descent on SSE.}\label{fig:bishop_SSE_GD}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[scale=0.4]{hw1_2_4.pdf}
+	\caption{Using sine basis function.}\label{fig:bishop_sin}
+    \end{subfigure}  
+    \caption{}    
+\end{figure}
+
+
+\subsection{Using SSE}
+Alternatively, the maximum likelihood weight vector can be found using numerical gradient descent on the SSE. We first implement code to calculate the SSE: $(\V Y - \V \Phi \V w)'(\V Y - \V \Phi \V w)$. The derivative is $-2\V \Phi (\V Y - \V \Phi \V w)$, or can be computed numerically using the finite differencing method we implemented in Problem 1. We found that the two match.
+
+\subsection{Use Gradient Descent on SSE to find MLE}
+To get MLE for $\V w$, we feed the SSE as the objective function in the gradient descend, $\V w$ as the variable to be optimized over. With some smart initial guess, step size, and reasonably small convergence threshold, our $\V w$ from gradient descent match the analytic solution using the formula largely (but not exactly). The comparison can be found in Figure \ref{fig:bishop_SSE_GD}. Some bad choice of step size results in non-convergence or extremely large estimates.   
+
+
+\subsection{Sine Basis Function}
+We can also use sine basis functions, with $\phi_1(x) = \sin(2\pi x), \ldots, \phi_M(x) = \sin(2\pi Mx)$. The estimated plots are in Figure \ref{fig:bishop_sin}. We observe that the estimated function is not only periodic at period equal to one, for larger values of $M$ it is even periodic within a period! Potential disadvantage is that the data is assumed to be periodic.
+

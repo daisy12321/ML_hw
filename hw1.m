@@ -163,7 +163,7 @@ plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 hw1_plot(w, M, @bishopXPoly);
 hw1_plot(w_ridge, M, @bishopXPoly);
 hold off;
-legend('Points', 'OLS', 'Ridge regression, lambda = 0.05')
+legend('Points', 'OLS, M=3', 'Ridge, M=3, lambda=0.05')
 
 M = 3;
 X_full = bishopXPoly(X, M);
@@ -174,7 +174,7 @@ plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 hw1_plot(w, M, @bishopXPoly);
 hw1_plot(w_ridge,M, @bishopXPoly);
 hold off;
-legend('Points', 'OLS', 'Ridge regression, lambda = 0.0001')
+legend('Points', 'OLS, M=3', 'Ridge, M=3, lambda=0.0001')
 
 M = 3;
 X_full = bishopXPoly(X, M);
@@ -185,12 +185,12 @@ plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 hw1_plot(w, M, @bishopXPoly);
 hw1_plot(w_ridge, M, @bishopXPoly);
 hold off;
-legend('Points', 'OLS', 'Ridge regression, lambda = 100')
+legend('Points', 'OLS, M=3', 'Ridge, M=3, lambda=100')
 
 figure;
 hold on;
 plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
-M = 3;
+M = 1;
 X_full = bishopXPoly(X, M);
 w = bishopCurveFit(X_full, Y, M);
 hw1_plot(w, M, @bishopXPoly);
@@ -199,12 +199,12 @@ X_full = bishopXPoly(X, M);
 w_ridge = ridge_reg(X_full, Y, M, 0.05);
 hw1_plot(w_ridge, M, @bishopXPoly);
 hold off;
-legend('Points', 'OLS', 'Ridge regression, M=1, lambda=0.05')
+legend('Points', 'OLS, M=1', 'Ridge, M=1, lambda=0.05')
 
 figure;
 hold on;
 plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
-M = 3;
+M = 5;
 X_full = bishopXPoly(X, M);
 w = bishopCurveFit(X_full, Y, M);
 hw1_plot(w, M, @bishopXPoly);
@@ -213,4 +213,4 @@ X_full = bishopXPoly(X, M);
 w_ridge = ridge_reg(X_full, Y, M, 0.05);
 hw1_plot(w_ridge, M, @bishopXPoly);
 hold off;
-legend('Points', 'OLS', 'Ridge regression, M=5, lambda=0.05')
+legend('Points', 'OLS, M=5', 'Ridge, M=5, lambda=0.05')

@@ -1,3 +1,7 @@
+%!TEX root = pset1.tex
+
+\section{Ridge Regression}\label{sec:ridge_reg}
+\subsection{Implementation}
 Ridge regression is the particular case of regularized least squares with a quadratic regularizer term.  The error function that we aim to minimize over is given by:
 \begin{equation} \label{eq:ridge_error_fn}
 \frac{1}{2} \sum_{n=1}^{N} (t_n - \M{w}^T \phi (\M{x}_n) )^2 + \frac{\lambda}{2} \M{w}^T \M{w}
@@ -21,39 +25,39 @@ To optimize parameter values for $\lambda$ and $M$, we build our models using tr
 
 % TODO: add numbers for above paragraph
 % TODO: add tables with x-axis M, y-axis  lambda, entries MSE for validation and test data (2 tables)
-\begin{table}[tb]
-\centering
-\begin{tabular}{ll|cccccc}
-  & & \multicolumn{6}{c}{M} \\
-  & & 0 & 1 & 2 & 3 & 4 & 5 \\
-  \hline
-  \multirow{7}{*}{$\lambda$} & 100 & 34 & 20 & 21\\
-  & 10 & 35 & 21 & 19\\
-  & 1 & 40 & 20 & 15\\
-  & 0.1 & 40 & 20 & 15\\
-  & 0.01 & 40 & 20 & 15\\
-  & 0.001 & 40 & 20 & 15\\
-  & 0.0001 & 40 & 20 & 15\\
-\end{tabular}
-\caption{MSE of Ridge Regression on Validation data set for different pairs of $\lambda$ and M.}\label{tab:ridge_cv}
-\end{table}
-
-\begin{table}[tb]
-\centering
-\begin{tabular}{ll|cccccc}
-  & & \multicolumn{6}{c}{M} \\
-  & & 0 & 1 & 2 & 3 & 4 & 5 \\
-  \hline
-  \multirow{7}{*}{$\lambda$} & 100 & 34 & 20 & 21\\
-  & 10 & 35 & 21 & 19\\
-  & 1 & 40 & 20 & 15\\
-  & 0.1 & 40 & 20 & 15\\
-  & 0.01 & 40 & 20 & 15\\
-  & 0.001 & 40 & 20 & 15\\
-  & 0.0001 & 40 & 20 & 15\\
-\end{tabular}
-\caption{MSE of Ridge Regression on Test data set for different pairs of $\lambda$ and M.}\label{tab:ridge_cv}
-\end{table}
-
-
-\subsection{Blog Feedback}
+%\begin{table}[tb]
+%\centering
+%\begin{tabular}{ll|cccccc}
+%  & & \multicolumn{6}{c}{M} \\
+%  & & 0 & 1 & 2 & 3 & 4 & 5 \\
+%  \hline
+%  \multirow{7}{*}{$\lambda$} & 100 & 34 & 20 & 21\\
+%  & 10 & 35 & 21 & 19\\
+%  & 1 & 40 & 20 & 15\\
+%  & 0.1 & 40 & 20 & 15\\
+%  & 0.01 & 40 & 20 & 15\\
+%  & 0.001 & 40 & 20 & 15\\
+%  & 0.0001 & 40 & 20 & 15\\
+%\end{tabular}
+%\caption{MSE of Ridge Regression on Validation data set for different pairs of $\lambda$ and M.}\label{tab:ridge_cv}
+%\end{table}
+%
+%\begin{table}[tb]
+%\centering
+%\begin{tabular}{ll|cccccc}
+%  & & \multicolumn{6}{c}{M} \\
+%  & & 0 & 1 & 2 & 3 & 4 & 5 \\
+%  \hline
+%  \multirow{7}{*}{$\lambda$} & 100 & 34 & 20 & 21\\
+%  & 10 & 35 & 21 & 19\\
+%  & 1 & 40 & 20 & 15\\
+%  & 0.1 & 40 & 20 & 15\\
+%  & 0.01 & 40 & 20 & 15\\
+%  & 0.001 & 40 & 20 & 15\\
+%  & 0.0001 & 40 & 20 & 15\\
+%\end{tabular}
+%\caption{MSE of Ridge Regression on Test data set for different pairs of $\lambda$ and M.}\label{tab:ridge_cv}
+%\end{table}
+%
+%
+%\subsection{Blog Feedback}

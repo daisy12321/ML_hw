@@ -153,64 +153,40 @@ print(h4, 'hw1_2_4.pdf', '-dpdf', '-r0')
 
 
 %%%% 3.1 %%%%
+% M = 3 fixed, vary lambda
 M = 3;
 X_full = bishopXPoly(X, M);
 w = bishopCurveFit(X_full, Y, M);
-w_ridge = ridge_reg(X_full, Y, M, 0.05);
-figure;
+h5 = figure;
 hold on;
 plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 hw1_plot(w, M, @bishopXPoly);
-hw1_plot(w_ridge, M, @bishopXPoly);
+for lambda=[0.0001,0.05,100]
+    w_ridge = ridge_reg(X_full, Y, M, lambda);
+    hw1_plot(w_ridge, M, @bishopXPoly);
+end
 hold off;
-legend('Points', 'OLS, M=3', 'Ridge, M=3, lambda=0.05')
+h_legend = legend('Points', 'OLS', 'lambda=0.0001',...
+        'lambda=0.05','lambda=100')
+    set(h_legend,'FontSize',14);
+set(h5,'Units','Inches');
+pos = get(h5,'Position');
+set(h5,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+print(h5, 'hw1_3_1a.pdf', '-dpdf', '-r0')
 
-M = 3;
-X_full = bishopXPoly(X, M);
-w_ridge = ridge_reg(X_full, Y, M, 0.0001);
-figure;
+% lambda = 0.05 fixed, vary M
+h6 = figure;
 hold on;
 plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
-hw1_plot(w, M, @bishopXPoly);
-hw1_plot(w_ridge,M, @bishopXPoly);
+for M=[1,3,5,7]
+    X_full = bishopXPoly(X, M);
+    w_ridge = ridge_reg(X_full, Y, M, 0.05);
+    hw1_plot(w_ridge, M, @bishopXPoly);
+end
 hold off;
-legend('Points', 'OLS, M=3', 'Ridge, M=3, lambda=0.0001')
-
-M = 3;
-X_full = bishopXPoly(X, M);
-w_ridge = ridge_reg(X_full, Y, M, 100);
-figure;
-hold on;
-plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
-hw1_plot(w, M, @bishopXPoly);
-hw1_plot(w_ridge, M, @bishopXPoly);
-hold off;
-legend('Points', 'OLS, M=3', 'Ridge, M=3, lambda=100')
-
-figure;
-hold on;
-plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
-M = 1;
-X_full = bishopXPoly(X, M);
-w = bishopCurveFit(X_full, Y, M);
-hw1_plot(w, M, @bishopXPoly);
-M = 1;
-X_full = bishopXPoly(X, M);
-w_ridge = ridge_reg(X_full, Y, M, 0.05);
-hw1_plot(w_ridge, M, @bishopXPoly);
-hold off;
-legend('Points', 'OLS, M=1', 'Ridge, M=1, lambda=0.05')
-
-figure;
-hold on;
-plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
-M = 5;
-X_full = bishopXPoly(X, M);
-w = bishopCurveFit(X_full, Y, M);
-hw1_plot(w, M, @bishopXPoly);
-M = 5;
-X_full = bishopXPoly(X, M);
-w_ridge = ridge_reg(X_full, Y, M, 0.05);
-hw1_plot(w_ridge, M, @bishopXPoly);
-hold off;
-legend('Points', 'OLS, M=5', 'Ridge, M=5, lambda=0.05')
+h_legend = legend('Points', 'M=1','M=3','M=5','M=7','M=9')
+set(h_legend,'FontSize',14);
+set(h6,'Units','Inches');
+pos = get(h6,'Position');
+set(h6,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+print(h3, 'hw1_3_1b.pdf', '-dpdf', '-r0')

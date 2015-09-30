@@ -193,28 +193,36 @@ print(h6, 'hw1_3_1b.pdf', '-dpdf', '-r0')
 
 %%
 %%%% 3.2 %%%%
-train = load('regress_train.txt')
-validate = load('regress_validate.txt')
-test = load('regress_test.txt')
+train = load('regress_train.txt');
+valid = load('regress_validate.txt');
+test = load('regress_test.txt');
+
+x_train = train(1,:);
+x_valid = valid(1,:);
+x_test = test(1,:);
+y_train = train(2,:);
+y_valid = valid(2,:);
+y_test = test(2,:);
 
 min_sse = 10^10;
 lambda_opt = 999;
 M_opt = 999;
-
-
-% for l=-4:2
-%     lambda = 10^l;
-%     for M=0:9
-%         X_full = bishopXPoly(X, M);
-%         w = ridge_reg(X_full, Y, M, lambda);
-%         sse_ridge = SSE(w); 
-%         if min_sse > sse_ridge
-%             min_sse = sse_ridge;
-%             lambda_opt = lambda;
-%             M_opt = M;
-%         end
-%     end
-% end
+for l=-10:10
+    lambda = 10^l;
+    for M=0:9
+        % build model with training set
+        X_full = bishopXPoly(x_train, M);
+        w = ridge_reg(X_full, Y, M, lambda);
+        % compute SSE for validation set
+        X_full = bishopXPoly(x_valid, M);
+        sse_ridge = SSE(w); 
+        if min_sse > sse_ridge
+            min_sse = sse_ridge;
+            lambda_opt = lambda;
+            M_opt = M;
+        end
+    end
+end
 
 
 %%

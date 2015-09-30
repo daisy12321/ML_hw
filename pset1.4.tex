@@ -1,7 +1,14 @@
 %!TEX root = pset1.tex
 
 \section{Sparsity and LASSO}\label{sec:gen}
-The data for this problem is generated according to  $f(x) = \M{w}^T \phi (\M{x}) + \epsilon$, where $\epsilon \sim  N(0,\sigma^2)$.  For this problem, we assume that $\M{w}$ is unknown, and we estimate this vector with ridge regression in Section~\ref{sec:sparsity_ridge_reg} and with LASSO in Section~\ref{sec:sparsity_grad_desc}.  Let $\lambda_2$ denote the regularizer term for the $L_2$ norm and let $\lambda_1$ denote the regularizer term for the $L_1$ norm.  
+An alternative approach is to use the $L_1$ norm regularizer in the objective for regularized least squares.  The error function that we aim to minimize over is given by:
+\begin{equation} \label{eq:ridge_error_fn}
+\frac{1}{N} \sum_{n=1}^{N} (t_n - \M{w}^T \phi (\M{x}_n) )^2 + \frac{\lambda}{2} \sum_{j=1}^{M} |w_j|
+\end{equation}
+
+The LASSO is widely used in practice because it leads to solutions which are relatively sparse, i.e. the resulting prediction vector $\M{w}$ tends to have few non-zero components.  
+
+To test this method and its sparsity properties, we consider a regression problem with 5 training points and 500 testing points in $\mathbb{R}^{12}$.  The data is generated according to  $f(x) = \M{w}^T \phi (\M{x}) + \epsilon$, where $\epsilon \sim  N(0,\sigma^2)$ and $\M{w} \in \mathbb{R}^{12}$ is a sparse vector with only two non-zero components.  For this problem, we assume that $\M{w}$ is unknown, and we estimate this vector with ridge regression in Section~\ref{sec:sparsity_ridge_reg} and with LASSO in Section~\ref{sec:sparsity_grad_desc}.  Let $\lambda_2$ denote the regularizer term for the $L_2$ norm and let $\lambda_1$ denote the regularizer term for the $L_1$ norm.  Figure~\ref{fig:highdim} shows plots of the estimated function with different regularizers.  
 
 \subsection{Ridge Regression Gradient Descent} \label{sec:sparsity_ridge_reg}
 Applying our method for gradient descent to the ridge regression problem on the training dataset of 12 points, we compute the vector of weights $\M{w}$ and MSE on the testing dataset for $\lambda_2 = 0.1$.  We obtain: 

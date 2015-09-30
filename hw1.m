@@ -235,18 +235,18 @@ x_val = load('BlogFeedback_data/x_val.csv');
 y_test = load('BlogFeedback_data/y_test.csv');
 y_train = load('BlogFeedback_data/y_train.csv');
 y_val = load('BlogFeedback_data/y_val.csv');
-
+%%
 min_sse_blog = 10^10;
 lambda_blog = 999;
 M = 280; % simple linear model
 X_train = ones(length(x_train), M+1);
 X_train(:,2:(M+1)) = x_train;
-Y_train = y_train;
-X_val = ones(length(x_val), M+1);
-X_val(:,2:(M+1)) = x_val;
-Y_val = y_val;
+Y_train = y_train';
+X_full = ones(length(x_val), M+1);
+X_full(:,2:(M+1)) = x_val;
+Y = y_val';
 
-for l=-4:2
+for l=-4:20
     lambda = 10^l;
     % build model with training set
     w = ridge_reg(X_train, Y_train, M, lambda);
@@ -257,3 +257,7 @@ for l=-4:2
         lambda_blog = lambda;
     end
 end
+
+%%
+%%%% 4.2 %%%%
+data = load('regress-highdim.mat')

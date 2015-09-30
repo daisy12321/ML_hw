@@ -151,7 +151,7 @@ set(h4,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos
 print(h4, 'hw1_2_4.pdf', '-dpdf', '-r0')
 
 
-%%
+
 %%%% 3.1 %%%%
 % M = 3 fixed, vary lambda
 M = 3;
@@ -191,7 +191,7 @@ pos = get(h6,'Position');
 set(h6,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
 print(h6, 'hw1_3_1b.pdf', '-dpdf', '-r0')   
 
-%%
+
 %%%% 3.2 %%%%
 train = load('regress_train.txt');
 valid = load('regress_validate.txt');
@@ -209,17 +209,19 @@ lambda_opt = 999;
 M_opt = 999;
 for l=-10:10
     lambda = 10^l;
-    for M=0:9
+    for m=0:9
         % build model with training set
-        X_full = bishopXPoly(x_train, M);
-        w = ridge_reg(X_full, Y, M, lambda);
+        X_full = bishopXPoly(x_train, m);
+        Y = y_train;
+        w = ridge_reg(X_full, Y, m, lambda);
         % compute SSE for validation set
-        X_full = bishopXPoly(x_valid, M);
+        X_full = bishopXPoly(x_valid, m);
+        Y = y_valid;
         sse_ridge = SSE(w); 
         if min_sse > sse_ridge
             min_sse = sse_ridge;
             lambda_opt = lambda;
-            M_opt = M;
+            M_opt = m;
         end
     end
 end
@@ -227,4 +229,31 @@ end
 
 %%
 %%%% 3.3 %%%%
-data = load('BlogFeedback_data/x_test.csv');
+x_test = load('BlogFeedback_data/x_test.csv');
+x_train = load('BlogFeedback_data/x_train.csv');
+x_val = load('BlogFeedback_data/x_val.csv');
+y_test = load('BlogFeedback_data/y_test.csv');
+y_train = load('BlogFeedback_data/y_train.csv');
+y_val = load('BlogFeedback_data/y_val.csv');
+
+min_sse_blog = 10^10;
+lambda_blog = 999;
+M = 280; % simple linear model
+X_train = ones(length(x_train), M+1);
+X_train(:,2:(M+1)) = x_train;
+Y_train = y_train;
+X_val = ones(length(x_val), M+1);
+X_val(:,2:(M+1)) = x_val;
+Y_val = y_val;
+
+for l=-4:2
+    lambda = 10^l;
+    % build model with training set
+    w = ridge_reg(X_train, Y_train, M, lambda);
+    % compute SSE for validation set
+    sse_ridge = SSE(w);
+    if min_sse_blog > sse_ridge
+        min_sse_blog = sse_ridge;
+        lambda_blog = lambda;
+    end
+end

@@ -151,7 +151,7 @@ set(h4,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos
 print(h4, 'hw1_2_4.pdf', '-dpdf', '-r0')
 
 
-
+%%
 %%%% 3.1 %%%%
 % M = 3 fixed, vary lambda
 M = 3;
@@ -184,9 +184,39 @@ for M=[1,3,5,7]
     hw1_plot(w_ridge, M, @bishopXPoly);
 end
 hold off;
-h_legend = legend('Points', 'M=1','M=3','M=5','M=7','M=9')
+h_legend = legend('Points', 'M=1','M=3','M=5','M=7')
 set(h_legend,'FontSize',14);
 set(h6,'Units','Inches');
 pos = get(h6,'Position');
 set(h6,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-print(h6, 'hw1_3_1b.pdf', '-dpdf', '-r0')
+print(h6, 'hw1_3_1b.pdf', '-dpdf', '-r0')   
+
+%%
+%%%% 3.2 %%%%
+train = load('regress_train.txt')
+validate = load('regress_validate.txt')
+test = load('regress_test.txt')
+
+min_sse = 10^10;
+lambda_opt = 999;
+M_opt = 999;
+
+
+% for l=-4:2
+%     lambda = 10^l;
+%     for M=0:9
+%         X_full = bishopXPoly(X, M);
+%         w = ridge_reg(X_full, Y, M, lambda);
+%         sse_ridge = SSE(w); 
+%         if min_sse > sse_ridge
+%             min_sse = sse_ridge;
+%             lambda_opt = lambda;
+%             M_opt = M;
+%         end
+%     end
+% end
+
+
+%%
+%%%% 3.3 %%%%
+data = load('BlogFeedback_data/x_test.csv');

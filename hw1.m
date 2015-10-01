@@ -266,17 +266,23 @@ data.X_train = (data.X_train)';
 data.X_test = (data.X_test)';
 true_fun = @(x) w_true(3)*sin(0.4*pi*x*2) + w_true(9)*sin(0.4*pi*x*8);
 
+M = 12;
+X_train = ones(5, M+1);
+X_train(:,2:(M+1)) = data.X_train;
+Y_train = data.Y_train;
+X_test = ones(500, M+1);
+X_test(:,2:(M+1)) = data.X_test;
+Y_test = data.Y_test;
 
+% Compute Ridge Regression using Gradient Descent
+
+% Compute LASSO using Gradient Descent
 
 %%
 % Plot curves
-M = 12;
-X_full = ones(5, M+1);
-X_full(:,2:(M+1)) = data.X_train;
-Y = data.Y_train;
 h4_1 = figure;
 hold on;
-plot(X_full(:,2), Y, 'o', 'MarkerSize', 10,'color','b');
+plot(X_train(:,2), Y_train, 'o', 'MarkerSize', 10,'color','b');
 ezplot(true_fun,[-1.1,1.1])
 % hw1_plot(w, M, @bishopXPoly);
 hold off;

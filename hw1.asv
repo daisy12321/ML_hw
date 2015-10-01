@@ -262,12 +262,13 @@ end
 %%%% 4.2 %%%%
 data = load('regress-highdim.mat');
 w_true = data.W_true;
-data.X_train = (data.X_train)'
-data.X_test = (data.X_test)'
-true_fun = @(x) w_true(3)*sin(0.4*pi*x*2) + w_true(9)*sin(0.4*pi*x*8)
+data.X_train = (data.X_train)';
+data.X_test = (data.X_test)';
+true_fun = @(x) w_true(3)*sin(0.4*pi*x*2) + w_true(9)*sin(0.4*pi*x*8);
 
+% Compute ridge regression
 
-
+% Compute 
 
 %%
 % Plot curves

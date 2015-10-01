@@ -296,7 +296,6 @@ fun_lasso = @(w) (1/2)*SSE(w) + (lambda_1/2)*norm(w,1);
 w_lasso = grad_desc_2(fun_lasso, 0*[1:13]', .01, 1e-6);
 lasso_2D = @(x) sine_curve(w_lasso, x);
 
-
 % Plot curves
 h4_1 = figure;
 hold on;
@@ -305,7 +304,6 @@ ezplot(true_fun,[-1.1,1.1])
 ezplot(ridge_0_2D,[-1.1,1.1])
 ezplot(ridge_2D,[-1.1,1.1])
 ezplot(lasso_2D,[-1.1,1.1])
-% hw1_plot(w, M, @bishopXPoly);
 hold off;
 h_legend = legend('Points', 'W True', 'OLS','Ridge','LASSO')
 set(h_legend,'FontSize',14);
@@ -313,3 +311,18 @@ set(h4_1,'Units','Inches');
 pos = get(h4_1,'Position');
 set(h4_1,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
 print(h4_1, 'hw1_4_1.pdf', '-dpdf', '-r0')
+
+%%
+% Compute MSE on test data
+X_full = X_test;
+Y = Y_test;
+w_ridge
+sprintf('%.2f,',w_ridge)
+w_ridge_0
+sprintf('%.2f,',w_ridge_0)
+w_lasso
+sprintf('%.2f,',w_lasso)
+MSE_ridge = SSE(w_ridge)
+MSE_ridge_0 = SSE(w_ridge_0)
+MSE_lasso = SSE(w_lasso)
+

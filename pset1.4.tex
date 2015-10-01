@@ -2,42 +2,41 @@
 
 \section{Sparsity and LASSO}\label{sec:gen}
 An alternative approach is to use the $L_1$ norm regularizer in the objective for regularized least squares.  The error function that we aim to minimize over is given by:
-\begin{equation} \label{eq:ridge_error_fn}
-\frac{1}{N} \sum_{n=1}^{N} (t_n - \M{w}^T \phi (\M{x}_n) )^2 + \frac{\lambda}{2} \sum_{j=1}^{M} |w_j|
+\begin{equation} \label{eq:lasso_error_fn}
+\frac{1}{2} \sum_{n=1}^{N} (t_n - \M{w}^T \phi (\M{x}_n) )^2 + \frac{\lambda}{2} \sum_{j=1}^{M} |w_j|
 \end{equation}
 
 The LASSO is widely used in practice because it leads to solutions which are relatively sparse, i.e. the resulting prediction vector $\M{w}$ tends to have few non-zero components.  
 
-To test this method and its sparsity properties, we consider a regression problem with 5 training points and 500 testing points in $\mathbb{R}^{12}$.  The data is generated according to  $f(x) = \M{w}^T \phi (\M{x}) + \epsilon$, where $\epsilon \sim  N(0,\sigma^2)$ and $\M{w} \in \mathbb{R}^{12}$ is a sparse vector with only two non-zero components.  For this problem, we assume that $\M{w}$ is unknown, and we estimate this vector with ridge regression in Section~\ref{sec:sparsity_ridge_reg} and with LASSO in Section~\ref{sec:sparsity_grad_desc}.  Let $\lambda_2$ denote the regularizer term for the $L_2$ norm and let $\lambda_1$ denote the regularizer term for the $L_1$ norm.  Figure~\ref{fig:highdim} shows plots of the estimated function with different regularizers.  
+To test this method and its sparsity properties, we consider a regression problem with 5 training points and 500 testing points in $\mathbb{R}^{12}$.  The data is generated according to  $f(x) = \M{w}^T \phi (\M{x}) + \epsilon$, where $\epsilon \sim  N(0,\sigma^2)$ and $\M{w} \in \mathbb{R}^{12}$ is a sparse vector with only two non-zero components.  For this problem, we assume that $\M{w}$ is unknown, and we estimate this vector with ridge regression in Section~\ref{sec:sparsity_ridge_reg} and with LASSO in Section~\ref{sec:sparsity_grad_desc}.  Let $\lambda_2$ denote the regularizer term for the $L_2$ norm and let $\lambda_1$ denote the regularizer term for the $L_1$ norm.  Figure~\ref{fig:lasso_sparsity} shows plots of the estimated function with different regularizers.  
 
 \subsection{Ridge Regression Gradient Descent} \label{sec:sparsity_ridge_reg}
 Applying our method for gradient descent to the ridge regression problem on the training dataset of 12 points, we compute the vector of weights $\M{w}$ and MSE on the testing dataset for $\lambda_2 = 0.1$.  We obtain: 
 %
 \begin{flalign*}
-\M{w} &= (w_1, w_2, w_3, w_4, w_5, w_6, w_7, w_8, w_9, w_{10}, w_{11}, w_{12}),\\
-\text{MSE} &= TODO.
+\M{w} &= (-0.23,0.13,0.15,0.19,0.11,-0.04,-0.19,-0.31,-0.42,-0.49,-0.43,-0.20,0.19)\\
+\text{MSE} &= 179.7919.
 \end{flalign*}
 %
 If we disable the $L_2$ regularizer (set $\lambda_2 = 0$), we obtain:
 %
 \begin{flalign*}
-\M{w} &= (w_1, w_2, w_3, w_4, w_5, w_6, w_7, w_8, w_9, w_{10}, w_{11}, w_{12}),\\
-\text{MSE} &= TODO.
+\M{w} &= (-0.35,0.09,0.09,0.08,-0.03,-0.17,-0.30,-0.42,-0.55,-0.68,-0.66,-0.37,0.17),\\
+\text{MSE} &= 446.4282.
 \end{flalign*}
 %
 \subsection{LASSO Gradient Descent} \label{sec:sparsity_grad_desc}
 Similarly, we apply our method for gradient descent to the LASSO problem on the on the training dataset of 12 points.  For $\lambda_1 = 0.1$, we find: 
 %
 \begin{flalign*}
-\M{w} &= (w_1, w_2, w_3, w_4, w_5, w_6, w_7, w_8, w_9, w_{10}, w_{11}, w_{12}),\\
-\text{MSE} &= TODO.
+\M{w} &= (-0.18,0.00,0.00,0.26,0.00,-0.00,-0.13,-0.13,-0.23,-0.70,-0.66,-0.00,0.24),\\
+\text{MSE} &=111.0630.
 \end{flalign*}
-%
-If we disable the $L_1$ regularizer (set $\lambda_1 = 0$), we find:
-%
-\begin{flalign*}
-\M{w} &= (w_1, w_2, w_3, w_4, w_5, w_6, w_7, w_8, w_9, w_{10}, w_{11}, w_{12}),\\
-\text{MSE} &= TODO.
-\end{flalign*}
-%
+
 \subsection{Sparsity Properties of LASSO}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{hw1_4_1.pdf}
+\caption{Plots of estimated function with different regularizers \\
+OLS: $\lambda_1 = \lambda_2 = 0$, Ridge: $\lambda_2 = 0.1$, LASSO: $\lambda_1 = 0.1$.} \label{fig:lasso_sparsity}
+\end{figure}

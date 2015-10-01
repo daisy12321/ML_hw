@@ -3,18 +3,18 @@
 \section{Implement Gradient Descent}\label{sec:grad_desc}
 
 \subsection{Implementation}
-We implemented a basic gradient descent function in MATLAB. In this function, the user can specify the objective function and the corresponding gradient function. User also specify initial guess, the constant step size, and the convergence threshold. \\
-The procedure works as the following: starting at the initial guess, we move to a new point by taking a step (of the specified step size) in the direction of the gradient. We repeat the process until the objective values between two iterations are less than the specified threshold.
+We implemented a basic gradient descent function in MATLAB. In this function, the user can specify the objective function and the corresponding gradient function. The user also inputs an initial guess, the constant step size, and the convergence threshold. \\
+The algorithm works as follows: starting at the initial guess, we move to a new point by taking a step (of the specified step size) in the direction of the gradient. We repeat the process until the difference in objective value between two subsequent iterations is less than the specified threshold.
 
 \subsection{Testing Gradient Descent}
-We test the gradient descent procedure in the following functions:
+We test the gradient descent method on the following functions:
 \begin{enumerate}
 \item $f(x_1, x_2) = 3x_1^2 + 2x_1x_2 + x_2^2 - 4x_1 + 5x_2$ (By completing the square we get the optimal value is at $x_1 = 2.25, x_2 = -4.75$.)
 \item $f(x) = -\frac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/2\sigma^2}$ (negative of a Gaussian pdf, with $\mu = 0$ and $\sigma = 1$.)
 \item $f(x) = x^3 - 10x$. (This is not a convex function; local minimum is at $1.8257$ and global minimum is negative infinity).
 \end{enumerate}
 
-The basic gradient descent method works decently well in the first two functions. In most specifications of the initial guess and step size the procedure converges to the right answer. Changing the convergence threshold to very large gives imprecise results, and changing it to very small results in more iterations until convergence. In some cases, very large or very small step sizes may result in non-convergence. In the third function which is non-convex, the initial guess can lead us to the incorrect, local minimum.  
+The basic gradient descent method works decently well on the first two functions. For most specifications of the initial guess and step size, the procedure converges to the right answer. Changing the convergence threshold to very large gives imprecise results, and changing it to very small results in more iterations until convergence. In some cases, very large or very small step sizes may result in non-convergence. In the third function which is non-convex, the initial guess can lead us to the incorrect, local minimum.  
 
 \begin{figure}[h!]
 \centering

@@ -34,12 +34,12 @@ Similarly, we apply our method for gradient descent to the LASSO problem on the 
 \end{flalign*}
 
 \subsection{Sparsity Properties of LASSO}
-We observe from Figure \ref{fig:lasso_sparsity} and MSE values that LASSO estimation is closest to the true value function, compared to ridge regression or non-regularized OLS. In terms of sparsity, LASSO estimator has only two variables that are non-zero (the rest are within numerically negligible deviation from 0), whereas the other estimators have non-sparse results. We believe that $l_0$ norm constraint (number of non-zero elements in $\V w$ less than $K$) is the true sparsity constraint; however, it is non-convex and difficult to solve directly, thus its convex hull-- the $l_1$ norm used in LASSO can be used as an approximation to often give sparse results. Even though $l_2$ norm regularization penalizes the size of $\V w$, it does not relate directly to the number of non-zero elements in $\V w$, and therefore does not provide sparse results.
+We observe from Figure \ref{fig:lasso_sparsity} and MSE values that the LASSO estimation is closest to the true generating function, compared to ridge regression or non-regularized OLS. In terms of sparsity, the LASSO estimator has only two variables that are non-zero (the rest are within numerically negligible deviation from 0), whereas the other estimators lead to non-sparse results. The $L_0$ norm regularizer, which penalizes based on the number of non-zero elements in $\V w$, is the true sparsity regularizer; however, this leads to a problem which is non-convex and difficult to solve directly.  Because the $L_1$ norm is the convex hull of the $L_0$ norm, LASSO can be used as an approximation to often give sparse results. Even though the $L_2$ norm regularization penalizes the size of $\V w$, due to the geometry of the norm it does not provide sparse results.
 
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.8]{hw1_4_1.pdf}
-\caption{Plots of estimated function with different regularizers \\
+\caption{Plots of estimated function with different regularizers. \\
 OLS: $\lambda_1 = \lambda_2 = 0$, Ridge: $\lambda_2 = 0.1$, LASSO: $\lambda_1 = 0.1$.} \label{fig:lasso_sparsity}
 \end{figure}

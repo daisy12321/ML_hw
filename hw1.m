@@ -273,11 +273,19 @@ Y_train = data.Y_train;
 X_test = ones(500, M+1);
 X_test(:,2:(M+1)) = data.X_test;
 Y_test = data.Y_test;
-
+%%
 % Compute Ridge Regression using Gradient Descent
+lambda_2 = 0.1
+X_full = X_train
+Y = Y_train
+fun_ridge = @(w) (1/2)*SSE(w') + (lambda_2/2)*dot(w,w)
+% grad_desc_2(fun_ridge, 0*[1:13], 1, 10^-6)
 
 % Compute LASSO using Gradient Descent
-
+lambda_1 = 0.1
+X_full = X_train
+Y = Y_train
+fun_ridge = @(w) (1/2)*SSE(w') + (lambda_1/2)*norm(w,1)
 %%
 % Plot curves
 h4_1 = figure;

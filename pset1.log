@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  1 OCT 2015 14:37
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  1 OCT 2015 16:00
 entering extended mode
 **pset1.tex
 (C:\Users\Colin\Documents\GitHub\ML_hw\pset1.tex
@@ -286,39 +286,44 @@ LaTeX Warning: No \author given.
 <hw1_1.pdf, id=1, 421.575pt x 316.18124pt>
 File: hw1_1.pdf Graphic file (type pdf)
  <use hw1_1.pdf>
-Package pdftex.def Info: hw1_1.pdf used on input line 21.
+Package pdftex.def Info: hw1_1.pdf used on input line 23.
 (pdftex.def)             Requested size: 168.627pt x 126.47025pt.
-LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 27.
-LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 27.
- [1
 
-{C:/Users/Colin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Co
-lin/Documents/GitHub/ML_hw/hw1_1.pdf>]) (C:\Users\Colin\Documents\GitHub\ML_hw\
-pset1.2.tex
-<hw1_2.pdf, id=19, 421.575pt x 316.18124pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 29.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 29.
+) (C:\Users\Colin\Documents\GitHub\ML_hw\pset1.2.tex [1
+
+{C:/Users/Colin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<hw1_2.pdf, id=17, 421.575pt x 316.18124pt>
 File: hw1_2.pdf Graphic file (type pdf)
  <use hw1_2.pdf>
 Package pdftex.def Info: hw1_2.pdf used on input line 11.
 (pdftex.def)             Requested size: 168.627pt x 126.47025pt.
 
-<hw1_2_2.pdf, id=20, 421.575pt x 316.18124pt>
+<hw1_2_2.pdf, id=18, 421.575pt x 316.18124pt>
 File: hw1_2_2.pdf Graphic file (type pdf)
  <use hw1_2_2.pdf>
 Package pdftex.def Info: hw1_2_2.pdf used on input line 16.
 (pdftex.def)             Requested size: 168.627pt x 126.47025pt.
 
-<hw1_2_4.pdf, id=21, 421.575pt x 316.18124pt>
+<hw1_2_4.pdf, id=19, 421.575pt x 316.18124pt>
 File: hw1_2_4.pdf Graphic file (type pdf)
  <use hw1_2_4.pdf>
 Package pdftex.def Info: hw1_2_4.pdf used on input line 21.
 (pdftex.def)             Requested size: 168.627pt x 126.47025pt.
- [2 <C:/Users/Colin/Documents/GitHub/ML_hw/hw1_2.pdf> <C:/Users/Colin/Documents
-/GitHub/ML_hw/hw1_2_2.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw1_2_4.pdf>]
-)
-(C:\Users\Colin\Documents\GitHub\ML_hw\pset1.3.tex)
-(C:\Users\Colin\Documents\GitHub\ML_hw\pset1.4.tex [3]
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) (C:\Users\Colin\Documents\GitHub\ML_hw\pset1.3.tex [2 <C:/Users/Colin/Documen
+ts/GitHub/ML_hw/hw1_1.pdf>]) (C:\Users\Colin\Documents\GitHub\ML_hw\pset1.4.tex
+[3 <C:/Users/Colin/Documents/GitHub/ML_hw/hw1_2.pdf> <C:/Users/Colin/Documents/
+GitHub/ML_hw/hw1_2_2.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw1_2_4.pdf>]
 <hw1_4_1.pdf, id=37, 421.575pt x 316.18124pt>
 File: hw1_4_1.pdf Graphic file (type pdf)
  <use hw1_4_1.pdf>
@@ -333,11 +338,11 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Here is how much of TeX's memory you used:
  3804 strings out of 493921
  54777 string characters out of 3147282
- 119508 words of memory out of 3000000
+ 120508 words of memory out of 3000000
  7031 multiletter control sequences out of 15000+200000
  16529 words of font info for 68 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,12n,38p,836b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,12n,38p,836b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
@@ -352,7 +357,7 @@ pe1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbo
 ls/msbm10.pfb>
-Output written on pset1.pdf (5 pages, 208317 bytes).
+Output written on pset1.pdf (5 pages, 208948 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

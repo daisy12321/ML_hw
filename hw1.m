@@ -9,8 +9,8 @@ grad = @(x)[6*x(1) + 2*x(2) - 4, 2*x(1) + 2*x(2) + 5]
 h = figure;
 ezcontour('3*x^2 + 2*x*y + y^2 - 4*x + 5*y', [-10, 10], [-10, 10])
 hold on;
+plot(x_hist(:,1), x_hist(:,2), 'b--o');
 plot(x(1), x(2), '+','color','r');
-plot(x_hist(:,1), x_hist(:,2), '.');
 hold off;
 set(h,'Units','Inches');
 pos = get(h,'Position');

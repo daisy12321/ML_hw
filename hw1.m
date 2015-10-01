@@ -275,17 +275,22 @@ X_test(:,2:(M+1)) = data.X_test;
 Y_test = data.Y_test;
 %%
 % Compute Ridge Regression using Gradient Descent
-lambda_2 = 0.1
-X_full = X_train
-Y = Y_train
-fun_ridge = @(w) (1/2)*SSE(w') + (lambda_2/2)*dot(w,w)
-% grad_desc_2(fun_ridge, 0*[1:13], 1, 10^-6)
+lambda_2 = 0.1;
+X_full = X_train;
+Y = Y_train;
+fun_ridge = @(w) (1/2)*SSE(w) + (lambda_2/2)*dot(w,w);
+w_ridge = grad_desc_2(fun_ridge, 0*[1:13]', .01, 1e-6)
+
+% Compute Ridge Regression with lambda_2 = 0
+
 
 % Compute LASSO using Gradient Descent
-lambda_1 = 0.1
-X_full = X_train
-Y = Y_train
-fun_ridge = @(w) (1/2)*SSE(w') + (lambda_1/2)*norm(w,1)
+lambda_1 = 0.1;
+X_full = X_train;
+Y = Y_train;
+fun_lasso = @(w) (1/2)*SSE(w) + (lambda_1/5)*norm(w,1);
+w_lasso = grad_desc_2(fun_lasso, 0*[1:13]', .01, 1e-6)
+
 %%
 % Plot curves
 h4_1 = figure;
@@ -294,7 +299,7 @@ plot(X_train(:,2), Y_train, 'o', 'MarkerSize', 10,'color','b');
 ezplot(true_fun,[-1.1,1.1])
 % hw1_plot(w, M, @bishopXPoly);
 hold off;
-h_legend = legend('Points', 'W True', 'OLS') %,'Ridge','LASSO')
+h_legend = legend('Points', 'W True', 'OLS','Ridge','LASSO')
 set(h_legend,'FontSize',14);
 set(h4_1,'Units','Inches');
 pos = get(h4_1,'Position');

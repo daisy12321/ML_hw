@@ -209,6 +209,7 @@ lambda_opt = 999;
 M_opt = 999;
 sse_all = zeros(21, 10);
 sse_test_all = zeros(21, 10);
+sse_test = 0;
 for l=-10:10
     lambda = 10^l;
     for m=0:9
@@ -225,6 +226,7 @@ for l=-10:10
         sse_all(l+11,m+1) = sse_ridge;
         if min_sse > sse_ridge
             min_sse = sse_ridge;
+            sse_test = sse_test_all(l+11,m+1)
             lambda_opt = lambda;
             M_opt = m;
         end

@@ -226,7 +226,7 @@ for l=-10:10
         sse_all(l+11,m+1) = sse_ridge;
         if min_sse > sse_ridge
             min_sse = sse_ridge;
-            sse_test = sse_test_all(l+11,m+1)
+            sse_test = sse_test_all(l+11,m+1);
             lambda_opt = lambda;
             M_opt = m;
         end
@@ -269,8 +269,10 @@ x_val = load('BlogFeedback_data/x_val.csv');
 y_test = load('BlogFeedback_data/y_test.csv');
 y_train = load('BlogFeedback_data/y_train.csv');
 y_val = load('BlogFeedback_data/y_val.csv');
+
 %%
 min_sse_blog = 10^10;
+sse_blog_test = 0;
 lambda_blog = 999;
 M = 280; % simple linear model
 X_train = ones(length(x_train), M+1);
@@ -279,8 +281,11 @@ Y_train = y_train';
 X_full = ones(length(x_val), M+1);
 X_full(:,2:(M+1)) = x_val;
 Y = y_val';
+X_test = ones(length(x_test), M+1);
+X_test(:,2:(M+1)) = x_test;
+Y_test = y_test';
 
-for l=-4:20
+for l=-4:10
     lambda = 10^l;
     % build model with training set
     w = ridge_reg(X_train, Y_train, lambda);
@@ -289,9 +294,12 @@ for l=-4:20
     if min_sse_blog > sse_ridge
         min_sse_blog = sse_ridge;
         lambda_blog = lambda;
+        sse_blog_test = SSE_2(X_test,Y_test,w);
     end
 end
-
+%%
+min_mse_blog = min_sse_blog/length(y_val)
+mse_blog_test = sse_blog_test/length(y_test)
 %%
 %%%% 4.2 %%%%
 data = load('regress-highdim.mat');

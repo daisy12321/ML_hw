@@ -209,6 +209,7 @@ lambda_opt = 999;
 M_opt = 999;
 sse_all = zeros(21, 10);
 sse_test_all = zeros(21, 10);
+sse_test = 0;
 for l=-10:10
     lambda = 10^l;
     for m=0:9
@@ -225,33 +226,34 @@ for l=-10:10
         sse_all(l+11,m+1) = sse_ridge;
         if min_sse > sse_ridge
             min_sse = sse_ridge;
+            sse_test = sse_test_all(l+11,m+1);
             lambda_opt = lambda;
             M_opt = m;
         end
     end
 end
-% plot log of SSE on the validation set
+% plot log of MSE on the validation set %
 h = figure;
 colormap('parula')
 x = [0 9];
 y = [-10 10];
-imagesc(x, y, log(sse_all))
+imagesc(x, y, log(sse_all/10))
 z = colorbar
-ylabel(z, 'Log of SSE');
+ylabel(z, 'Log of MSE');
 xlabel('M')
 ylabel('Log_{10}(\lambda)') 
 set(h,'Units','Inches');
 pos = get(h,'Position');
 set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
 print(h, 'hw1_3_2.pdf', '-dpdf', '-r0')
-% plot log of SSE on the validation set %
+% plot log of MSE on the test set %
 h = figure;
 colormap('parula')
 x = [0 9];
 y = [-10 10];
-imagesc(x, y, log(sse_test_all))
+imagesc(x, y, log(sse_test_all/10))
 z = colorbar
-ylabel(z, 'Log of SSE');
+ylabel(z, 'Log of MSE');
 xlabel('M')
 ylabel('Log_{10}(\lambda)') 
 set(h,'Units','Inches');
@@ -267,8 +269,10 @@ x_val = load('BlogFeedback_data/x_val.csv');
 y_test = load('BlogFeedback_data/y_test.csv');
 y_train = load('BlogFeedback_data/y_train.csv');
 y_val = load('BlogFeedback_data/y_val.csv');
+
 %%
 min_sse_blog = 10^10;
+sse_blog_test = 0;
 lambda_blog = 999;
 M = 280; % simple linear model
 X_train = ones(length(x_train), M+1);
@@ -278,7 +282,7 @@ X_full = ones(length(x_val), M+1);
 X_full(:,2:(M+1)) = x_val;
 Y = y_val';
 
-for l=-4:20
+for l=-4:10
     lambda = 10^l;
     % build model with training set
     w = ridge_reg(X_train, Y_train, lambda);
@@ -289,7 +293,14 @@ for l=-4:20
         lambda_blog = lambda;
     end
 end
-
+%%
+min_mse_blog = min_sse_blog/length(y_val)
+X_full = ones(length(x_val), M+1);
+X_full(:,2:(M+1)) = x_val;
+w = ridge_reg(X_train, Y_train, lambda_blog);
+X_full = ones(length(x_val), M+1);
+X_full(:,2:(M+1)) = x_val;
+mse_blog_test = SSE(w)
 %%
 %%%% 4.2 %%%%
 data = load('regress-highdim.mat');

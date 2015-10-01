@@ -4,11 +4,12 @@
 % convex quadratic function
 fun = @(x) 3*x(1)^2 + 2*x(1)*x(2) + x(2)^2 - 4*x(1) + 5*x(2)
 grad = @(x)[6*x(1) + 2*x(2) - 4, 2*x(1) + 2*x(2) + 5]
-[x, f] = grad_desc(fun, grad, [1.0 -2.0], 0.1, 1e-10)
+[x, f, x_hist] = grad_desc(fun, grad, [-10.0 0.0], 0.1, 1e-10)
 % plot the contour and the optimum point
 h = figure;
 ezcontour('3*x^2 + 2*x*y + y^2 - 4*x + 5*y', [-10, 10], [-10, 10])
 hold on;
+plot(x_hist(:,1), x_hist(:,2), 'b--o');
 plot(x(1), x(2), '+','color','r');
 hold off;
 set(h,'Units','Inches');
@@ -280,10 +281,12 @@ X_full = X_train;
 Y = Y_train;
 fun_ridge = @(w) (1/2)*SSE(w) + (lambda_2/2)*dot(w,w);
 w_ridge = grad_desc_2(fun_ridge, 0*[1:13]', .01, 1e-6)
+ridge_2D = @(x) sine_curve(w_ridge, x)
 
 % Compute Ridge Regression with lambda_2 = 0
 fun_ridge_0 = @(w) (1/2)*SSE(w);
 w_ridge_0 = grad_desc_2(fun_ridge_0, 0*[1:13]', .01, 1e-6)
+ridge_0_2D = @(x) sine_curve(w_ridge, x)
 
 % Compute LASSO using Gradient Descent
 lambda_1 = 0.1;
@@ -291,12 +294,15 @@ X_full = X_train;
 Y = Y_train;
 fun_lasso = @(w) (1/2)*SSE(w) + (lambda_1/5)*norm(w,1);
 w_lasso = grad_desc_2(fun_lasso, 0*[1:13]', .01, 1e-6)
+lasso_2D = @(x) sine_curve(w_lasso, x)
 
 %%
 % Plot curves
 h4_1 = figure;
 hold on;
 plot(X_train(:,2), Y_train, 'o', 'MarkerSize', 10,'color','b');
+ezplot(true_fun,[-1.1,1.1])
+ezplot(ridge_2D,[-1.1,1.1])
 ezplot(true_fun,[-1.1,1.1])
 % hw1_plot(w, M, @bishopXPoly);
 hold off;

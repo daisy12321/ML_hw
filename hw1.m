@@ -280,25 +280,31 @@ lambda_2 = 0.1;
 X_full = X_train;
 Y = Y_train;
 fun_ridge = @(w) (1/2)*SSE(w) + (lambda_2/2)*dot(w,w);
-w_ridge = grad_desc_2(fun_ridge, 0*[1:13]', .01, 1e-6)
+w_ridge = grad_desc_2(fun_ridge, 0*[1:13]', .01, 1e-6);
+ridge_2D = @(x) sine_curve(w_ridge, x);
 
 % Compute Ridge Regression with lambda_2 = 0
 fun_ridge_0 = @(w) (1/2)*SSE(w);
-w_ridge_0 = grad_desc_2(fun_ridge_0, 0*[1:13]', .01, 1e-6)
+w_ridge_0 = grad_desc_2(fun_ridge_0, 0*[1:13]', .01, 1e-6);
+ridge_0_2D = @(x) sine_curve(w_ridge_0, x);
 
 % Compute LASSO using Gradient Descent
 lambda_1 = 0.1;
 X_full = X_train;
 Y = Y_train;
-fun_lasso = @(w) (1/2)*SSE(w) + (lambda_1/5)*norm(w,1);
-w_lasso = grad_desc_2(fun_lasso, 0*[1:13]', .01, 1e-6)
+fun_lasso = @(w) (1/2)*SSE(w) + (lambda_1/2)*norm(w,1);
+w_lasso = grad_desc_2(fun_lasso, 0*[1:13]', .01, 1e-6);
+lasso_2D = @(x) sine_curve(w_lasso, x);
 
-%%
+
 % Plot curves
 h4_1 = figure;
 hold on;
 plot(X_train(:,2), Y_train, 'o', 'MarkerSize', 10,'color','b');
 ezplot(true_fun,[-1.1,1.1])
+ezplot(ridge_0_2D,[-1.1,1.1])
+ezplot(ridge_2D,[-1.1,1.1])
+ezplot(lasso_2D,[-1.1,1.1])
 % hw1_plot(w, M, @bishopXPoly);
 hold off;
 h_legend = legend('Points', 'W True', 'OLS','Ridge','LASSO')

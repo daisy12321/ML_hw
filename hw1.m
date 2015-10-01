@@ -4,11 +4,12 @@
 % convex quadratic function
 fun = @(x) 3*x(1)^2 + 2*x(1)*x(2) + x(2)^2 - 4*x(1) + 5*x(2)
 grad = @(x)[6*x(1) + 2*x(2) - 4, 2*x(1) + 2*x(2) + 5]
-[x, f] = grad_desc(fun, grad, [1.0 -2.0], 0.1, 1e-10)
+[x, f, x_hist] = grad_desc(fun, grad, [-10.0 0.0], 0.1, 1e-10)
 % plot the contour and the optimum point
 h = figure;
 ezcontour('3*x^2 + 2*x*y + y^2 - 4*x + 5*y', [-10, 10], [-10, 10])
 hold on;
+plot(x_hist(:,1), x_hist(:,2), 'b--o');
 plot(x(1), x(2), '+','color','r');
 hold off;
 set(h,'Units','Inches');

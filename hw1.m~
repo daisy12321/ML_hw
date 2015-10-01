@@ -278,12 +278,12 @@ lambda_2 = 0.1;
 X_full = X_train;
 n = size(X_full, 1);
 Y = Y_train;
-fun_ridge = @(w) (1/n)*SSE(w) + (lambda_2)*norm(w,2);
-w_ridge = grad_desc_2(fun_ridge, zeros(M, 1), .01, 1e-8);
+fun_ridge = @(w) (1/n)*SSE(w) + (lambda_2)*dot(w,w);
+w_ridge = grad_desc_2(fun_ridge, zeros(M, 1), .01, 1e-6);
 ridge_2D = @(x) sine_curve(w_ridge, x);
 
 % Compute Ridge Regression with lambda_2 = 0
-fun_ridge_0 = @(w) (1/n)*SSE(w);
+fun_ridge_0 = @(w) (1/2)*SSE(w);
 w_ridge_0 = grad_desc_2(fun_ridge_0, zeros(M, 1), .1, 1e-8);
 % w_ridge_0 = bishopCurveFit(X_full, Y);
 ridge_0_2D = @(x) sine_curve(w_ridge_0, x);
@@ -292,19 +292,19 @@ ridge_0_2D = @(x) sine_curve(w_ridge_0, x);
 lambda_1 = 0.1;
 X_full = X_train;
 Y = Y_train;
-fun_lasso = @(w) (1/n)*SSE(w) + (lambda_1)*norm(w,1);
-w_lasso = grad_desc_2(fun_lasso, zeros(M, 1), .01, 1e-8);
+fun_lasso = @(w) (1/2)*SSE(w) + (lambda_1/2)*norm(w,1);
+w_lasso = grad_desc_2(fun_lasso, zeros(M, 1), .01, 1e-6);
 lasso_2D = @(x) sine_curve(w_lasso, x);
 
 % Plot curves
 h4_1 = figure;
 hold on;
-plot(X_train(:,1), Y_train, 'p', 'MarkerSize', 10,'color','b');
-ezplot(true_fun,[-1.2,1.2, -3, 3])
-ezplot(ridge_0_2D,[-1.2,1.2, -3, 3])
-ezplot(ridge_2D,[-1.2,1.2, -3, 3])
-ezplot(lasso_2D,[-1.2,1.2, -3, 3])
-% set(gcf,'')
+plot(X_train(:,1), Y_train, 'o', 'MarkerSize', 10,'color','b');
+ezplot(true_fun,[-1.1,1.1])
+ezplot(ridge_0_2D,[-1.1,1.1])
+ezplot(ridge_2D,[-1.1,1.1])
+ezplot(lasso_2D,[-1.1,1.1])
+set(gcf,'')
 hold off;
 h_legend = legend('Points', 'W True', 'OLS','Ridge','LASSO',...
 'Location','NorthWest')
@@ -317,14 +317,15 @@ print(h4_1, 'hw1_4_1.pdf', '-dpdf', '-r0')
 
 %%
 % Compute MSE on test data
-n_test = size(X_test, 1)
+X_full = X_test;
+Y = Y_test;
 w_ridge
 sprintf('%.2f,',w_ridge)
 w_ridge_0
 sprintf('%.2f,',w_ridge_0)
 w_lasso
 sprintf('%.2f,',w_lasso)
-MSE_ridge = SSE_2(X_test, Y_test, w_ridge)/n_test
-MSE_ridge_0 = SSE_2(X_test, Y_test, w_ridge_0)/n_test
-MSE_lasso = SSE_2(X_test, Y_test, w_lasso)/n_test
-MSE_true = SSE_2(X_test, Y_test, w_true')/n_test 
+MSE_ridge = SSE(w_ridge)
+MSE_ridge_0 = SSE(w_ridge_0)
+MSE_lasso = SSE(w_lasso)
+

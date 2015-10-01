@@ -304,10 +304,13 @@ ezplot(true_fun,[-1.1,1.1])
 ezplot(ridge_0_2D,[-1.1,1.1])
 ezplot(ridge_2D,[-1.1,1.1])
 ezplot(lasso_2D,[-1.1,1.1])
+% set(gcf,'')
 hold off;
-h_legend = legend('Points', 'W True', 'OLS','Ridge','LASSO')
+h_legend = legend('Points', 'W True', 'OLS','Ridge','LASSO',...
+'Location','NorthWest')
 set(h_legend,'FontSize',14);
 set(h4_1,'Units','Inches');
+title('');
 pos = get(h4_1,'Position');
 set(h4_1,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
 print(h4_1, 'hw1_4_1.pdf', '-dpdf', '-r0')

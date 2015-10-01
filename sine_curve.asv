@@ -1,5 +1,0 @@
-function curve = sine_curve(w, x)
-    sum = 0;
-    sum = sum + w(1)*
-    for i=1:11
-        

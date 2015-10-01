@@ -152,7 +152,6 @@ set(h4,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos
 print(h4, 'hw1_2_4.pdf', '-dpdf', '-r0')
 
 
-
 %%%% 3.1 %%%%
 % M = 3 fixed, vary lambda
 M = 3;
@@ -192,7 +191,7 @@ pos = get(h6,'Position');
 set(h6,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
 print(h6, 'hw1_3_1b.pdf', '-dpdf', '-r0')   
 
-
+%%
 %%%% 3.2 %%%%
 train = load('regress_train.txt');
 valid = load('regress_validate.txt');
@@ -209,6 +208,7 @@ min_sse = 10^10;
 lambda_opt = 999;
 M_opt = 999;
 sse_all = zeros(21, 10);
+sse_test_all = zeros(21, 10);
 for l=-10:10
     lambda = 10^l;
     for m=0:9
@@ -220,6 +220,8 @@ for l=-10:10
         X_full = bishopXPoly(x_valid, m);
         Y = y_valid;
         sse_ridge = SSE(w);
+        X_test = bishopXPoly(x_test, m);
+        sse_test_all(l+11,m+1) = SSE_2(X_test, y_test, w);
         sse_all(l+11,m+1) = sse_ridge;
         if min_sse > sse_ridge
             min_sse = sse_ridge;
@@ -228,19 +230,34 @@ for l=-10:10
         end
     end
 end
-% plot log of SSE on the validation set %
+% plot log of MSE on the validation set %
 h = figure;
 colormap('parula')
-imagesc(log(sse_all))
+x = [0 9];
+y = [-10 10];
+imagesc(x, y, log(sse_all/10))
 z = colorbar
-ylabel(z, 'Log of SSE');
-xlabel('M + 1')
+ylabel(z, 'Log of MSE');
+xlabel('M')
 ylabel('Log_{10}(\lambda)') 
 set(h,'Units','Inches');
 pos = get(h,'Position');
 set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
 print(h, 'hw1_3_2.pdf', '-dpdf', '-r0')
-
+% plot log of MSE on the test set %
+h = figure;
+colormap('parula')
+x = [0 9];
+y = [-10 10];
+imagesc(x, y, log(sse_test_all/10))
+z = colorbar
+ylabel(z, 'Log of MSE');
+xlabel('M')
+ylabel('Log_{10}(\lambda)') 
+set(h,'Units','Inches');
+pos = get(h,'Position');
+set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+print(h, 'hw1_3_2b.pdf', '-dpdf', '-r0')
 
 %%
 %%%% 3.3 %%%%
@@ -264,7 +281,7 @@ Y = y_val';
 for l=-4:20
     lambda = 10^l;
     % build model with training set
-    w = ridge_reg(X_train, Y_train, M, lambda);
+    w = ridge_reg(X_train, Y_train, lambda);
     % compute SSE for validation set
     sse_ridge = SSE(w);
     if min_sse_blog > sse_ridge

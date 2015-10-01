@@ -282,7 +282,8 @@ fun_ridge = @(w) (1/2)*SSE(w) + (lambda_2/2)*dot(w,w);
 w_ridge = grad_desc_2(fun_ridge, 0*[1:13]', .01, 1e-6)
 
 % Compute Ridge Regression with lambda_2 = 0
-
+fun_ridge_0 = @(w) (1/2)*SSE(w);
+w_ridge_0 = grad_desc_2(fun_ridge_0, 0*[1:13]', .01, 1e-6)
 
 % Compute LASSO using Gradient Descent
 lambda_1 = 0.1;

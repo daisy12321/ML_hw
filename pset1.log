@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  1 OCT 2015 18:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  1 OCT 2015 19:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -373,9 +373,9 @@ df>] <hw1_3_1a.pdf, id=38, 562.1pt x 421.575pt>
 File: hw1_3_1a.pdf Graphic file (type pdf)
  <use hw1_3_1a.pdf>
 Package pdftex.def Info: hw1_3_1a.pdf used on input line 21.
-(pdftex.def)             Requested size: 309.15596pt x 231.86696pt.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
 
-Overfull \hbox (97.58449pt too wide) in paragraph at lines 21--22
+Overfull \hbox (69.47784pt too wide) in paragraph at lines 21--22
 [][] 
  []
 
@@ -383,9 +383,9 @@ Overfull \hbox (97.58449pt too wide) in paragraph at lines 21--22
 File: hw1_3_1b.pdf Graphic file (type pdf)
  <use hw1_3_1b.pdf>
 Package pdftex.def Info: hw1_3_1b.pdf used on input line 26.
-(pdftex.def)             Requested size: 309.15596pt x 231.86696pt.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
 
-Overfull \hbox (97.58449pt too wide) in paragraph at lines 26--27
+Overfull \hbox (69.47784pt too wide) in paragraph at lines 26--27
 [][] 
  []
 
@@ -393,9 +393,9 @@ Overfull \hbox (97.58449pt too wide) in paragraph at lines 26--27
 File: hw1_3_2.pdf Graphic file (type pdf)
  <use hw1_3_2.pdf>
 Package pdftex.def Info: hw1_3_2.pdf used on input line 40.
-(pdftex.def)             Requested size: 309.15596pt x 231.86696pt.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
 
-Overfull \hbox (97.58449pt too wide) in paragraph at lines 40--41
+Overfull \hbox (69.47784pt too wide) in paragraph at lines 40--41
 [][] 
  []
 
@@ -403,14 +403,11 @@ Overfull \hbox (97.58449pt too wide) in paragraph at lines 40--41
 File: hw1_3_2b.pdf Graphic file (type pdf)
  <use hw1_3_2b.pdf>
 Package pdftex.def Info: hw1_3_2b.pdf used on input line 45.
-(pdftex.def)             Requested size: 309.15596pt x 231.86696pt.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
 
-Overfull \hbox (97.58449pt too wide) in paragraph at lines 45--46
+Overfull \hbox (69.47784pt too wide) in paragraph at lines 45--46
 [][] 
  []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ) (./pset1.4.tex [4 <./hw1_3_1a.pdf> <./hw1_3_1b.pdf>] [5 <./hw1_3_2.pdf> <./hw
 1_3_2b.pdf>] <hw1_4_1.pdf, id=87, 562.1pt x 421.575pt>
@@ -443,7 +440,7 @@ s/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/sy
 mbols/msbm10.pfb>
-Output written on pset1.pdf (6 pages, 280331 bytes).
+Output written on pset1.pdf (6 pages, 281792 bytes).
 PDF statistics:
  137 PDF objects out of 1000 (max. 8388607)
  93 compressed objects within 1 object stream

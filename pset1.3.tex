@@ -18,31 +18,31 @@ We coded this method in MATLAB and tested our program using data from Bishop Fig
 \begin{figure}[h!]
 \centering
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.55]{hw1_3_1a.pdf}
+	\includegraphics[scale=0.5]{hw1_3_1a.pdf}
 	\caption{$M$ = 3 fixed, vary $\lambda$}
     \end{subfigure}
-    \quad
+    \quad\quad\quad\quad\quad
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.55]{hw1_3_1b.pdf}
+	\includegraphics[scale=0.5]{hw1_3_1b.pdf}
 	\caption{$\lambda$ = 0.05 fixed, vary $M$}
     \end{subfigure}
+    \hfill
 \caption{Prediction curves from ridge regression using data from Bishop 1.4.  $M$ = order of polynomial basis function, $\lambda$ = regularization parameter.} \label{fig:ridge_plots}
 \end{figure}
 
 \subsection{Model Selection}
 To optimize parameter values for $\lambda$ and $M$, we build our models using training data and then compare out-of-sample performance on validation data.  For this example, we performed a grid search over the ranges: $\log_{10}(\lambda) = \{-10,\ldots,10\}$, $M = \{0,\ldots, 9\}$.  We found that the model with $\lambda = 1$ and $M = 4$ yields the lowest MSE on validation data, so we select these to be the final parameter values.  This model leads to MSE = 0.1056 on the validation data and MSE = 2.6988 on the test data.  
 
-In general, we observe that models with relatively low MSE on the validation set tend to have relatively low MSE on the test set.  Heat maps of the MSE values for different parameter values are shown in Figure~\ref{fig:heat_map}.   As expected, test MSE is higher on average, and the plots are similar for most parameter values.  Discrepancies between the heat maps may be attributed to the prescence of an outlier in the training set.  In both heat maps, we see that the top left corner (high M, high $\lambda$), which corresponds to complex models with little regularization, lead to the worst performance on out-of-sample data.  
+In general, we observe that models with relatively low MSE on the validation set tend to have relatively low MSE on the test set.  Heat maps of the MSE values for different parameter values are shown in Figure~\ref{fig:heat_map}.   As expected, test MSE is higher on average, and the plots are similar for most parameter values.  Discrepancies between the heat maps may be attributed to the prescence of an outlier in the training set.  In both heat maps, we see that the top right corner (high M, low $\lambda$), which corresponds to complex models with little regularization, lead to the worst performance on out-of-sample data.  
 
-\begin{figure}[h!]
-\centering
+\begin{figure}[htbp]
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.55]{hw1_3_2.pdf}
+	\includegraphics[scale=0.5]{hw1_3_2.pdf}
 	\caption{Validation MSE}
     \end{subfigure}
-    \quad
+    \quad\quad\quad\quad\quad\quad
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.55]{hw1_3_2b.pdf}
+	\includegraphics[scale=0.5]{hw1_3_2b.pdf}
 	\caption{Test MSE}
     \end{subfigure}
 \caption{Heat map of the MSE for ridge regression on the validation and test sets, varying the parameters $M$ and $\lambda$.  Color gradient from low MSE (navy blue) to high MSE (yellow).} \label{fig:heat_map}

@@ -232,6 +232,9 @@ for l=-10:10
         end
     end
 end
+
+% w = ridge_reg(bishopXPoly(x_train, M_opt), y_train, lambda_opt);
+% SSE_2(bishopXPoly(x_test, M_opt), y_test, w)
 % plot log of MSE on the validation set %
 h = figure;
 colormap('parula')
@@ -278,9 +281,9 @@ M = 280; % simple linear model
 X_train = ones(length(x_train), M+1);
 X_train(:,2:(M+1)) = x_train;
 Y_train = y_train';
-X_full = ones(length(x_val), M+1);
-X_full(:,2:(M+1)) = x_val;
-Y = y_val';
+X_val = ones(length(x_val), M+1);
+X_val(:,2:(M+1)) = x_val;
+Y_val = y_val';
 X_test = ones(length(x_test), M+1);
 X_test(:,2:(M+1)) = x_test;
 Y_test = y_test';
@@ -290,7 +293,7 @@ for l=-4:10
     % build model with training set
     w = ridge_reg(X_train, Y_train, lambda);
     % compute SSE for validation set
-    sse_ridge = SSE(w);
+    sse_ridge = SSE_2(X_val, Y_val, w);
     if min_sse_blog > sse_ridge
         min_sse_blog = sse_ridge;
         lambda_blog = lambda;

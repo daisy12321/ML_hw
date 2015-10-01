@@ -69,20 +69,20 @@ global X X_full Y M;
 M = 3;
 X_full = bishopXPoly(X, M);
 % Using our function
-w = bishopCurveFit(X_full, Y, M);
+w = bishopCurveFit(X_full, Y);
 % using polyfit to verify
 w_polyfit = fliplr(polyfit(X, Y, M));
 % Same as w!
 
 % replicate Bishop 1.4 plots
 X_full = bishopXPoly(X, 0);
-w_0 = bishopCurveFit(X_full, Y, 0);
+w_0 = bishopCurveFit(X_full, Y);
 X_full = bishopXPoly(X, 1);
-w_1 = bishopCurveFit(X_full, Y, 1);
+w_1 = bishopCurveFit(X_full, Y);
 X_full = bishopXPoly(X, 3);
-w_3 = bishopCurveFit(X_full, Y, 3);
+w_3 = bishopCurveFit(X_full, Y);
 X_full = bishopXPoly(X, 9);
-w_9 = bishopCurveFit(X_full, Y, 9);
+w_9 = bishopCurveFit(X_full, Y);
 
 %%%%%% Plot on various M's %%%%%%%
 h2 = figure;
@@ -133,9 +133,9 @@ print(h3, 'hw1_2_2.pdf', '-dpdf', '-r0')
 %%%% 2.3 %%%% 
 %%% using the sin basis function
 X_full = bishopXSin(X, 1);
-w_sin_1 = bishopCurveFit(X_full, Y, 1);
+w_sin_1 = bishopCurveFit(X_full, Y);
 X_full = bishopXSin(X, 4);
-w_sin_4 = bishopCurveFit(X_full, Y, 4);
+w_sin_4 = bishopCurveFit(X_full, Y);
 
 
 h4 = figure;
@@ -157,13 +157,13 @@ print(h4, 'hw1_2_4.pdf', '-dpdf', '-r0')
 % M = 3 fixed, vary lambda
 M = 3;
 X_full = bishopXPoly(X, M);
-w = bishopCurveFit(X_full, Y, M);
+w = bishopCurveFit(X_full, Y);
 h5 = figure;
 hold on;
 plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 hw1_plot(w, M, @bishopXPoly);
 for lambda=[0.0001,0.05,100]
-    w_ridge = ridge_reg(X_full, Y, M, lambda);
+    w_ridge = ridge_reg(X_full, Y, lambda);
     hw1_plot(w_ridge, M, @bishopXPoly);
 end
 hold off;
@@ -181,7 +181,7 @@ hold on;
 plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
 for M=[1,3,5,7]
     X_full = bishopXPoly(X, M);
-    w_ridge = ridge_reg(X_full, Y, M, 0.05);
+    w_ridge = ridge_reg(X_full, Y, 0.05);
     hw1_plot(w_ridge, M, @bishopXPoly);
 end
 hold off;
@@ -208,17 +208,19 @@ y_test = test(2,:);
 min_sse = 10^10;
 lambda_opt = 999;
 M_opt = 999;
+sse_all = zeros(21, 10);
 for l=-10:10
     lambda = 10^l;
     for m=0:9
         % build model with training set
         X_full = bishopXPoly(x_train, m);
         Y = y_train;
-        w = ridge_reg(X_full, Y, m, lambda);
+        w = ridge_reg(X_full, Y, lambda);
         % compute SSE for validation set
         X_full = bishopXPoly(x_valid, m);
         Y = y_valid;
-        sse_ridge = SSE(w); 
+        sse_ridge = SSE(w);
+        sse_all(l+11,m+1) = sse_ridge;
         if min_sse > sse_ridge
             min_sse = sse_ridge;
             lambda_opt = lambda;
@@ -226,6 +228,18 @@ for l=-10:10
         end
     end
 end
+% plot log of SSE on the validation set %
+h = figure;
+colormap('parula')
+imagesc(log(sse_all))
+z = colorbar
+ylabel(z, 'Log of SSE');
+xlabel('M + 1')
+ylabel('Log_{10}(\lambda)') 
+set(h,'Units','Inches');
+pos = get(h,'Position');
+set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+print(h, 'hw1_3_2.pdf', '-dpdf', '-r0')
 
 
 %%

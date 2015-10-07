@@ -104,22 +104,23 @@ print(h2, 'hw1_2.pdf', '-dpdf', '-r0')
 
 
 %%%% 2.2 %%%%
-M = 3; X_full = bishopXPoly(X, M);
-sse_calc = SSE(w);
-sse_derivative = SSE_derivative(w);
-fin_diff(@SSE, w, 0.001)
+M = 9; X_full = bishopXPoly(X, M);
+sse_calc = SSE(w_9);
+sse_derivative = SSE_derivative(w_9);
+fin_diff(@SSE, w_9, 0.001)
 % verified: at optimal solution w, SSE derivative is basically 0
 
-w_init = ones(size(w));
-w_converge = grad_desc_2(@SSE, w_init, 0.05, 1e-6);
-[w w_converge]
+w_init = ones(size(w_9));
+w_converge = grad_desc_2(@SSE, w_9+norm(w_9,2)*0.05*rand(size(w_9)), 0.1, 1e-6);
+[w_9 w_converge]
 % compare the formula fitted w vs. the GD algorithm 
+w_nice = fminunc(@SSE, w_init);
 
 h3 = figure;
 hold on;
 plot(X, Y, 'o', 'MarkerSize', 10,'color','b');
-hw1_plot(w_3, 3, @bishopXPoly);
-hw1_plot(w_converge,3, @bishopXPoly);
+hw1_plot(w_9, 9, @bishopXPoly);
+hw1_plot(w_nice,9, @bishopXPoly);
 hold off;
 h_legend = legend('Points', 'M=3, use formula','M=3, using SSE GD')
 set(h_legend,'FontSize',14);
@@ -130,7 +131,7 @@ print(h3, 'hw1_2_2.pdf', '-dpdf', '-r0')
 
 
 
-%%%% 2.3 %%%% 
+%%%% 2.4 %%%% 
 %%% using the sin basis function
 X_full = bishopXSin(X, 1);
 w_sin_1 = bishopCurveFit(X_full, Y);

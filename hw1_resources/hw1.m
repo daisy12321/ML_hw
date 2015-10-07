@@ -1,3 +1,4 @@
+addpath('srcs', 'hw2_resources', 'hw2_resources/data')
 %%% 1.1 & 1.2 %%%%
 % self-implement function on gradient descend
 % constant step size

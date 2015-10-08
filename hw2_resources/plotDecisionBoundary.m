@@ -1,4 +1,4 @@
-function plotDecisionBoundary(X, Y, scoreFn, values, mytitle)
+function plotDecisionBoundary(X, Y, scoreFn, values, mytitle, filename)
 % X is data matrix (each row is a data point)
 % Y is desired output (1 or -1)
 % scoreFn is a function of a data point
@@ -21,7 +21,7 @@ for i=1:length(arr),
 end  
 zz=reshape(zz,size(xx));
    
-figure;
+fig = figure;
 hold on;
 title(mytitle);
 colormap cool
@@ -30,4 +30,12 @@ set(h,'ShowText','on');
 %Plot the training points
 scatter(X(:,1),X(:,2),50,1-Y);
 
+set(fig,'Units','Inches');
+pos = get(fig,'Position');
+set(fig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+print(fig, filename, '-dpdf', '-r0')
+
+
+
     
+

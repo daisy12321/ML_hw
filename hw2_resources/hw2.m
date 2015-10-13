@@ -19,3 +19,13 @@ for i = 1:length(LAMBDA_RANGE)
     [w_reg4_1 valid_score_matrix(i, 4)]= lr_test('nonsep', lambda_i, false);
 end
 valid_score_matrix
+
+%%
+optim_ver = ver('optim');
+optim_ver = str2double(optim_ver.Version);
+if optim_ver >= 6
+    opts = optimset('Algorithm', 'interior-point-convex');
+else
+    opts = optimset('Algorithm', 'interior-point', 'LargeScale', 'off', 'MaxIter', 2000);
+end
+%%

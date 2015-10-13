@@ -8,45 +8,62 @@ We implemented $L_2$-regularized logistic regression using gradient descent.
 \subsection{Testing in data with $\lambda = 0$}
 We test the logistic regression 
 
+
+\begin{table}[h!]
+\centering
+\caption{Estimated logistic regrecoefficients }
+\begin{tabular}{lrrr}
+  \hline\hline
+  Data   & $w_0$ 	& $w_1$ 	  & $w_2$ \\
+  \hline
+  stdev1 & -66.3378  & 95.2461 & 101.1527 \\
+  stdev2 & -0.0466   & 0.7636  & 1.1148 \\
+  stdev4 & -0.0093   & 0.2363  & 0.2034 \\
+  nonsep & 0.0006    & -0.0247 & -0.0237\\
+  \hline\hline
+\end{tabular}
+\end{table}
+
+
 \begin{figure}[h!]
 \centering
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.4]{hw2_1_stdev1_a.pdf}
+	\includegraphics[scale=0.4]{hw2_1_stdev1_a_0.pdf}
 	\caption{Data with $\sigma = 1$, training}\label{fig:data_stdev1a}
     \end{subfigure}
     \quad
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.4]{hw2_1_stdev1_b.pdf}
+	\includegraphics[scale=0.4]{hw2_1_stdev1_b_0.pdf}
 	\caption{Data with $\sigma = 1$, validation}\label{fig:data_stdev1b}
     \end{subfigure}
 
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.4]{hw2_1_stdev2_a.pdf}
+	\includegraphics[scale=0.4]{hw2_1_stdev2_a_0.pdf}
 	\caption{CData with $\sigma = 2$, training}\label{fig:data_stdev2a}
 	\end{subfigure}
 	\quad	
 	\begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.4]{hw2_1_stdev2_b.pdf}
+	\includegraphics[scale=0.4]{hw2_1_stdev2_b_0.pdf}
 	\caption{CData with $\sigma = 2$, validation}\label{fig:data_stdev2b}
 	\end{subfigure}
     
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.4]{hw2_1_stdev4_a.pdf}
+	\includegraphics[scale=0.4]{hw2_1_stdev4_a_0.pdf}
 	\caption{Data with $\sigma = 4$, training}\label{fig:data_stdev4a}
     \end{subfigure}  
     \quad
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.4]{hw2_1_stdev4_b.pdf}
-	\caption{Data with $\sigma = 4$, validation}\label{fig:data_stdev4a}
+	\includegraphics[scale=0.4]{hw2_1_stdev4_b_0.pdf}
+	\caption{Data with $\sigma = 4$, validation}\label{fig:data_stdev4b}
     \end{subfigure}  
 
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.4]{hw2_1_nonsep_a.pdf}
+	\includegraphics[scale=0.4]{hw2_1_nonsep_a_0.pdf}
 	\caption{Non-seperable data, training}\label{fig:data_nonsep_a}
     \end{subfigure}  
     \quad
     \begin{subfigure}[b]{0.4\textwidth}
-	\includegraphics[scale=0.4]{hw2_1_nonsep_b.pdf}
+	\includegraphics[scale=0.4]{hw2_1_nonsep_b_0.pdf}
 	\caption{Non-seperable data, validation}\label{fig:data_nonsep_b}
     \end{subfigure}  
     \caption{}    

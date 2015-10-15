@@ -15,5 +15,16 @@ function [w, w_0] = svm(X, Y, C)
         end
     end
     
-    alpha = quadprog(H,f,A,b,Aeq,beq,lb,ub);
+    % Solve quadratic program
+    alpha = quadprog(H,-f,A,b,Aeq,beq,lb,ub);
+    
+    % Solve for w, w_0 parameters
+    sum = alpha(1)*Y(1)*X(1,:);
+    for i=2:n
+        sum = sum + alpha(i)*Y(i)*X(i);
+    end
+    w = sum;
+    % S = set of support vectors, M = {i : 0 < alpha_i < C}
+    S = alpha > zeros(n,1)
+    
 end

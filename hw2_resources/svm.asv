@@ -1,0 +1,15 @@
+
+
+
+function [w, w_0] = svm(X, Y, C)
+    n = length(Y);
+    f = ones(n, 1);
+    A = [];
+    b = [];
+    Aeq = Y';
+    beq = zeros(n, 1);
+    lb = zeros(n, 1);
+    ub = C*ones(n, 1);
+    
+    x = quadprog(H,f,A,b,Aeq,beq,lb,ub);
+end

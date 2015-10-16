@@ -26,13 +26,20 @@ Within the function, we use the quadratic solver \texttt{quadprog} to solve the 
 Since \texttt{quadprog} requires that the problem fit into a certain functional form, we reformulate the problem (\ref{eq:svm_dual}) as follows:
 
 \begin{equation}
-\label{eq:svm_dual}
+\label{eq:svm_dual2}
 \begin{array}{rll}
 -\underset{\alpha \in \mathbb{R}^n}{\min}~ & \frac{1}{2} \alpha^T H \alpha - \sum\limits_{i = 1}^n \alpha_i \vspace{3pt}\\
 \textup{s.t.}~ & 0 \leq \alpha_i \leq C,&~~~i=1,\ldots ,n, \vspace{3pt}\\
 & \sum\limits_{i = 1}^n \alpha_i y^{(i)} = 0, & \vspace{5pt}\\
 \end{array}
 \end{equation}
-where:  $H \in \mathbb{R}^{n \times n}$ is a matrix with $(i,j)^{th}$ entry $H_{ij} = y^{(i)} y^{(j)} k(x^{(i)}, x^{(j)})$.\\
+where:  $H \in \mathbb{R}^{n \times n}$ is a matrix with $(i,j)^{th}$ entry $H_{ij} = y^{(i)} y^{(j)} k(x^{(i)}, x^{(j)})$.  Given the optimal solution $\alpha \in \mathbb{R}^n$ for the SVM problem with a linear kernel, the chosen linear decision boundary $\theta^T x + \theta_0 = 0$ is given by:
 
-Given the optimal solution $\alpha$ for the SVM problem with a linear kernel, the 
+\begin{equation}
+\label{eq:svm_theta}
+\theta = \sum\limits_{i = 1}^n \alpha_i y^{(i)} x^{(i)}
+\end{equation}
+\begin{equation}
+\label{eq:svm_theta_0}
+\theta_0 = \frac{1}{\mathcal{M}} \Big(\sum\limits_{j \in \mathcal{M}} \Big(y^{(j)} - \sum\limits_{i \in \mathcal{S}}\alpha_i y^{(i)} (x^{(j)})^T x^{(i)} \Big)\Big)
+\end{equation}

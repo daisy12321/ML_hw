@@ -2,4 +2,37 @@
 
 \section{Support Vector Machine}\label{sec:svm}
 
+Support Vector Machines are a popular classification method to construct linear or nonlinear decision boundaries
+by solving a convex optimization problem.  There are two common forms of the optimization problem considered for SVM,
+which we refer to as the primal and dual.  In this paper, we only consider the dual form, because it is computationally more tractable
+for many problems, and this method has the ability to generalize to different choices of kernel.  The dual form of SVM for a general
+kernel function $k: \mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R}$ is as follows:
+
+\begin{equation}
+\label{eq:svm_dual}
+\begin{array}{rll}
+\underset{\alpha \in \mathbb{R}^n}{\max}~ & \sum\limits_{i = 1}^n \alpha_i 
+- \frac{1}{2} \sum\limits_{i = 1}^n\sum\limits_{j = 1}^n \alpha_i \alpha_j y^{(i)} y^{(j)} k(x^{(i)}, x^{(j)}) \vspace{3pt}\\
+\textup{s.t.}~ & 0 \leq \alpha_i \leq C,&~~~i=1,\ldots ,n, \vspace{3pt}\\
+& \sum\limits_{i = 1}^n \alpha_i y^{(i)} = 0. & \\
+\end{array}
+\end{equation}
+
 \subsection{Implementation}
+
+First, we implemented the dual form of the SVM with a linear kernel, where $k$ is the usual dot product $k(x, z) = \langle x,z \rangle$ for all $x, z \in \mathcal{X}$. 
+In MATLAB, we created a function with inputs: data $X \in \mathbb{R}^{n \times p}$, labels $Y \in \{-1,1\}$, and cost parameter $C \in \mathbb{R}^{+}$. 
+Within the function, we use the quadratic solver \texttt{quadprog} to solve the SVM dual problem (\ref{eq:svm_dual}) with these parameters to find the optimal $\alpha$'s.
+Since \texttt{quadprog} requires that the problem fit into a certain functional form, we reformulate the problem (\ref{eq:svm_dual}) as follows:
+
+\begin{equation}
+\label{eq:svm_dual}
+\begin{array}{rll}
+-\underset{\alpha \in \mathbb{R}^n}{\min}~ & \frac{1}{2} \alpha^T H \alpha - \sum\limits_{i = 1}^n \alpha_i \vspace{3pt}\\
+\textup{s.t.}~ & 0 \leq \alpha_i \leq C,&~~~i=1,\ldots ,n, \vspace{3pt}\\
+& \sum\limits_{i = 1}^n \alpha_i y^{(i)} = 0, & \vspace{5pt}\\
+\end{array}
+\end{equation}
+where:  $H \in \mathbb{R}^{n \times n}$ is a matrix with $(i,j)^{th}$ entry $H_{ij} = y^{(i)} y^{(j)} k(x^{(i)}, x^{(j)})$.\\
+
+Given the optimal solution $\alpha$ for the SVM problem with a linear kernel, the 

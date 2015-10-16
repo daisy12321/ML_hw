@@ -31,12 +31,7 @@ else
 end
 %%
 
-%%% Sample SVM problem
+
 X = [[1,2];[2,2];[0,0];[-2,3]];
 Y = [1,1,-1,-1]';
-C = 1;
-[w, w_0, H] = svm(X, Y, C)
-% Benchmark against native Matlab function (obtain same alphas)
-% cl = fitcsvm(X, Y);
-% cl.Alpha
 

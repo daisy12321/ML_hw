@@ -1,4 +1,4 @@
-function svm_test(name)
+function svm_test(name, C, kernel, sigma2)
 disp('======Training======');
 % load data from csv files
 data = importdata(strcat('data/data_',name,'_train.csv'));
@@ -6,11 +6,10 @@ X = data(:,1:2);
 Y = data(:,3);
 
 % Carry out training, primal and/or dual
-%%% TODO %%%
+[w, w_0] = svm(X, Y, C, kernel, sigma2)
 
 % Define the predictSVM(x) function, which uses trained parameters
-%%% TODO %%%
-
+predictSVM = @(x) w * x + w_0;
 
 hold on;
 % plot training results

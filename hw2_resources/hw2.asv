@@ -31,7 +31,27 @@ else
 end
 %%
 
-
+%%% 2.2.1 %%%
+%%% Sample SVM problem 
 X = [[1,2];[2,2];[0,0];[-2,3]];
 Y = [1,1,-1,-1]';
+C = 1;
+kernel = 'dot';
+[w, w_0, H] = svm(X, Y, C, kernel)
+% Benchmark against native Matlab function (obtain same alphas)
+% cl = fitcsvm(X, Y);
+% cl.Alpha
 
+%%
+%%% 2.2.2 %%%
+
+
+%%
+%%% 2.2.3 %%%
+X = [[1,2];[2,2];[0,0];[-2,3]];
+Y = [1,1,-1,-1]';
+C = 1;
+sigma2 = 0.1;
+gaussian = @(x,z) rbf(x,z,sigma2);
+kernel = 'gaussian
+[w, w_0, H, alpha] = svm(X, Y, C, 'gaussian')

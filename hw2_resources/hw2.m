@@ -46,6 +46,7 @@ C = 1;
 C = 1;
 kernel = 'dot';
 toPlot = 0;
+sigma2 = 1;
 
 names=cellstr(['stdev1';'stdev2';'stdev4';'nonsep'])
 for i=1:4
@@ -69,8 +70,9 @@ for i=1:4
     end
 end
 
-kernel = 'dot';
+kernel = 'rbf';
 toPlot = 0;
+sigma2 = 1;
 for i=1:4
     for C=[0.01,0.1,1,10,100]
         svm_test(names{i}, C, kernel, sigma2, toPlot);

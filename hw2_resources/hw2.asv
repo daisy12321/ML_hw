@@ -80,10 +80,10 @@ for i=1:4
 end
 
 kernel = 'rbf';
-toPlot = 1;
-name = 'nonsep';
-for sigma2=[0.01,0.1,10,100]
+toPlot = 0;
+sigma2 = 1;
+for sigma2=[0.01,0.1,1,10,100]
     for C=[0.01,0.1,1,10,100]
-        svm_test(name, C, kernel, sigma2, toPlot);
+        svm_test(names{i}, C, kernel, sigma2, toPlot);
     end
 end

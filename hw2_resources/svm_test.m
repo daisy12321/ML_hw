@@ -1,7 +1,7 @@
 function valid_score = svm_test(name, C, kernel, sigma2, toPlot)
 disp('======Training======');
 % load data from csv files
-data = importdata(strcat('data/data_',name,'_train.csv'));
+data = importdata(strcat('hw2_resources/data/data_',name,'_train.csv'));
 X = data(:,1:2);
 Y = data(:,3);
 
@@ -29,10 +29,10 @@ if toPlot
     % plot training results
     plotDecisionBoundary(X, Y, predictSVM, [-1, 0, 1], ...
         strcat('SVM Training, C = ', num2str(C)), ...
-        strcat('../hw2_writeup/figures/hw2_2_',name,'_a_',num2str(C),'.pdf'));
+        strcat('hw2_writeup/figures/hw2_2_',name,'_a_',num2str(C),'.pdf'));
     
     % plot validation results
     plotDecisionBoundary(X_val, Y_val, predictSVM, [-1, 0, 1],...
         strcat('SVM Validate, C = ', num2str(C)), ...
-        strcat('../hw2_writeup/figures/hw2_2_',name,'_b_',num2str(C),'.pdf'));
+        strcat('hw2_writeup/figures/hw2_2_',name,'_b_',num2str(C),'.pdf'));
 end

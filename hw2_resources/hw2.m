@@ -45,7 +45,7 @@ C = 1;
 %%% 2.2.2 %%%
 C = 1;
 kernel = 'dot';
-toPlot = 1;
+toPlot = 0;
 
 names=cellstr(['stdev1';'stdev2';'stdev4';'nonsep'])
 for i=1:4
@@ -60,8 +60,17 @@ C = 1;
 sigma2 = 1;
 [w, w_0, H, alpha] = svm(X, Y, C, 'rbf', sigma2)
 
+
 kernel = 'dot';
-toPlot = 1;
+toPlot = 0;
+for i=1:4
+    for C=[0.01,0.1,1,10,100]
+        svm_test(names{i}, C, kernel, sigma2, toPlot);
+    end
+end
+
+kernel = 'dot';
+toPlot = 0;
 for i=1:4
     for C=[0.01,0.1,1,10,100]
         svm_test(names{i}, C, kernel, sigma2, toPlot);

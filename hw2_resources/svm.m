@@ -8,8 +8,6 @@ function [w, w_0, H, alpha] = svm(X, Y, C, kernel, sigma2)
     lb = zeros(n, 1);
     ub = C*ones(n, 1);
     
-    gaussian = @(x,z) rbf(x,z,sigma2);
-    
     % Compute kernel matrix
     K = zeros(n);
     if kernel=='rbf'

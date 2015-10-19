@@ -80,4 +80,24 @@ We tested our linear SVM function on the same 2D datasets from the previous sect
 
 We extended our SVM implementation in MATLAB to operate with more general kernels, taking the kernel function or kernel matrix as input.  
 
+{\bf Questions:}
+\begin{enumerate}[label=(\alph*)]
+	\item As $C$ increases, the geometric margin $1/\|\V{w}\|$ decreases.  If the data is not linearly separable, then
+	the geometric margin $1/\|\V{w}\|$ decreases strictly monotonically as $C$ increases.  However, if the data is linearly
+	separable, then this does not always happen as we increase $C$.  In this case, once the margin is sufficiently small
+	such that all points are correctly classified, then it will not decrease further even as $C$ approaches infinity.  
+	
+	\item As $C$ decreases, the number of support vectors decreases.  This is because the larger penalty on misclassified
+	points leads to a decision boundary with fewer misclassifications on the training data.  However, the number of the
+	support vectors is bounded below by two as $C$ approaches infinity, because there will always be at least one support vector
+	on each side of the decision boundary.
+	
+	\item Maximizing the geometric margin $1/\|\V{w}\|$ on the training data is not an appropriate criterion for selecting
+	$C$ because this leads to a classifier which is overfit to the training set.  To obtain a classifier which generalizes well
+	on test data, we should use out-of-sample data to select an appropriate value for $C$.  To do this, we can train the SVM model
+	with $C = \{0.01,0.1,1,10,100\}$, and then select the value for $C$ which yields the classifier with the highest
+	accuracy on the validation set.  
+
+\end{enumerate}
+
 %TODO: continue

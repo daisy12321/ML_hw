@@ -9,7 +9,7 @@ function [z, f] = lr_run(X,Y,lambda,bias)
     
     LR_loss = @(w) lambda * norm(w(2:p), 2)^2 + sum(-log(sigmoid(Y_train .* (X_train * w'))));
     options = optimoptions(@fminunc,'Display','iter');
-    [z, f] = fminunc(LR_loss, zeros(1,p+1), options);
+    [z, f] = fminunc(LR_loss, zeros(1,p+1));%, options);
     
     % LR_grad = @(w) 2 * lambda * w  + sum((-repmat(Y_train, 1, p) .* X_train) ...
     %               .* repmat(1 - sigmoid(Y_train .* (X_train * w')), 1, p));

@@ -30,13 +30,13 @@ plot(LAMBDA_RANGE, valid_scores(:,2))
 plot(LAMBDA_RANGE, valid_scores(:,3))
 plot(LAMBDA_RANGE, valid_scores(:,4))
 title('Validation accuracy versus \lambda')
-legend('stdev1', 'stdev2', 'stdev4', 'nonsep')
+label('stdev1', 'stdev2', 'stdev4', 'nonsep')
 xlabel('\lambda in Log')
 ylabel('Validation accuracy')
 set(fig,'Units','Inches');
 pos = get(fig,'Position');
 set(fig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-print(fig, 'hw2_writeup/hw2_1_cv.pdf', '-dpdf', '-r0')
+print(fig, ', '-dpdf', '-r0')
 
 
 

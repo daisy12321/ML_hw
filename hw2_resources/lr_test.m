@@ -1,4 +1,4 @@
-function [z, train_score, valid_score] = lr_test(name, lambda, toPlot)
+function [z, train_score, valid_score, test_score] = lr_test(name, lambda, toPlot)
 disp('======Training======');
 % load data from csv files
 data = importdata(strcat('data/data_',name,'_train.csv'));
@@ -14,6 +14,8 @@ predictLR = @(x) sigmoid(z(2:3) * x + z(1));
 
 %Y_train_pred(predictLR(X')>.5) = 1;
 %Y_train_pred(predictLR(X')<=.5) = -1;
+train_score = get_accu(z, X, Y);
+
 
 disp('======Validation======');
 % load data from csv files
@@ -27,7 +29,7 @@ Y_val = validate(:,3);
 %train_score = sum(Y_train_pred == Y')/length(Y);
 %valid_score = sum(Y_pred == Y_val')/length(Y_val);
 disp('======Accuracy======');
-valid_score = get_accu(z, X_valid, Y_valid);
+valid_score = get_accu(z, X_val, Y_val);
 disp(valid_score);
 
 disp('======Testing======');

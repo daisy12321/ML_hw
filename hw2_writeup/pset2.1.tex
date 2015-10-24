@@ -8,7 +8,7 @@ We implemented $L_2$-regularized logistic regression using gradient descent. The
 \sum_{i=1}^n \log (1 + e^{-y^{(i)}(\M w^T\M x^{(i)} + w_0)}) + \lambda \M w^T\M w
 \end{equation}
 
-We used both our implementation of gradient descend and the \texttt{Matlab} function \texttt{fminunc}. Convergence criterion is reached within reasonable iterations in both implementations.
+We used both our implementation of gradient descend and the \texttt{MATLAB} function \texttt{fminunc}. Convergence criterion is reached within reasonable iterations in both implementations.
 
 \subsection{Testing in data with $\lambda = 0$}
 We run the logistic regression on the four data sets, setting the regularization parameter $\lambda = 0$. The estimated coefficients are listed in Table \ref{tab:LR_reg_coeff}.
@@ -16,14 +16,14 @@ We run the logistic regression on the four data sets, setting the regularization
 \begin{table}[h!]
 \centering
 \caption{Estimated logistic regression coefficients and accuracy, $\lambda = 0$ }
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lrrrrrr}
   \hline\hline
-  Data   & $w_0$ 	& $w_1$ 	  & $w_2$ 	& Training accuracy & Validation accuracy\\
+  Data   & $w_0$ 	& $w_1$ 	  & $w_2$ 	& Train accuracy & Valid accuracy & Test accuracy\\
   \hline
-  stdev1 & -66.3378  & 95.2461 & 101.1527 & 1.0000    & 1.0000    \\
-  stdev2 & -0.0466   & 0.7636  & 1.1148 	& 0.9075    & 0.9200    \\
-  stdev4 & -0.0093   & 0.2363  & 0.2034 	& 0.7400    & 0.7525    \\
-  nonsep & 0.0006    & -0.0247 & -0.0237	& 0.5150    & 0.4925\\
+  stdev1 & -66.3378  & 95.2461 & 101.1527 & 1.0000    & 1.0000    & 0.9975\\
+  stdev2 & -0.0466   & 0.7636  & 1.1148 	& 0.9075    & 0.9200    & 0.9250\\
+  stdev4 & -0.0093   & 0.2363  & 0.2034 	& 0.7400    & 0.7525    & 0.7825\\
+  nonsep & 0.0006    & -0.0247 & -0.0237	& 0.5150    & 0.4925	   & 0.4975\\
   \hline\hline
 \end{tabular}\label{tab:LR_reg_coeff}
 \end{table}
@@ -82,4 +82,11 @@ The decision boundaries at various thresholds are plotted in Figure \ref{fig:LR_
 
 
 \subsection{Testing in data with positive $\lambda$}
-Similarly, we run logistic regression with other values of $\lambda$. In particular, we use the cross-validation technique to select best value of $\lambda$ using the validation set accuracy. In particular, for the four datasets, we choose $\lambda = 0$, $\lambda = 0$, $\lambda = 100$, and $\lambda = 1000$ respectively.
+Similarly, we run logistic regression with other values of $\lambda$. With higher values of $\lambda$, the decision boundary is flatter, the training accuracy lower, and the validation accuracy typically increases (or stays the same) and then decreases, as shown in Figure \ref{fig:LR_cv}. We use the cross-validation technique to select best value of $\lambda$ using the validation set accuracy. In particular, for the four datasets, we choose $\lambda = 0$, $\lambda = 0$, $\lambda = 100$, and $\lambda = 1000$ respectively. The corresponding accuracy in test sets are $0.9975$, $0.9250$, $0.7850$, and $0.5025$. Compared to not regularizing, the test set accuracies are slightly higher. The accuracy for the non-separable data set remains relatively constant regardless of how we regularize. 
+\begin{figure}[h!]
+\centering
+	\includegraphics[scale=0.6]{hw2_1_cv.pdf}
+	\caption{Cross validation error with respect to $\lambda$}\label{fig:LR_cv}
+
+\end{figure}
+	

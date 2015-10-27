@@ -1,24 +1,28 @@
 addpath('srcs', 'hw2_resources', 'hw2_resources/data')
+set(gcf,'Visible','off')              % turns current figure "off"
+set(0,'DefaultFigureVisible','off');  % all subsequent figures "off"
+
 %%% 2.1 & 1.2 %%%%
 % L2 regularized LR using gradient descent
 % with lambda = 0
-[w_reg1, train_1, valid_1, test_1] = lr_test('stdev1', 0, true);
-[w_reg2, train_2, valid_2, test_2] = lr_test('stdev2', 0, true);
-[w_reg3, train_3, valid_3, test_3] = lr_test('stdev4', 0, true);
-[w_reg4, train_4, valid_4, test_4] = lr_test('nonsep', 0, true);
-[train_1, valid_1, train_2, valid_2, train_3, valid_3, train_4, valid_4]
+train = zeros(1,4); valid = zeros(1,4); test = zeros(1,4);
+str = {'stdev1','stdev2','stdev4','nonsep'};
+for j = 1:4
+  [w_reg, train(j), valid(j), test(j)] = lr_test(str{j}, 0, true);
+end
+vertcat(train, valid, test)
+
 %%% 2.3 %%%%
 % with regularized lambda
 LAMBDA_RANGE = (-3:1:6);
 valid_scores = zeros(length(LAMBDA_RANGE), 4);
 test_scores = zeros(length(LAMBDA_RANGE), 4);
 
-for i = 1:length(LAMBDA_RANGE)
-    lambda_i = 10^(LAMBDA_RANGE(i));
-    [w_reg1_1, tmp, valid_scores(i, 1), test_scores(i, 1)]= lr_test('stdev1', lambda_i, false);
-    [w_reg2_1, tmp, valid_scores(i, 2), test_scores(i, 2)]= lr_test('stdev2', lambda_i, false);
-    [w_reg3_1, tmp, valid_scores(i, 3), test_scores(i, 3)]= lr_test('stdev4', lambda_i, false);
-    [w_reg4_1, tmp, valid_scores(i, 4), test_scores(i, 4)]= lr_test('nonsep', lambda_i, false);
+for j = 1:4
+    for i = 1:length(LAMBDA_RANGE)
+        lambda_i = 10^(LAMBDA_RANGE(i));
+        [w_reg, tmp, valid_scores(i, j), test_scores(i, j)] = lr_test(str{j}, lambda_i, false);
+    end
 end
 valid_scores
 test_scores
@@ -29,10 +33,13 @@ plot(LAMBDA_RANGE, valid_scores(:,1))
 plot(LAMBDA_RANGE, valid_scores(:,2))
 plot(LAMBDA_RANGE, valid_scores(:,3))
 plot(LAMBDA_RANGE, valid_scores(:,4))
-title('Validation accuracy versus \lambda')
-legend('stdev1', 'stdev2', 'stdev4', 'nonsep')
-xlabel('\lambda in Log')
-ylabel('Validation accuracy')
+%title('Validation accuracy versus \lambda')
+h_legend = legend('stdev1', 'stdev2', 'stdev4', 'nonsep')
+set(h_legend,'FontSize',14);
+h_xlab = xlabel('\lambda in Log base 10');
+h_ylab = ylabel('Validation accuracy');
+set(h_xlab, 'FontSize',14);
+set(h_ylab, 'FontSize',14);
 set(fig,'Units','Inches');
 pos = get(fig,'Position');
 set(fig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
@@ -41,8 +48,10 @@ print(fig, 'hw2_writeup/hw2_1_cv.pdf', '-dpdf', '-r0')
 
 
 %% just some plots with non-zero lambda
-lr_test('stdev1', 100, true)
-lr_test('nonsep', 1000, true)
+lr_test('stdev1', 10000, true)
+lr_test('stdev2', 10000, true)
+lr_test('stdev4', 10000, true)
+lr_test('nonsep', 10000, true)
 %%
 optim_ver = ver('optim');
 optim_ver = str2double(optim_ver.Version);

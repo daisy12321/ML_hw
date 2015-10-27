@@ -5,6 +5,7 @@ name = 'titanic';
 %[X, Y] = readdata(name, 'train', true);
 data = importdata(strcat('data/data_',name,'_train.csv'));
 
+
 X = data(:,1:11); 
 Y = data(:,12);
 [n, p] = size(X);
@@ -72,6 +73,9 @@ set(fig,'Units','Inches');
 pos = get(fig,'Position');
 set(fig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
 print(fig, 'hw2_writeup/hw2_3_cv.pdf', '-dpdf', '-r0')
+
+%all = vertcat(data, validate, test) 
+%tabulate(all(:,4))
 
 
 [z_1, f] = lr_run(X_scaled_1, Y, 10, true);

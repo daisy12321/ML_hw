@@ -1,4 +1,4 @@
-function [train_score, valid_score, test_score] = svm_test(name, C, kernel, sigma2, toPlot)
+function [w_total, train_score, valid_score, test_score] = svm_test(name, C, kernel, sigma2, toPlot)
 disp('======Training======');
 % load data from csv files
 data = importdata(strcat('hw2_resources/data/data_',name,'_train.csv'));
@@ -7,6 +7,7 @@ Y = data(:,3);
 
 % Carry out training, primal and/or dual
 [w, w_0, H, alpha] = svm(X, Y, C, kernel, sigma2);
+w_total = [w, w_0];
 
 % Define the predictSVM(x) function, which uses trained parameters
 predictSVM = @(x) predictSVM_parms(x, kernel, w, w_0, sigma2, X, Y, alpha);

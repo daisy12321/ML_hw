@@ -70,16 +70,15 @@ kernel = 'dot';
 toPlot = 0;
 sigma2 = 1;
 
-names=cellstr(['stdev1';'stdev2';'stdev4';'nonsep'])
+names={'stdev1','stdev2','stdev4','nonsep'};
+w_matrix=zeros(4,3);
 train_array = [1:4];
 valid_array = [1:4];
 test_array = [1:4];
 for i=1:4
-    [train_array(i), valid_array(i), test_array(i)] = svm_test(names{i}, C, kernel, sigma2, toPlot);
+    [w_matrix(i,:), train_array(i), valid_array(i), test_array(i)] = svm_test(names{i}, C, kernel, sigma2, toPlot);
 end
-train_array
-valid_array
-test_array
+[w_matrix, train_array', valid_array', test_array']
 
 %%
 %%% 2.2.3 %%%

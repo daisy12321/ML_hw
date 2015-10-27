@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  27 OCT 2015 17:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  27 OCT 2015 18:03
 entering extended mode
 **pset2.tex
 (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.tex
@@ -391,48 +391,52 @@ Package pdftex.def Info: hw2_1_cv.pdf used on input line 88.
 
 {C:/Users/Colin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}])
 (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.2.tex [2])
-(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.3.tex
-<hw2_3_cv.pdf, id=34, 562.1pt x 421.575pt>
+(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.3.tex [3]
+<hw2_3_cv.pdf, id=37, 562.1pt x 421.575pt>
 File: hw2_3_cv.pdf Graphic file (type pdf)
  <use hw2_3_cv.pdf>
 Package pdftex.def Info: hw2_3_cv.pdf used on input line 12.
 (pdftex.def)             Requested size: 337.2626pt x 252.94695pt.
- [3]) [4] [5 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev1_a_
-0.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev1_b_0.pdf>
- <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev2_a_0.pdf> <C:/U
-sers/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev2_b_0.pdf> <C:/Users/C
-olin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev4_a_0.pdf> <C:/Users/Colin/D
-ocuments/GitHub/ML_hw/hw2_writeup/hw2_1_stdev4_b_0.pdf> <C:/Users/Colin/Documen
-ts/GitHub/ML_hw/hw2_writeup/hw2_1_nonsep_a_0.pdf> <C:/Users/Colin/Documents/Git
-Hub/ML_hw/hw2_writeup/hw2_1_nonsep_b_0.pdf>] [6 <C:/Users/Colin/Documents/GitHu
-b/ML_hw/hw2_writeup/hw2_1_cv.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_wr
-iteup/hw2_3_cv.pdf>] (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.a
-ux) ) 
+) [4] [5 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev1_a_0.pd
+f> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev1_b_0.pdf> <C:
+/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev2_a_0.pdf> <C:/Users
+/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev2_b_0.pdf> <C:/Users/Colin
+/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev4_a_0.pdf> <C:/Users/Colin/Docum
+ents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev4_b_0.pdf> <C:/Users/Colin/Documents/G
+itHub/ML_hw/hw2_writeup/hw2_1_nonsep_a_0.pdf> <C:/Users/Colin/Documents/GitHub/
+ML_hw/hw2_writeup/hw2_1_nonsep_b_0.pdf>] [6 <C:/Users/Colin/Documents/GitHub/ML
+_hw/hw2_writeup/hw2_1_cv.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeu
+p/hw2_3_cv.pdf>]
+(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4120 strings out of 493921
- 60543 string characters out of 3147282
+ 4121 strings out of 493921
+ 60562 string characters out of 3147282
  129562 words of memory out of 3000000
- 7342 multiletter control sequences out of 15000+200000
+ 7343 multiletter control sequences out of 15000+200000
  16529 words of font info for 68 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,9n,38p,841b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/symbols/msbm10.pfb>
-Output written on pset2.pdf (6 pages, 393135 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/s
+ymbols/msbm10.pfb>
+Output written on pset2.pdf (6 pages, 393610 bytes).
 PDF statistics:
  147 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

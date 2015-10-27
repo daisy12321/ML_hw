@@ -8,7 +8,7 @@ We implemented $L_2$-regularized logistic regression using gradient descent. The
 \sum_{i=1}^n \log (1 + e^{-y^{(i)}(\M w^T\M x^{(i)} + w_0)}) + \lambda \M w^T\M w
 \end{equation}
 
-We used both our implementation of gradient descend and the \texttt{MATLAB} function \texttt{fminunc}. Convergence criterion is reached within reasonable iterations in both implementations.
+We used both our implementation of gradient descent and the \texttt{MATLAB} function \texttt{fminunc}. Convergence criterion is reached within reasonable iterations in both implementations.
 
 \subsection{Testing in data with $\lambda = 0$}
 We run the logistic regression on the four data sets, setting the regularization parameter $\lambda = 0$. The estimated coefficients are listed in Table \ref{tab:LR_reg_coeff}.

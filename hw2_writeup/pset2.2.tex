@@ -74,7 +74,20 @@ The constraints are:
 
 We tested our linear SVM function on the same 2D datasets from the previous section, with parameter $C = 1$.  
 
-% TODO
+\begin{table}[h!]
+\centering
+\caption{Estimated SVM coefficients and accuracy, $C = 1$ }
+\begin{tabular}{lrrrrrr}
+  \hline\hline
+  Data   & $w_0$ 	& $w_1$ 	  & $w_2$ 	& Train accuracy & Valid accuracy & Test accuracy\\
+  \hline
+  stdev1 & 1.2333    &1.2409   & -0.4204         & 1.0000    &1.0000     & 0.9975\\
+  stdev2 & 0.4573    & 0.7552   & -0.1410        & 0.9050    & 0.9200    & 0.9175\\
+  stdev4 & 0.1998    & 0.1820   & -0.0470        & 0.7450    & 0.7650    & 0.7800\\
+  nonsep &-0.2194   & -0.2118  & -0.4280        & 0.6975    & 0.6950    & 0.7000\\
+  \hline\hline
+\end{tabular}\label{tab:SVM_reg_coeff}
+\end{table}
 
 \subsection{Kernel SVM}
 

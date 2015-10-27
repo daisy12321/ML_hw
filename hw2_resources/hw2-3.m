@@ -2,7 +2,7 @@ addpath('srcs', 'hw2_resources', 'hw2_resources/data')
 %%% 3.1 %%%%
 name = 'titanic';
 
-[X, Y] = readdata(name, 'train', true);
+%[X, Y] = readdata(name, 'train', true);
 data = importdata(strcat('data/data_',name,'_train.csv'));
 
 X = data(:,1:11); 
@@ -22,19 +22,40 @@ Y_val = validate(:,12);
 valid_score = get_accu(z, X_val_scaled, Y_val)
 
 
+
+disp('=====Testing======');
+% load data from csv files
+test = importdata(strcat('data/data_',name,'_test.csv'));
+X_test = test(:,1:11);
+X_test_scaled = scale(X_test);
+Y_test = test(:,12);
+test_score = get_accu(z, X_test_scaled, Y_test)
+
 % find best lambda
 LAMBDA_RANGE = (-3:1:6);
-valid_scores = zeros(length(LAMBDA_RANGE), 4);
-test_scores = zeros(length(LAMBDA_RANGE), 4);
+valid_scores = zeros(length(LAMBDA_RANGE), 1);
+test_scores = zeros(length(LAMBDA_RANGE), 1);
 
 for i = 1:length(LAMBDA_RANGE)
     lambda_i = 10^(LAMBDA_RANGE(i));
-    [w_reg1_1, tmp, valid_scores(i, 1), test_scores(i, 1)]= lr_test('stdev1', lambda_i, false);
-    [w_reg2_1, tmp, valid_scores(i, 2), test_scores(i, 2)]= lr_test('stdev2', lambda_i, false);
-    [w_reg3_1, tmp, valid_scores(i, 3), test_scores(i, 3)]= lr_test('stdev4', lambda_i, false);
-    [w_reg4_1, tmp, valid_scores(i, 4), test_scores(i, 4)]= lr_test('nonsep', lambda_i, false);
+    [z, f] = lr_run(X_scaled, Y, lambda_i, true)
+    valid_scores(i) = get_accu(z, X_val_scaled, Y_val)
+    test_scores(i) = get_accu(z, X_test_scaled, Y_test)
 end
 valid_scores
+test_scores
+
+fig = figure;
+hold on;
+plot(LAMBDA_RANGE, valid_scores)
+title('Validation accuracy versus \lambda')
+xlabel('\lambda in Log')
+ylabel('Validation accuracy')
+set(fig,'Units','Inches');
+pos = get(fig,'Position');
+set(fig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+print(fig, 'hw2_writeup/hw2_3_cv.pdf', '-dpdf', '-r0')
 
 
-valid_score = get_accu(z, X_val_scaled, Y_val)
+[z, f] = lr_run(X_scaled, Y, 0.1, true);
+test_score = get_accu(z, X_test_scaled, Y_test)

@@ -83,10 +83,9 @@ The decision boundaries at various thresholds are plotted in Figure \ref{fig:LR_
 
 \subsection{Testing in data with positive $\lambda$}
 Similarly, we run logistic regression with other values of $\lambda$. With higher values of $\lambda$, the decision boundary is flatter, the training accuracy lower, and the validation accuracy typically increases (or stays the same) and then decreases, as shown in Figure \ref{fig:LR_cv}. We use the cross-validation technique to select best value of $\lambda$ using the validation set accuracy. In particular, for the four datasets, we choose $\lambda = 0$, $\lambda = 0$, $\lambda = 100$, and $\lambda = 1000$ respectively. The corresponding accuracy in test sets are $0.9975$, $0.9250$, $0.7850$, and $0.5025$. Compared to not regularizing, the test set accuracies are slightly higher. The accuracy for the non-separable data set remains relatively constant regardless of how we regularize. 
-\begin{figure}[h!]
+\begin{figure}[hb]
 \centering
 	\includegraphics[scale=0.6]{hw2_1_cv.pdf}
 	\caption{Cross validation error with respect to $\lambda$}\label{fig:LR_cv}
-
 \end{figure}
 	

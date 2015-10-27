@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 OCT 2015 09:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  27 OCT 2015 11:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -426,44 +426,55 @@ Package pdftex.def Info: hw2_1_cv.pdf used on input line 88.
 (pdftex.def)             Requested size: 337.2626pt x 252.94695pt.
  [1
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./pse
+t2.2.tex
+[2]) (./pset2.3.tex
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: Reference `3_LR_cv' on page 3 undefined on input line 8.
 
-) (./pset2.2.tex [2]) (./pset2.3.tex) [3] [4 <./hw2_1_stdev1_a_0.pdf> <./hw2_1_
-stdev1_b_0.pdf> <./hw2_1_stdev2_a_0.pdf> <./hw2_1_stdev2_b_0.pdf> <./hw2_1_stde
-v4_a_0.pdf> <./hw2_1_stdev4_b_0.pdf> <./hw2_1_nonsep_a_0.pdf> <./hw2_1_nonsep_b
-_0.pdf>] [5 <./hw2_1_cv.pdf>] (./pset2.aux) ) 
+<hw2_3_cv.pdf, id=35, 562.1pt x 421.575pt>
+File: hw2_3_cv.pdf Graphic file (type pdf)
+ <use hw2_3_cv.pdf>
+Package pdftex.def Info: hw2_3_cv.pdf used on input line 12.
+(pdftex.def)             Requested size: 337.2626pt x 252.94695pt.
+) [3] [4 <./hw2_1_stdev1_a_0.pdf> <./hw2_1_stdev1_b_0.pdf> <./hw2_1_stdev2_a_0.
+pdf> <./hw2_1_stdev2_b_0.pdf> <./hw2_1_stdev4_a_0.pdf> <./hw2_1_stdev4_b_0.pdf>
+ <./hw2_1_nonsep_a_0.pdf> <./hw2_1_nonsep_b_0.pdf>] [5 <./hw2_1_cv.pdf> <./hw2_
+3_cv.pdf>]
+(./pset2.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4452 strings out of 493117
- 66608 string characters out of 6135433
- 142468 words of memory out of 5000000
- 7819 multiletter control sequences out of 15000+600000
+ 4459 strings out of 493117
+ 66709 string characters out of 6135433
+ 142476 words of memory out of 5000000
+ 7825 multiletter control sequences out of 15000+600000
  16529 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,9n,38p,841b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2014/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfon
-ts/symbols/msbm10.pfb>
-Output written on pset2.pdf (5 pages, 366141 bytes).
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
+usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
+sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
+ocal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texliv
+e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on pset2.pdf (5 pages, 371186 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
+ 147 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

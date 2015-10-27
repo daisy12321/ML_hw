@@ -48,9 +48,9 @@ print(fig, 'hw2_writeup/hw2_1_cv.pdf', '-dpdf', '-r0')
 
 
 %% just some plots with non-zero lambda
-lr_test('stdev1', 100, true)
-lr_test('stdev2', 100, true)
-lr_test('stdev4', 100, true)
+lr_test('stdev1', 10000, true)
+lr_test('stdev2', 10000, true)
+lr_test('stdev4', 10000, true)
 lr_test('nonsep', 10000, true)
 %%
 optim_ver = ver('optim');

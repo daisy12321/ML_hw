@@ -30,8 +30,8 @@ We run the logistic regression on the four data sets, setting the regularization
 
 The decision boundaries at various thresholds are plotted in Figure \ref{fig:LR_plots}. We observe the following phenomenon:
 \begin{enumerate}
-\item As data become more linearly non-separable, the accuracy is lower in all of the 
-\item As data become more linearly non-separable, the estimated logistic function is also less steep, reflected in the wider bands in the plots and lower norm of $\M w$. This is reasonable because the classifier is not as certain about how to classify the data points in the mix zone.
+\item As data become more linearly non-separable, the accuracy is lower in training, validation, and testing.
+\item As data become more linearly non-separable, the estimated logistic function is also less steep, reflected in the wider distance between the contours in the plots and lower norm of $\M w$. This is reasonable because the classifier is not as certain about how to classify the data points in the mix zone.
 \item In the non-separable case, logistic regression fails to classify, barely reaching the $50\%$ baseline.
 \end{enumerate}
 
@@ -40,42 +40,25 @@ The decision boundaries at various thresholds are plotted in Figure \ref{fig:LR_
 \centering
     \begin{subfigure}[b]{0.22\textwidth}
 	\includegraphics[scale=0.25]{hw2_1_stdev1_a_0.pdf}
-	\caption{``stdev1", training}\label{fig:data_stdev1a}
+	\caption{``stdev1"}\label{fig:data_stdev1a}
     \end{subfigure}
     \quad
-    \begin{subfigure}[b]{0.22\textwidth}
-	\includegraphics[scale=0.25]{hw2_1_stdev1_b_0.pdf}
-	\caption{``stdev1", validation}\label{fig:data_stdev1b}
-    \end{subfigure}
     \begin{subfigure}[b]{0.22\textwidth}
 	\includegraphics[scale=0.25]{hw2_1_stdev2_a_0.pdf}
-	\caption{``stdev2", training}\label{fig:data_stdev2a}
+	\caption{``stdev2"}\label{fig:data_stdev2a}
 	\end{subfigure}
-	\quad	
-	\begin{subfigure}[b]{0.22\textwidth}
-	\includegraphics[scale=0.25]{hw2_1_stdev2_b_0.pdf}
-	\caption{``stdev2", validation}\label{fig:data_stdev2b}
-	\end{subfigure}
-    
+	\quad	    
     \begin{subfigure}[b]{0.22\textwidth}
 	\includegraphics[scale=0.25]{hw2_1_stdev4_a_0.pdf}
-	\caption{``stdev4", training}\label{fig:data_stdev4a}
+	\caption{``stdev4"}\label{fig:data_stdev4a}
     \end{subfigure}  
     \quad
-    \begin{subfigure}[b]{0.22\textwidth}
-	\includegraphics[scale=0.25]{hw2_1_stdev4_b_0.pdf}
-	\caption{``stdev4", validation}\label{fig:data_stdev4b}
-    \end{subfigure}  
     \begin{subfigure}[b]{0.22\textwidth}
 	\includegraphics[scale=0.25]{hw2_1_nonsep_a_0.pdf}
-	\caption{``Nonsep", training}\label{fig:data_nonsep_a}
+	\caption{``Nonsep"}\label{fig:data_nonsep_a}
     \end{subfigure}  
     \quad
-    \begin{subfigure}[b]{0.22\textwidth}
-	\includegraphics[scale=0.25]{hw2_1_nonsep_b_0.pdf}
-	\caption{``Nonsep", validation}\label{fig:data_nonsep_b}
-    \end{subfigure}  
-    \caption{Plots of decision boundaries from logistic regression with $\lambda=0$ from training and validation sets.}  \label{fig:LR_plots}  
+    \caption{Plots of decision boundaries from logistic regression with $\lambda=0$ from training sets.}  \label{fig:LR_plots}  
 \end{figure}
 
 
@@ -87,24 +70,45 @@ Similarly, we run logistic regression with other values of $\lambda$. As demonst
 \centering
     \begin{subfigure}[b]{0.22\textwidth}
 	\includegraphics[scale=0.25]{hw2_1_stdev1_a_100.pdf}
-	\caption{``stdev1", training}\label{fig:data_stdev1_a_100}
+	\caption{``stdev1", $\lambda = 100$}\label{fig:data_stdev1_a_100}
     \end{subfigure}
     \quad
     \begin{subfigure}[b]{0.22\textwidth}
 	\includegraphics[scale=0.25]{hw2_1_stdev2_a_100.pdf}
-	\caption{``stdev2", training}\label{fig:data_stdev2_a_100}
+	\caption{``stdev2", $\lambda = 100$}\label{fig:data_stdev2_a_100}
 	\end{subfigure}
 	\quad	    
     \begin{subfigure}[b]{0.22\textwidth}
 	\includegraphics[scale=0.25]{hw2_1_stdev4_a_100.pdf}
-	\caption{``stdev4", training}\label{fig:data_stdev4_a_100}
+	\caption{``stdev4", $\lambda = 100$}\label{fig:data_stdev4_a_100}
     \end{subfigure}  
     \quad
     \begin{subfigure}[b]{0.22\textwidth}
 	\includegraphics[scale=0.25]{hw2_1_nonsep_a_100.pdf}
-	\caption{``Nonsep", training}\label{fig:data_nonsep_a_100}
+	\caption{``Nonsep", $\lambda = 100$}\label{fig:data_nonsep_a_100}
     \end{subfigure}  
-    \caption{Plots of decision boundaries from logistic regression with $\lambda = 100$ from four data sets.}  \label{fig:LR_plots_100}  
+    
+    \begin{subfigure}[b]{0.22\textwidth}
+	\includegraphics[scale=0.25]{hw2_1_stdev1_a_10000.pdf}
+	\caption{``stdev1", $\lambda = 10000$}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.22\textwidth}
+	\includegraphics[scale=0.25]{hw2_1_stdev2_a_10000.pdf}
+	\caption{``stdev2", $\lambda = 10000$}
+	\end{subfigure}
+	\quad	    
+    \begin{subfigure}[b]{0.22\textwidth}
+	\includegraphics[scale=0.25]{hw2_1_stdev4_a_10000.pdf}
+	\caption{``stdev4", $\lambda = 10000$}
+    \end{subfigure}  
+    \quad
+    \begin{subfigure}[b]{0.22\textwidth}
+	\includegraphics[scale=0.25]{hw2_1_nonsep_a_10000.pdf}
+	\caption{``Nonsep", $\lambda = 10000$}
+    \end{subfigure}  
+    
+    \caption{Plots of decision boundaries from logistic regression with $\lambda = 100$ and $\lambda = 10000$ from training sets.}  \label{fig:LR_plots_100}  
 \end{figure}
 
 

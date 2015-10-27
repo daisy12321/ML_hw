@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  27 OCT 2015 18:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  27 OCT 2015 18:38
 entering extended mode
 **pset2.tex
 (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.tex
@@ -209,7 +209,11 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \c@thm1=\count107
 \c@def1=\count108
 
-(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.aux)
+(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.aux
+
+LaTeX Warning: Label `fig:LR_plots' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
@@ -222,8 +226,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
-
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count109
 \scratchdimen=\dimen132
@@ -390,33 +393,78 @@ Package pdftex.def Info: hw2_1_cv.pdf used on input line 88.
  [1
 
 {C:/Users/Colin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}])
-(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.2.tex [2])
-(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.3.tex [3]
-<hw2_3_cv.pdf, id=37, 562.1pt x 421.575pt>
+(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.2.tex [2]
+
+LaTeX Warning: Reference `fig:SVM_plots' on page 3 undefined on input line 92.
+
+<figures/hw2_2_stdev1_a_1.pdf, id=34, 421.575pt x 316.18124pt>
+File: figures/hw2_2_stdev1_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_stdev1_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_stdev1_a_1.pdf used on input line 102.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+<figures/hw2_2_stdev2_a_1.pdf, id=35, 421.575pt x 316.18124pt>
+File: figures/hw2_2_stdev2_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_stdev2_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_stdev2_a_1.pdf used on input line 106.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+<figures/hw2_2_stdev4_a_1.pdf, id=36, 421.575pt x 316.18124pt>
+File: figures/hw2_2_stdev4_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_stdev4_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_stdev4_a_1.pdf used on input line 110.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+<figures/hw2_2_nonsep_a_1.pdf, id=37, 421.575pt x 316.18124pt>
+File: figures/hw2_2_nonsep_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_nonsep_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_nonsep_a_1.pdf used on input line 114.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3]) (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.3.tex
+<hw2_3_cv.pdf, id=41, 562.1pt x 421.575pt>
 File: hw2_3_cv.pdf Graphic file (type pdf)
  <use hw2_3_cv.pdf>
 Package pdftex.def Info: hw2_3_cv.pdf used on input line 12.
 (pdftex.def)             Requested size: 337.2626pt x 252.94695pt.
-) [4] [5 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev1_a_0.pd
-f> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev1_b_0.pdf> <C:
-/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev2_a_0.pdf> <C:/Users
-/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev2_b_0.pdf> <C:/Users/Colin
-/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev4_a_0.pdf> <C:/Users/Colin/Docum
-ents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev4_b_0.pdf> <C:/Users/Colin/Documents/G
-itHub/ML_hw/hw2_writeup/hw2_1_nonsep_a_0.pdf> <C:/Users/Colin/Documents/GitHub/
-ML_hw/hw2_writeup/hw2_1_nonsep_b_0.pdf>] [6 <C:/Users/Colin/Documents/GitHub/ML
-_hw/hw2_writeup/hw2_1_cv.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeu
-p/hw2_3_cv.pdf>]
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [4] [5] [6 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev1_a_
+0.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev1_b_0.pdf>
+ <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev2_a_0.pdf> <C:/U
+sers/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev2_b_0.pdf> <C:/Users/C
+olin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev4_a_0.pdf> <C:/Users/Colin/D
+ocuments/GitHub/ML_hw/hw2_writeup/hw2_1_stdev4_b_0.pdf> <C:/Users/Colin/Documen
+ts/GitHub/ML_hw/hw2_writeup/hw2_1_nonsep_a_0.pdf> <C:/Users/Colin/Documents/Git
+Hub/ML_hw/hw2_writeup/hw2_1_nonsep_b_0.pdf>] [7 <C:/Users/Colin/Documents/GitHu
+b/ML_hw/hw2_writeup/hw2_1_cv.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_wr
+iteup/figures/hw2_2_stdev1_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_
+writeup/figures/hw2_2_stdev2_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw
+2_writeup/figures/hw2_2_stdev4_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/
+hw2_writeup/figures/hw2_2_nonsep_a_1.pdf>] [8 <C:/Users/Colin/Documents/GitHub/
+ML_hw/hw2_writeup/hw2_3_cv.pdf>]
 (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4121 strings out of 493921
- 60562 string characters out of 3147282
- 129562 words of memory out of 3000000
- 7343 multiletter control sequences out of 15000+200000
+ 4151 strings out of 493921
+ 61383 string characters out of 3147282
+ 130677 words of memory out of 3000000
+ 7368 multiletter control sequences out of 15000+200000
  16529 words of font info for 68 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,9n,38p,841b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -436,9 +484,9 @@ s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/s
 ymbols/msbm10.pfb>
-Output written on pset2.pdf (6 pages, 393610 bytes).
+Output written on pset2.pdf (8 pages, 517237 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
+ 171 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

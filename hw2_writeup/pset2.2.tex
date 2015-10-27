@@ -72,7 +72,7 @@ The constraints are:
 
 \subsection{Performance on datasets}
 
-We tested our linear SVM function on the same 2D datasets from the previous section, with parameter $C = 1$.  
+We tested our linear SVM function on the same 2D datasets from the previous section, with parameter $C = 1$.  The estimated coefficients are listed in Table \ref{tab:SVM_reg_coeff}.
 
 \begin{table}[h!]
 \centering
@@ -88,6 +88,34 @@ We tested our linear SVM function on the same 2D datasets from the previous sect
   \hline\hline
 \end{tabular}\label{tab:SVM_reg_coeff}
 \end{table}
+
+The decision boundaries at various thresholds are plotted in Figure TODO \ref{fig:SVM_plots}. We observe the following phenomenon:
+\begin{enumerate}
+\item As data become more linearly non-separable, the accuracy is lower, and the decision boundary has higher variance with respect to data (for example, as $\sigma$ increases, the decision boundary and accuracy are more different between training and validation.)
+\item As data become more linearly non-separable, the estimated logistic function is also less steep, reflected in the wider bands in the plots and lower norm of $\M w$. This is reasonable because the classifier is not as certain about how to classify the data points in the mix zone.
+\item In the totally non-separable case, SVM achieves close to 70\% accuracy, which is higher than logistic regression.  These two methods yield different results because they use different loss functions.  SVM uses a hinge loss function which is piecewise linear, while logistic regression uses a logistic loss function which is nonlinear convex.  
+\end{enumerate}
+
+\begin{figure}[h!]
+\centering
+    \begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[scale=0.4]{figures/hw2_2_stdev1_a_1.pdf}
+	\caption{Data with $\sigma = 1$, training}\label{fig:svm_data_stdev1a}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[scale=0.4]{figures/hw2_2_stdev2_a_1.pdf}
+	\caption{Data with $\sigma = 2$, training}\label{fig:svm_data_stdev2a}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[scale=0.4]{figures/hw2_2_stdev4_a_1.pdf}
+	\caption{Data with $\sigma = 4$, training}\label{fig:svm_data_stdev4a}
+    \end{subfigure}  
+    \begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[scale=0.4]{figures/hw2_2_nonsep_a_1.pdf}
+	\caption{Non-seperable data, training}\label{fig:svm_data_nonsep_a}
+    \end{subfigure}  
+    \caption{Plots of decision boundaries from SVM with various data sets.}  \label{fig:LR_plots}  
+\end{figure}
 
 \subsection{Kernel SVM}
 

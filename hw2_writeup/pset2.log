@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  27 OCT 2015 18:38
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  27 OCT 2015 18:35
->>>>>>> 4f5fc33da9427f1d2ecf748dc7efdf7f3e046707
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  27 OCT 2015 18:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -202,49 +198,37 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box28
 \enitdp@description=\count106
 )
-\c@thm1=\count107
-\c@def1=\count108
-
-<<<<<<< HEAD
-(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.aux
+(./pset2.aux
 
 LaTeX Warning: Label `fig:LR_plots' multiply defined.
 
 )
-=======
-(./pset2.aux)
 \openout1 = `pset2.aux'.
 
->>>>>>> 4f5fc33da9427f1d2ecf748dc7efdf7f3e046707
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-<<<<<<< HEAD
- ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
-=======
-
-(/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
->>>>>>> 4f5fc33da9427f1d2ecf748dc7efdf7f3e046707
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+ (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count109
+\scratchcounter=\count107
 \scratchdimen=\dimen132
 \scratchbox=\box29
-\nofMPsegments=\count110
-\nofMParguments=\count111
+\nofMPsegments=\count108
+\nofMParguments=\count109
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count112
+\MPscratchCnt=\count110
 \MPscratchDim=\dimen133
-\MPnumerator=\count113
-\makeMPintoPDFobject=\count114
+\MPnumerator=\count111
+\makeMPintoPDFobject=\count112
 \everyMPtoPDFconversion=\toks25
 ) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -326,16 +310,18 @@ e
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 16.
+\c@thm1=\count113
+\c@def1=\count114
+LaTeX Font Info:    Try loading font information for U+msa on input line 17.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 16.
+LaTeX Font Info:    Try loading font information for U+msb on input line 17.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 16.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 17.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -486,107 +472,6 @@ Overfull \hbox (24.15793pt too wide) in paragraph at lines 107--108
 <hw2_1_cv.pdf, id=33, 562.1pt x 421.575pt>
 File: hw2_1_cv.pdf Graphic file (type pdf)
  <use hw2_1_cv.pdf>
-<<<<<<< HEAD
-Package pdftex.def Info: hw2_1_cv.pdf used on input line 88.
-(pdftex.def)             Requested size: 337.2626pt x 252.94695pt.
- [1
-
-{C:/Users/Colin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}])
-(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.2.tex [2]
-
-LaTeX Warning: Reference `fig:SVM_plots' on page 3 undefined on input line 92.
-
-<figures/hw2_2_stdev1_a_1.pdf, id=34, 421.575pt x 316.18124pt>
-File: figures/hw2_2_stdev1_a_1.pdf Graphic file (type pdf)
-
-<use figures/hw2_2_stdev1_a_1.pdf>
-Package pdftex.def Info: figures/hw2_2_stdev1_a_1.pdf used on input line 102.
-(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
-
-<figures/hw2_2_stdev2_a_1.pdf, id=35, 421.575pt x 316.18124pt>
-File: figures/hw2_2_stdev2_a_1.pdf Graphic file (type pdf)
-
-<use figures/hw2_2_stdev2_a_1.pdf>
-Package pdftex.def Info: figures/hw2_2_stdev2_a_1.pdf used on input line 106.
-(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
-
-<figures/hw2_2_stdev4_a_1.pdf, id=36, 421.575pt x 316.18124pt>
-File: figures/hw2_2_stdev4_a_1.pdf Graphic file (type pdf)
-
-<use figures/hw2_2_stdev4_a_1.pdf>
-Package pdftex.def Info: figures/hw2_2_stdev4_a_1.pdf used on input line 110.
-(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
-
-<figures/hw2_2_nonsep_a_1.pdf, id=37, 421.575pt x 316.18124pt>
-File: figures/hw2_2_nonsep_a_1.pdf Graphic file (type pdf)
-
-<use figures/hw2_2_nonsep_a_1.pdf>
-Package pdftex.def Info: figures/hw2_2_nonsep_a_1.pdf used on input line 114.
-(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[3]) (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.3.tex
-<hw2_3_cv.pdf, id=41, 562.1pt x 421.575pt>
-File: hw2_3_cv.pdf Graphic file (type pdf)
- <use hw2_3_cv.pdf>
-Package pdftex.def Info: hw2_3_cv.pdf used on input line 12.
-(pdftex.def)             Requested size: 337.2626pt x 252.94695pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) [4] [5] [6 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev1_a_
-0.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev1_b_0.pdf>
- <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev2_a_0.pdf> <C:/U
-sers/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev2_b_0.pdf> <C:/Users/C
-olin/Documents/GitHub/ML_hw/hw2_writeup/hw2_1_stdev4_a_0.pdf> <C:/Users/Colin/D
-ocuments/GitHub/ML_hw/hw2_writeup/hw2_1_stdev4_b_0.pdf> <C:/Users/Colin/Documen
-ts/GitHub/ML_hw/hw2_writeup/hw2_1_nonsep_a_0.pdf> <C:/Users/Colin/Documents/Git
-Hub/ML_hw/hw2_writeup/hw2_1_nonsep_b_0.pdf>] [7 <C:/Users/Colin/Documents/GitHu
-b/ML_hw/hw2_writeup/hw2_1_cv.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_wr
-iteup/figures/hw2_2_stdev1_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_
-writeup/figures/hw2_2_stdev2_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw
-2_writeup/figures/hw2_2_stdev4_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/
-hw2_writeup/figures/hw2_2_nonsep_a_1.pdf>] [8 <C:/Users/Colin/Documents/GitHub/
-ML_hw/hw2_writeup/hw2_3_cv.pdf>]
-(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
-Here is how much of TeX's memory you used:
- 4151 strings out of 493921
- 61383 string characters out of 3147282
- 130677 words of memory out of 3000000
- 7368 multiletter control sequences out of 15000+200000
- 16529 words of font info for 68 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 36i,9n,38p,841b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/s
-ymbols/msbm10.pfb>
-Output written on pset2.pdf (8 pages, 517237 bytes).
-PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
-=======
 Package pdftex.def Info: hw2_1_cv.pdf used on input line 117.
 (pdftex.def)             Requested size: 168.6313pt x 126.47346pt.
 ) (./pset2.2.tex
@@ -596,44 +481,86 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <./hw2_1_nonsep_a_0.pdf> <./hw2_1_stdev1_a_100.pdf> <./hw2_1_stdev2_a_100.pdf> 
 <./hw2_1_stdev4_a_100.pdf> <./hw2_1_nonsep_a_100.pdf> <./hw2_1_stdev1_a_10000.p
 df> <./hw2_1_stdev2_a_10000.pdf> <./hw2_1_stdev4_a_10000.pdf> <./hw2_1_nonsep_a
-_10000.pdf> <./hw2_1_cv.pdf>] [3]) (./pset2.3.tex
-<hw2_3_cv.pdf, id=77, 562.1pt x 421.575pt>
+_10000.pdf> <./hw2_1_cv.pdf>] [3]
+
+LaTeX Warning: Reference `fig:SVM_plots' on page 4 undefined on input line 92.
+
+<figures/hw2_2_stdev1_a_1.pdf, id=77, 421.575pt x 316.18124pt>
+File: figures/hw2_2_stdev1_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_stdev1_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_stdev1_a_1.pdf used on input line 102.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+<figures/hw2_2_stdev2_a_1.pdf, id=78, 421.575pt x 316.18124pt>
+File: figures/hw2_2_stdev2_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_stdev2_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_stdev2_a_1.pdf used on input line 106.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+<figures/hw2_2_stdev4_a_1.pdf, id=79, 421.575pt x 316.18124pt>
+File: figures/hw2_2_stdev4_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_stdev4_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_stdev4_a_1.pdf used on input line 110.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+<figures/hw2_2_nonsep_a_1.pdf, id=80, 421.575pt x 316.18124pt>
+File: figures/hw2_2_nonsep_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_nonsep_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_nonsep_a_1.pdf used on input line 114.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+ [4 <./figures/hw2_2_stdev1_a_1.pdf> <./figures/hw2_2_stdev2_a_1.pdf> <./figure
+s/hw2_2_stdev4_a_1.pdf> <./figures/hw2_2_nonsep_a_1.pdf>]) (./pset2.3.tex <hw2_
+3_cv.pdf, id=96, 562.1pt x 421.575pt>
 File: hw2_3_cv.pdf Graphic file (type pdf)
- <use hw2_3_cv.pdf>
+
+<use hw2_3_cv.pdf>
 Package pdftex.def Info: hw2_3_cv.pdf used on input line 12.
 (pdftex.def)             Requested size: 224.83601pt x 168.627pt.
- [4]) [5 <./hw2_3_cv.pdf>] (./pset2.aux) ) 
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [5] [6 <./hw2_3_cv.pdf>] (./pset2.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4481 strings out of 493117
- 67390 string characters out of 6135433
- 141500 words of memory out of 5000000
- 7843 multiletter control sequences out of 15000+600000
+ 4511 strings out of 493117
+ 68211 string characters out of 6135433
+ 141530 words of memory out of 5000000
+ 7868 multiletter control sequences out of 15000+600000
  16529 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,9n,38p,929b,481s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2014/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/
-symbols/msbm10.pfb>
-Output written on pset2.pdf (5 pages, 441999 bytes).
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
+usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
+sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
+ocal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texliv
+e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on pset2.pdf (6 pages, 563029 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
->>>>>>> 4f5fc33da9427f1d2ecf748dc7efdf7f3e046707
+ 169 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

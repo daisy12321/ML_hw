@@ -33,10 +33,13 @@ plot(LAMBDA_RANGE, valid_scores(:,1))
 plot(LAMBDA_RANGE, valid_scores(:,2))
 plot(LAMBDA_RANGE, valid_scores(:,3))
 plot(LAMBDA_RANGE, valid_scores(:,4))
-title('Validation accuracy versus \lambda')
-legend('stdev1', 'stdev2', 'stdev4', 'nonsep')
-xlabel('\lambda in Log')
-ylabel('Validation accuracy')
+%title('Validation accuracy versus \lambda')
+h_legend = legend('stdev1', 'stdev2', 'stdev4', 'nonsep')
+set(h_legend,'FontSize',14);
+h_xlab = xlabel('\lambda in Log base 10');
+h_ylab = ylabel('Validation accuracy');
+set(h_xlab, 'FontSize',14);
+set(h_ylab, 'FontSize',14);
 set(fig,'Units','Inches');
 pos = get(fig,'Position');
 set(fig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
@@ -46,7 +49,9 @@ print(fig, 'hw2_writeup/hw2_1_cv.pdf', '-dpdf', '-r0')
 
 %% just some plots with non-zero lambda
 lr_test('stdev1', 100, true)
-lr_test('nonsep', 1000, true)
+lr_test('stdev2', 100, true)
+lr_test('stdev4', 100, true)
+lr_test('nonsep', 10000, true)
 %%
 optim_ver = ver('optim');
 optim_ver = str2double(optim_ver.Version);

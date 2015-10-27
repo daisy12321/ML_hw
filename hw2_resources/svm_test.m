@@ -1,4 +1,4 @@
-function valid_score = svm_test(name, C, kernel, sigma2, toPlot)
+function [train_score, valid_score, test_score] = svm_test(name, C, kernel, sigma2, toPlot)
 disp('======Training======');
 % load data from csv files
 data = importdata(strcat('hw2_resources/data/data_',name,'_train.csv'));
@@ -11,6 +11,15 @@ Y = data(:,3);
 % Define the predictSVM(x) function, which uses trained parameters
 predictSVM = @(x) predictSVM_parms(x, kernel, w, w_0, sigma2, X, Y, alpha);
 
+% Find accuracy on train set
+for i=1:length(Y)
+    if predictSVM(X(i,:)')>0
+        Y_pred_train(i) = 1;
+    else
+        Y_pred_train(i) = -1;
+    end
+end
+train_score = sum(Y_pred_train == Y')/length(Y);
 disp('======Validation======');
 % load data from csv files
 validate = importdata(strcat('data/data_',name,'_validate.csv'));
@@ -27,6 +36,20 @@ end
 valid_score = sum(Y_pred == Y_val')/length(Y_val);
 disp('======Accuracy======');
 disp(valid_score);
+% load data from csv files
+test_data = importdata(strcat('data/data_',name,'_test.csv'));
+X_test = test_data(:,1:2);
+Y_test = test_data(:,3);
+
+% Calculate test accuracy
+for i=1:length(Y_test)
+    if predictSVM(X_test(i,:)')>0
+        Y_pred_test(i) = 1;
+    else
+        Y_pred_test(i) = -1;
+    end
+end
+test_score = sum(Y_pred_test == Y_test')/length(Y_test);
 
 if toPlot
     hold on;

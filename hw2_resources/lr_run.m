@@ -1,6 +1,6 @@
-function [z, f] = lr_run(X,Y,lambda,bias)
+function [z, f] = lr_run(X,Y,lambda,addbias)
     [n, p] = size(X);
-    if bias == true
+    if addbias == true
         X_train = [ones(n,1) X];
     else
         X_train = X;

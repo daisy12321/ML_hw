@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  27 OCT 2015 22:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  27 OCT 2015 23:05
 entering extended mode
 **pset2.tex
 (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.tex
@@ -230,9 +230,6 @@ LaTeX Warning: Label `fig:svm_data_nonsep_a' multiply defined.
 
 
 LaTeX Warning: Label `sub@fig:svm_data_nonsep_a' multiply defined.
-
-
-LaTeX Warning: Label `fig:3_LR_cv' multiply defined.
 
 
 LaTeX Warning: Label `fig:3_LR_cv' multiply defined.
@@ -587,45 +584,49 @@ p_a_1.pdf>]) (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.3.tex
 <hw2_3_cv.pdf, id=99, 421.575pt x 316.18124pt>
 File: hw2_3_cv.pdf Graphic file (type pdf)
  <use hw2_3_cv.pdf>
-Package pdftex.def Info: hw2_3_cv.pdf used on input line 12.
-(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
-File: hw2_3_cv.pdf Graphic file (type pdf)
-
-<use hw2_3_cv.pdf>
-Package pdftex.def Info: hw2_3_cv.pdf used on input line 19.
+Package pdftex.def Info: hw2_3_cv.pdf used on input line 13.
 (pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
 
-Overfull \hbox (41.37547pt too wide) in paragraph at lines 19--20
+Overfull \hbox (41.37547pt too wide) in paragraph at lines 13--14
 [][] 
  []
 
 <hw2_3_svm_cv.pdf, id=100, 421.575pt x 316.18124pt>
 File: hw2_3_svm_cv.pdf Graphic file (type pdf)
  <use hw2_3_svm_cv.pdf>
-Package pdftex.def Info: hw2_3_svm_cv.pdf used on input line 24.
+Package pdftex.def Info: hw2_3_svm_cv.pdf used on input line 18.
 (pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
 
-Overfull \hbox (41.37547pt too wide) in paragraph at lines 24--25
+Overfull \hbox (41.37547pt too wide) in paragraph at lines 18--19
 [][] 
  []
 
-[5 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures/hw2_2_nonsep_rbf_
-0_1_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures/hw2_2_n
-onsep_rbf_1_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures
-/hw2_2_nonsep_rbf_10_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeu
-p/figures/hw2_2_nonsep_rbf_100_a_1.pdf>]) [6 <C:/Users/Colin/Documents/GitHub/M
-L_hw/hw2_writeup/hw2_3_cv.pdf>] [7 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_w
-riteup/hw2_3_svm_cv.pdf>]
-(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.aux)
+
+LaTeX Warning: Reference `fig:3_svm_cv' on page 5 undefined on input line 26.
+
+
+Underfull \vbox (badness 2865) has occurred while \output is active []
+
+ [5 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures/hw2_2_nonsep_rbf
+_0_1_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures/hw2_2_
+nonsep_rbf_1_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figure
+s/hw2_2_nonsep_rbf_10_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_write
+up/figures/hw2_2_nonsep_rbf_100_a_1.pdf>]) [6] [7 <C:/Users/Colin/Documents/Git
+Hub/ML_hw/hw2_writeup/hw2_3_cv.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_
+writeup/hw2_3_svm_cv.pdf>] (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\p
+set2.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4200 strings out of 493921
- 62937 string characters out of 3147282
+ 4202 strings out of 493921
+ 62969 string characters out of 3147282
  128641 words of memory out of 3000000
- 7408 multiletter control sequences out of 15000+200000
+ 7410 multiletter control sequences out of 15000+200000
  16529 words of font info for 68 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,9n,38p,929b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -646,7 +647,7 @@ blic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb>
-Output written on pset2.pdf (7 pages, 746444 bytes).
+Output written on pset2.pdf (7 pages, 747528 bytes).
 PDF statistics:
  195 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  27 OCT 2015 18:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.7.26)  27 OCT 2015 20:47
 entering extended mode
 **pset2.tex
 (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.tex
@@ -208,7 +208,28 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 )
 (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.aux
 
-LaTeX Warning: Label `fig:LR_plots' multiply defined.
+LaTeX Warning: Label `fig:svm_data_stdev1a' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:svm_data_stdev1a' multiply defined.
+
+
+LaTeX Warning: Label `fig:svm_data_stdev2a' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:svm_data_stdev2a' multiply defined.
+
+
+LaTeX Warning: Label `fig:svm_data_stdev4a' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:svm_data_stdev4a' multiply defined.
+
+
+LaTeX Warning: Label `fig:svm_data_nonsep_a' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:svm_data_nonsep_a' multiply defined.
 
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
@@ -453,18 +474,15 @@ hw/hw2_writeup/hw2_1_stdev1_a_10000.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw
 /hw2_writeup/hw2_1_stdev2_a_10000.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/h
 w2_writeup/hw2_1_stdev4_a_10000.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2
 _writeup/hw2_1_nonsep_a_10000.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_w
-riteup/hw2_1_cv.pdf>] [3]
-
-LaTeX Warning: Reference `fig:SVM_plots' on page 4 undefined on input line 92.
-
-<figures/hw2_2_stdev1_a_1.pdf, id=76, 421.575pt x 316.18124pt>
+riteup/hw2_1_cv.pdf>] [3] <figures/hw2_2_stdev1_a_1.pdf, id=76, 421.575pt x 316
+.18124pt>
 File: figures/hw2_2_stdev1_a_1.pdf Graphic file (type pdf)
 
 <use figures/hw2_2_stdev1_a_1.pdf>
-Package pdftex.def Info: figures/hw2_2_stdev1_a_1.pdf used on input line 102.
+Package pdftex.def Info: figures/hw2_2_stdev1_a_1.pdf used on input line 101.
 (pdftex.def)             Requested size: 168.627pt x 126.47025pt.
 
-Overfull \hbox (52.26027pt too wide) in paragraph at lines 102--103
+Overfull \hbox (52.26027pt too wide) in paragraph at lines 101--102
 [][] 
  []
 
@@ -472,10 +490,10 @@ Overfull \hbox (52.26027pt too wide) in paragraph at lines 102--103
 File: figures/hw2_2_stdev2_a_1.pdf Graphic file (type pdf)
 
 <use figures/hw2_2_stdev2_a_1.pdf>
-Package pdftex.def Info: figures/hw2_2_stdev2_a_1.pdf used on input line 107.
+Package pdftex.def Info: figures/hw2_2_stdev2_a_1.pdf used on input line 106.
 (pdftex.def)             Requested size: 168.627pt x 126.47025pt.
 
-Overfull \hbox (52.26027pt too wide) in paragraph at lines 107--108
+Overfull \hbox (52.26027pt too wide) in paragraph at lines 106--107
 [][] 
  []
 
@@ -483,10 +501,10 @@ Overfull \hbox (52.26027pt too wide) in paragraph at lines 107--108
 File: figures/hw2_2_stdev4_a_1.pdf Graphic file (type pdf)
 
 <use figures/hw2_2_stdev4_a_1.pdf>
-Package pdftex.def Info: figures/hw2_2_stdev4_a_1.pdf used on input line 112.
+Package pdftex.def Info: figures/hw2_2_stdev4_a_1.pdf used on input line 111.
 (pdftex.def)             Requested size: 168.627pt x 126.47025pt.
 
-Overfull \hbox (52.26027pt too wide) in paragraph at lines 112--113
+Overfull \hbox (52.26027pt too wide) in paragraph at lines 111--112
 [][] 
  []
 
@@ -494,37 +512,90 @@ Overfull \hbox (52.26027pt too wide) in paragraph at lines 112--113
 File: figures/hw2_2_nonsep_a_1.pdf Graphic file (type pdf)
 
 <use figures/hw2_2_nonsep_a_1.pdf>
-Package pdftex.def Info: figures/hw2_2_nonsep_a_1.pdf used on input line 117.
+Package pdftex.def Info: figures/hw2_2_nonsep_a_1.pdf used on input line 116.
 (pdftex.def)             Requested size: 168.627pt x 126.47025pt.
 
-Overfull \hbox (52.26027pt too wide) in paragraph at lines 117--118
+Overfull \hbox (52.26027pt too wide) in paragraph at lines 116--117
 [][] 
  []
+
+<figures/hw2_2_nonsep_rbf_0_1_a_1.pdf, id=80, 421.575pt x 316.18124pt>
+File: figures/hw2_2_nonsep_rbf_0_1_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_nonsep_rbf_0_1_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_nonsep_rbf_0_1_a_1.pdf used on input lin
+e 153.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+Overfull \hbox (52.26027pt too wide) in paragraph at lines 153--154
+[][] 
+ []
+
+<figures/hw2_2_nonsep_rbf_1_a_1.pdf, id=81, 421.575pt x 316.18124pt>
+File: figures/hw2_2_nonsep_rbf_1_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_nonsep_rbf_1_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_nonsep_rbf_1_a_1.pdf used on input line 
+158.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+Overfull \hbox (52.26027pt too wide) in paragraph at lines 158--159
+[][] 
+ []
+
+<figures/hw2_2_nonsep_rbf_10_a_1.pdf, id=82, 421.575pt x 316.18124pt>
+File: figures/hw2_2_nonsep_rbf_10_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_nonsep_rbf_10_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_nonsep_rbf_10_a_1.pdf used on input line
+ 163.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+Overfull \hbox (52.26027pt too wide) in paragraph at lines 163--164
+[][] 
+ []
+
+<figures/hw2_2_nonsep_rbf_100_a_1.pdf, id=83, 421.575pt x 316.18124pt>
+File: figures/hw2_2_nonsep_rbf_100_a_1.pdf Graphic file (type pdf)
+
+<use figures/hw2_2_nonsep_rbf_100_a_1.pdf>
+Package pdftex.def Info: figures/hw2_2_nonsep_rbf_100_a_1.pdf used on input lin
+e 168.
+(pdftex.def)             Requested size: 168.627pt x 126.47025pt.
+
+Overfull \hbox (52.26027pt too wide) in paragraph at lines 168--169
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [4 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures/hw2_2_stdev1_a_1.
 pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures/hw2_2_stdev2_a_
 1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures/hw2_2_stdev4_
 a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures/hw2_2_nonse
 p_a_1.pdf>]) (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.3.tex
-<hw2_3_cv.pdf, id=95, 562.1pt x 421.575pt>
+<hw2_3_cv.pdf, id=99, 562.1pt x 421.575pt>
 File: hw2_3_cv.pdf Graphic file (type pdf)
  <use hw2_3_cv.pdf>
 Package pdftex.def Info: hw2_3_cv.pdf used on input line 12.
 (pdftex.def)             Requested size: 224.83601pt x 168.627pt.
- [5 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/hw2_3_cv.pdf>]) [6]
-(C:\Users\Colin\Documents\GitHub\ML_hw\hw2_writeup\pset2.aux)
-
-LaTeX Warning: There were undefined references.
-
+ [5 <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures/hw2_2_nonsep_rbf
+_0_1_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figures/hw2_2_
+nonsep_rbf_1_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_writeup/figure
+s/hw2_2_nonsep_rbf_10_a_1.pdf> <C:/Users/Colin/Documents/GitHub/ML_hw/hw2_write
+up/figures/hw2_2_nonsep_rbf_100_a_1.pdf>]) [6 <C:/Users/Colin/Documents/GitHub/
+ML_hw/hw2_writeup/hw2_3_cv.pdf>] (C:\Users\Colin\Documents\GitHub\ML_hw\hw2_wri
+teup\pset2.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4172 strings out of 493921
- 62035 string characters out of 3147282
- 128608 words of memory out of 3000000
- 7385 multiletter control sequences out of 15000+200000
+ 4193 strings out of 493921
+ 62806 string characters out of 3147282
+ 128624 words of memory out of 3000000
+ 7402 multiletter control sequences out of 15000+200000
  16529 words of font info for 68 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,9n,38p,929b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -539,14 +610,15 @@ nts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
 Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/s
-ymbols/msbm10.pfb>
-Output written on pset2.pdf (6 pages, 582458 bytes).
+X 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msb
+m10.pfb>
+Output written on pset2.pdf (6 pages, 743165 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
+ 186 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

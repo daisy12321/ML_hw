@@ -5,7 +5,7 @@ name = 'titanic';
 %[X, Y] = readdata(name, 'train', true);
 data = importdata(strcat('data/data_',name,'_train.csv'));
 
-
+C = 1;
 X = data(:,1:11); 
 Y = data(:,12);
 [n, p] = size(X);
@@ -65,6 +65,7 @@ end
 [valid_scores_1, valid_scores_2]
 [test_scores_1, test_scores_2]
 
+%%
 % find best C
 C_RANGE = (-5:1:6);
 valid_scores_svm_1 = zeros(length(C_RANGE), 1);
@@ -72,21 +73,22 @@ valid_scores_svm_2 = zeros(length(C_RANGE), 1);
 test_scores_svm_1 = zeros(length(C_RANGE), 1);
 test_scores_svm_2 = zeros(length(C_RANGE), 1);
 
+%%
 for i = 1:length(C_RANGE)
     C = 10^(C_RANGE(i));
     [w1, w1_0] = svm(X_scaled_1, Y, C, 'dot', 1);
     [w2, w2_0] = svm(X_scaled_2, Y, C, 'dot', 1);
-    valid_score_svm(i) = get_accu_svm(w1, w1_0, X_val_scaled_1, Y_val);
-    valid_score_svm(i) = get_accu_svm(w2, w2_0, X_val_scaled_2, Y_val);
+    valid_scores_svm_1(i) = get_accu_svm(w1, w1_0, X_val_scaled_1, Y_val);
+    valid_scores_svm_2(i) = get_accu_svm(w2, w2_0, X_val_scaled_2, Y_val);
     
     test_scores_svm_1(i) = get_accu_svm(w1, w1_0, X_test_scaled_1, Y_test);
     test_scores_svm_2(i) = get_accu_svm(w2, w2_0, X_test_scaled_2, Y_test);
 end
-[valid_scores_svm_1, valid_scores_svm_2]
-[test_scores_svm_1, test_scores_svm_2]
+[C_RANGE', valid_scores_svm_1, valid_scores_svm_2]
+[C_RANGE', test_scores_svm_1, test_scores_svm_2]
 
 
-
+%%
 fig = figure;
 hold on;
 plot(LAMBDA_RANGE, valid_scores_1)

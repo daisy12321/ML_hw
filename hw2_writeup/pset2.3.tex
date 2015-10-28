@@ -1,6 +1,6 @@
 %!TEX root = pset2.tex
 
-\section{Titanic Data}\label{sec:tinanic}
+\section{Titanic Data}\label{sec:titanic}
 
 \subsection{Logistic Regression}
 We use Logistic Regression classifier on the Titanic data to make predictions on survivor results. Before running the regression, we scale the features in two ways: 1) standardizing using mean and standard deviation by $(X_{j}^{(i)} - \mu(X_{j}))/\sigma(X_{j})$; 2) scale so each dimension is within the $[0, 1]$ range using min and max: $(X_{j}^{(i)} - \min{X_j})/(\max{X_j} - \min{X_j})$. We find the scaling constants in the training sets only, and use the same constants in the validation and testing sets. Note that comparing the two scaling methods is simply for exploration purposes and we are not choosing one or the other in the model selection process.
@@ -10,7 +10,21 @@ With no regularization, we obtain a testing set accuracy of $77.78\%$ in both ca
 \begin{figure}[hb]
 \centering
 	\includegraphics[scale=0.4]{hw2_3_cv.pdf}
-	\caption{Tinanic Data, Cross validation error in logistic regression with respect to $\lambda$, under two different scaling methods.}\label{fig:3_LR_cv}
+	\caption{Titanic Data, Cross validation error in logistic regression with respect to $\lambda$, under two different scaling methods.}\label{fig:3_LR_cv}
+\end{figure}
+
+\begin{figure}[hb]
+\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[scale=0.6]{hw2_3_cv.pdf}
+	\caption{``Logistic Regression"}\label{fig:3_LR_cv}
+	\end{subfigure}
+	\quad \quad
+	\begin{subfigure}[b]{0.4\textwidth}
+	\includegraphics[scale=0.6]{hw2_3_svm_cv.pdf}
+	\caption{``SVM"}\label{fig:3_LR_cv}
+	\end{subfigure}
+\caption{Titanic Data, Cross validation error in logistic regression with respect to $\lambda$ and in SVM with respect to $C$, under two different scaling methods.}\label{fig:3_both_cv}
 \end{figure}
 
 
@@ -22,31 +36,29 @@ TODO compare LR and SVM
 
 The estimated coefficients for logistic regression and SVM are presented in Table \ref{tab:titanic_coeff}. Since we do not have standard error and confidence interval information, we can only rely on the magnitude of the estimator (even if they are not statistically significant). 
 
-For logistic regression, we observe that being woman, higher class and higher fare are associated with higher likelihood of survival, whereas being 3rd class is strongly associated with death. 
+For logistic regression, we observe that being woman, higher class and higher fare are associated with higher likelihood of survival, whereas being 3rd class is strongly associated with death. We observe the same results for SVM coefficients, except the absolute values of the coefficients are slightly smaller for all parameters.  The sign of the coefficients are the same for both methods, except for $w_{11}$, in which case both are near zero.  
 
 \begin{table}[h!]
 \centering
-\caption{Estimated logistic regression coefficients in Titanic data, $\lambda = 10$}
-\begin{tabular}{llr}
+\caption{Estimated coefficients for logistic regression, $\lambda = 10$, and SVM, $C = 0.01$, on Titanic data under feature-scaling method (1).}
+\begin{tabular}{llrr}
 	\hline 
-	Coefficient & Description & Logistic estimator \\
+	Coefficient & Description & Logistic estimator & SVM estimator \\
   \hline
-  $w_0$  & Constant &-0.6289 \\
-  $w_1$ 	& Passenger class 1 & 0.1680\\
-  $w_2$ 	& Passenger class 2	  & 0.2013\\
-  $w_3$  & Passenger class 3 & -0.3245\\
-  $w_4$ 	 & Sex & 0.7795\\
-  $w_5$ 	 & Age & -0.1417\\
-  $w_6$ 	 & Num siblings/Spouses aboard & -0.0477 \\
-  $w_7$ 	 & Num parents/children aboard & 0.1422\\
-  $w_8$ 	 & Pasenger fare & 0.1533\\
-  $w_9$ 	 & Port of embarkation = Southampton & -0.0955\\
-  $w_{10}$  & Port of embarkation = Cherbourg & 0.1090\\
-  $w_{11}$ & Port of embarkation = Queenstown	& 0.0393	\\
+  $w_0$  & Constant &-0.6289 & -0.3976 \\
+  $w_1$ 	& Passenger class 1 & 0.1680 & 0.0350\\
+  $w_2$ 	& Passenger class 2	  & 0.2013 & 0.0774\\
+  $w_3$  & Passenger class 3 & -0.3245 &  -0.0982\\
+  $w_4$ 	 & Sex & 0.7795 & 0.6714\\
+  $w_5$ 	 & Age & -0.1417 & -0.0643\\
+  $w_6$ 	 & Num siblings/Spouses aboard & -0.0477 & -0.0397\\
+  $w_7$ 	 & Num parents/children aboard & 0.1422 & 0.1152\\
+  $w_8$ 	 & Pasenger fare & 0.1533 &  0.0793\\
+  $w_9$ 	 & Port of embarkation = Southampton & -0.0955 & -0.0632\\
+  $w_{10}$  & Port of embarkation = Cherbourg & 0.1090 &  0.0758\\
+  $w_{11}$ & Port of embarkation = Queenstown	& 0.0393 & -0.0052\\
   \hline
 \end{tabular}\label{tab:titanic_coeff}
 \end{table}
-
-
 
 

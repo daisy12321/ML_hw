@@ -67,7 +67,7 @@ end
 
 %%
 % find best C
-C_RANGE = (-5:1:6);
+C_RANGE = (-3:1:6);
 valid_scores_svm_1 = zeros(length(C_RANGE), 1);
 valid_scores_svm_2 = zeros(length(C_RANGE), 1);
 test_scores_svm_1 = zeros(length(C_RANGE), 1);
@@ -102,9 +102,27 @@ pos = get(fig,'Position');
 set(fig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
 print(fig, 'hw2_writeup/hw2_3_cv.pdf', '-dpdf', '-r0')
 
+%%
+fig = figure;
+hold on;
+plot(C_RANGE, valid_scores_svm_1)
+plot(C_RANGE, valid_scores_svm_2)
+title('Validation accuracy versus C')
+legend('Stdev scaling', 'Min-max scaling')
+xlabel('C in Log')
+ylabel('Validation accuracy')
+set(fig,'Units','Inches');
+pos = get(fig,'Position');
+set(fig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+print(fig, 'hw2_writeup/hw2_3_svm_cv.pdf', '-dpdf', '-r0')
+%%
 %all = vertcat(data, validate, test) 
 %tabulate(all(:,4))
 
 
 [z_1, f] = lr_run(X_scaled_1, Y, 10, true);
 test_score = get_accu(z_1, X_test_scaled_1, Y_test)
+[w1, w1_0] = svm(X_scaled_1, Y, 0.01, 'dot', 1);
+test_score_svm = get_accu_svm(w1, w1_0, X_test_scaled_1, Y_test)
+[w2, w2_0] = svm(X_scaled_2, Y, 0.1, 'dot', 1);
+test_score_svm_2 = get_accu_svm(w2, w2_0, X_test_scaled_2, Y_test)

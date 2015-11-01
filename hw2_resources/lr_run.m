@@ -7,7 +7,7 @@ function [z, f] = lr_run(X,Y,lambda,addbias)
     end
     Y_train = Y;
     
-    LR_loss = @(w) lambda * norm(w(2:p), 2)^2 + sum(-log(sigmoid(Y_train .* (X_train * w'))));
+    LR_loss = @(w) lambda * norm(w(2:end), 2)^2 + sum(-log(sigmoid(Y_train .* (X_train * w'))));
     options = optimoptions(@fminunc,'Display','iter');
     [z, f] = fminunc(LR_loss, zeros(1,p+1));%, options);
     

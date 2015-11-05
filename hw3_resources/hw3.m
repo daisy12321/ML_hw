@@ -11,7 +11,12 @@ M = 3;
 w1_0 = ones(M,D);
 w2_0 = ones(D,M);
 grad_desc_3(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001)
+W1 = [1, 2; 3, 5; 5,1];
+W2 = [2 1 1; 5 -1 3];
+w1_0 = ones(size(W1));
+w2_0 = ones(size(W2));
 
+[w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001);
 
 %% 3.2.4 Toy Problem
 train = importdata('hw3_resources/data/toy_multiclass_1_train.csv');

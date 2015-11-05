@@ -12,7 +12,7 @@ w2_0 = ones(size(W2));
 grad_desc_3(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001)
 
 
-%% 2.4 Toy Problem
+%% 3.2.4 Toy Problem
 train = importdata('hw3_resources/data/toy_multiclass_1_train.csv');
 valid = importdata('hw3_resources/data/toy_multiclass_1_validate.csv');
 test = importdata('hw3_resources/data/toy_multiclass_1_test.csv');
@@ -20,3 +20,9 @@ test = importdata('hw3_resources/data/toy_multiclass_1_test.csv');
 train = importdata('hw3_resources/data/toy_multiclass_2_train.csv');
 valid = importdata('hw3_resources/data/toy_multiclass_2_validate.csv');
 test = importdata('hw3_resources/data/toy_multiclass_2_test.csv');
+
+%% 3.2.5 MNIST Data
+
+train = importdata('hw3_resources/data/mnist_train.csv');
+valid = importdata('hw3_resources/data/mnist_validate.csv');
+test = importdata('hw3_resources/data/mnist_test.csv');

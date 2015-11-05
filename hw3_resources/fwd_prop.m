@@ -1,12 +1,12 @@
-function [a1, Z,a2, F] = fwd_prop(X, W1, W2)
+function [a1, Z, a2, F] = fwd_prop(x, W1, W2)
     [M, d] = size(W1);
     a1 = zeros(M, 1);
     for j = 1:M
-         a1(j) = W1(j, :)*X';
+         a1(j) = W1(j, :)*x';
     end
     Z = sigmoid(a1);
-    %disp(a1);
-    %disp(Z);
+    disp(a1);
+    disp(Z);
     
     K = size(W2, 1);
     a2 = zeros(K, 1);
@@ -14,5 +14,5 @@ function [a1, Z,a2, F] = fwd_prop(X, W1, W2)
         a2(j) = W2(j, :)*Z;
     end
     F = sigmoid(a2);
-    %disp(a2);
+    disp(a2);
     disp(F);

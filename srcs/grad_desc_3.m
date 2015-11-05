@@ -1,6 +1,6 @@
-function [x_new f_new x_history f_hist] = grad_desc(fun, grad, x0, step, eps)
-    f_old = fun(x0);
-    x_new = x0 - step*grad(x0);
+function [w1, w2] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps)
+    f_old = fun(w1_0, w2_0);
+    x_new = w1_0 - step*ANN_grad(w1_0, w2_0, X, Y);
     x_history = zeros(1000, size(x0,2));
     x_history(1, :) = x_new;
     f_new = fun(x_new);

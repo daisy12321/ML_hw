@@ -11,7 +11,7 @@ W2 = [2 1 1; 5 -1 3];
 w1_0 = ones(size(W1));
 w2_0 = ones(size(W2));
 
-grad_desc_3(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001)
+[w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001);
 
 
 importdata('hw3_resources/data/toy_multiclass_1_train.csv')

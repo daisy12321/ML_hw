@@ -8,4 +8,11 @@ Y = [1, 0; 0, 1; 0, 1; 1, 0];
 W1 = [1, 2; 3, 5; 5,1];
 W2 = [2 1 1; 5 -1 3];
 
-importdata('hw3_resources/data/toy_multiclass_1_train.csv')
+%% 2.4 Toy Problem
+train = importdata('hw3_resources/data/toy_multiclass_1_train.csv');
+valid = importdata('hw3_resources/data/toy_multiclass_1_validate.csv');
+test = importdata('hw3_resources/data/toy_multiclass_1_test.csv');
+
+train = importdata('hw3_resources/data/toy_multiclass_2_train.csv');
+valid = importdata('hw3_resources/data/toy_multiclass_2_validate.csv');
+test = importdata('hw3_resources/data/toy_multiclass_2_test.csv');

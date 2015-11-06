@@ -10,18 +10,20 @@ function [dl_w1, dl_w2] = ANN_grad(W1, W2, x, y)
     dSig2 = zeros(1, K);
 
     %%%%% Layer 2 %%%%%
+    dSig2 = sigmoid(a2) .* (1-sigmoid(a2));
     for k = 1:K
-
-        dSig2(k) = sigmoid(a2(k))*(1-sigmoid(a2(k)));
+        
         dE2Log_tmp = 1/h(k)*dSig2(k)*Z';
         dE2Log_sub_tmp = -1/(1-h(k))*dSig2(k)*Z';
         dl_w2(k, :) = -y(k).* dE2Log_tmp - (1-y(k)) .* dE2Log_sub_tmp;
 
     end
     
-    dSig1 = sigmoid(a1) .* (1-sigmoid(a1)); % Mx1
+
 
     %%%%% Layer 1 %%%%%
+    dSig1 = sigmoid(a1) .* (1-sigmoid(a1)); % Mx1
+
     for k = 1:K
         
         dE1Log_tmp = 1/h(k)*dSig2(k)*(W2(k, :)' .* dSig1) * x; % W2: Mx1   x: 1xD

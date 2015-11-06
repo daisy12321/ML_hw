@@ -36,6 +36,7 @@ w2_0 = ones(K,M);
 [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X, Y(:,1), 1, 0.001)
 
 predictANN = @(x) sigmoid(fwd_prop(x, w1_est, w2_est));
+%predictANN(X(2,:))
 
 plotDecisionBoundary(X, Y(:,1), predictANN, [0.3, 0.5, 0.7], '', strcat('hw3_writeup/toy_1_class_3.pdf'))
 

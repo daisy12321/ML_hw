@@ -1,3 +1,8 @@
 %!TEX root = pset3.tex
 
 \section{Neural Networks}\label{sec:neural_networks}
+
+Neural networks are used in machine learning to make predictions, similar to logistic regression, SVM, or regression.  We can represent neural networks using a graph with nodes and edges (see Bishop figure 5.1).  Assume that we observe data $(\M{x}^{(i)},\M{y}^{(i)}), i = 1, \ldots, n$,  where $\M{x}^{(i)} \in \mathbb{R}^D$ and $\M{y}^{(i)} \in \{0,1\}^K$.  Let $(\M{x},\M{y}) = ([x_1, \ldots, x_D],[y_1, \ldots, y_K])$ be a general observation.  We create nodes for each of the features $x_i$, referred to as \emph{inputs}, and nodes for each of the class labels $y_i$ which are called \emph{outputs}.  Next, we introduce a series of nodes in the middle of the graph, called \emph{hidden units}, and we draw edges connecting the\emph{ inputs} $\rightarrow$ \emph{hidden units} $\rightarrow$ \emph{outputs}.  The key idea in neural networks is that there 
+
+\subsection{Implementation}
+

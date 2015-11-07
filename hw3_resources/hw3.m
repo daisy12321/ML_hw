@@ -10,8 +10,13 @@ Y = [1, 0; 0, 1; 0, 1; 1, 0; 1, 0; 1,0];
 [N, K] = size(Y);
 
 M = 3;
+
 w1_0 = rand(M,D);
 w2_0 = rand(K,M);
+lambda = 1;
+
+F = @(A) sum(dot(A,A));
+reg_cost = @(W1, W2, X, Y, lambda) ANN_loss(W1, W2, X, Y) + lambda*(F(W1) + F(W2));
 
 [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001);
 [w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001);
@@ -19,6 +24,9 @@ w2_0 = rand(K,M);
 predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
 [predict_all predict_class] = predict_ANN(X);
 accu = sum(predict_class' == Y(:,1))/length(Y(:,1))
+
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001);
+
 
 %% 3.2.4 Toy Problem
 name = 'toy_multiclass_1';

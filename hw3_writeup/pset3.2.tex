@@ -2,9 +2,9 @@
 
 \section{Neural Networks}\label{sec:neural_networks}
 
-Neural networks are used in machine learning to make predictions, similar to logistic regression, SVM, or regression.  We can represent neural networks using a graph with nodes and edges (see Bishop figure 5.1).  Assume that we observe data $(\M{x}^{(i)},\M{y}^{(i)}), i = 1, \ldots, N$,  where $\M{x}^{(i)} \in \mathbb{R}^{D+1}$ and $\M{y}^{(i)} \in \{0,1\}^K$.  Let $(\M{x},\M{y}) = ([x_0, x_1, \ldots, x_D],[y_1, \ldots, y_K])$ be a general observation, where $x_0 = 1$ is a constant term for the bias.  We create nodes for each of the features $x_i$, referred to as \emph{inputs}, and nodes for each of the class labels $y_i$, referred to as \emph{outputs}.  Next, we introduce a series of nodes in the middle of the graph, called \emph{hidden units}, and we draw edges connecting the {\bf inputs} $\rightarrow ${\bf hidden units}$ \rightarrow$ \emph{\bf outputs}.  The key idea in neural networks is that we can model the hidden units as functions of the inputs, and model the outputs as functions of the hidden units.   
+Neural networks are used in machine learning to make predictions, similar to logistic regression, SVM, or regression.  We can represent neural networks using a graph with nodes and edges (see Bishop figure 5.1).  Assume that we observe data $(\M{x}^{(n)},\M{y}^{(n)}), n = 1, \ldots, N$,  where $\M{x}^{(n)} \in \mathbb{R}^{D+1}$ and $\M{y}^{(n)} \in \{0,1\}^K$.  Let $(\M{x},\M{y}) = ([x_0, x_1, \ldots, x_D],[y_1, \ldots, y_K])$ be a general observation, where $x_0 = 1$ is a constant term for the bias.  We create nodes for each of the features $x_i$, referred to as \emph{inputs}, and nodes for each of the class labels $y_i$, referred to as \emph{outputs}.  Next, we introduce a series of nodes in the middle of the graph, called \emph{hidden units}, and we draw edges connecting the {\bf inputs} $\rightarrow ${\bf hidden units}$ \rightarrow$ \emph{\bf outputs}.  The key idea in neural networks is that we can model the hidden units as functions of the inputs, and model the outputs as functions of the hidden units.   
 
-For 2-layer neural networks, we have one layer of hidden units denoted by $[z_0, z_1,\ldots, z_m]$.   There are weights $\M{w}^{(1)}_{ji}$ for each edge $x_i \rightarrow z_j$ and $\M{w}^{(2)}_{kj}$ for each edge $z_j \rightarrow y_k$, which are unknown and will be learned through training the model.  However, there are no edges from the inputs to $z_0$, because we assume $z_0 = 1$ is a constant term for the bias.  Let $\sigma(\cdot)$ denote the logistic function, which we will use as the \emph{activation function} for both the hidden and output layers of our neural network.  The predicted value for output $k$ given parameters $\M{w} = \{\M{w}^{(1)}, \M{w}^{(2)}\}$ and input $\M{x}$ will be:
+For 2-layer neural networks, we have one layer of hidden units denoted by $[z_0, z_1,\ldots, z_M]$.   There are weights $\M{w}^{(1)}_{ji}$ for each edge $x_i \rightarrow z_j$ and $\M{w}^{(2)}_{kj}$ for each edge $z_j \rightarrow y_k$, which are unknown and will be learned through training the model.  However, there are no edges from the inputs to $z_0$, because we assume $z_0 = 1$ is a constant term for the bias.  Let $\sigma(\cdot)$ denote the logistic function, which we will use as the \emph{activation function} for both the hidden and output layers of our neural network.  The predicted value for output $k$ given parameters $\M{w} = \{\M{w}^{(1)}, \M{w}^{(2)}\}$ and input $\M{x}$ will be:
 
 \begin{equation}
 h_{k}(\M{x},\M{w}) = \sigma\left(\sum_{j=1}^{M} w^{(2)}_{kj} \sigma\left(\sum_{i=0}^{D} w^{(1)}_{ji} x_i\right)  + w_{k0}^{(2)} \right).
@@ -15,7 +15,7 @@ h_{k}(\M{x},\M{w}) = \sigma\left(\sum_{j=1}^{M} w^{(2)}_{kj} \sigma\left(\sum_{i
 \subsubsection{Gradient Descent}
 We implemented a 2-layer regularized neural network using gradient descent.  The loss function, which is the negative log-likelihood, is equal to:
 \begin{equation}
-\ell(\M{w}) \equiv \sum_{i=1}^{N} \sum_{k=1}^{K} \left[ -y_k^{(i)} \log(h_{k}(\M{x}^{(i)}, \M{w})) - (1-y_k^{(i)}) \log(1 - h_{k}(\M{x}^{(i)}, \M{w}))\right]
+\ell(\M{w}) \equiv \sum_{n=1}^{N} \sum_{k=1}^{K} \left[ -y_k^{(n)} \log(h_{k}(\M{x}^{(n)}, \M{w})) - (1-y_k^{(n)}) \log(1 - h_{k}(\M{x}^{(n)}, \M{w}))\right]
 \end{equation}
 
 We add a regularizer term, and the final cost function becomes:
@@ -23,7 +23,7 @@ We add a regularizer term, and the final cost function becomes:
 J(\M{w}) \equiv \ell(\M{w}) + \lambda(\|\M{w}^{(1)}\|^2_F + \|\M{w}^{(2)}\|^2_F),
 \end{equation}
 
-where $\|A\|_F = \sqrt{\sum_{i,j} A^2_{ij}}$ is the matrix Frobenius norm.  To take the derivative of this function, we introduce some more notation:
+where $\|A\|_F = \sqrt{\sum_{i,j} A^2_{ij}}$ is the matrix Frobenius norm, and $\lambda$ is a fixed parameter chosen via cross-validation.  To take the derivative of this function, we introduce some more notation:
 
 \begin{equation}
 a^{(1)}_j(\M{x}) \equiv \sum_{i=0}^D w_{ji}^{(1)} x_i
@@ -32,10 +32,23 @@ a^{(1)}_j(\M{x}) \equiv \sum_{i=0}^D w_{ji}^{(1)} x_i
 a^{(2)}_k(\M{x}) \equiv \sum_{j=1}^M w_{kj}^{(2)} \sigma(a^{(1)}_j(\M{x})) + w_{k0}^{(2)}
 \end{equation}
 
-We refer to $a^{(1)}_j(\M{x})$ and $a^{(2)}_k(\M{x})$ as the \emph{activations} for a fixed value of $\M{x}$.  It follows that $h_{k}(\M{x},\M{w}) = \sigma(a^{(2)}_k(\M{x}))$.  Taking the gradient of $J$ with respect to the different sets of parameters $\M{w}^{(1)}$ and $\M{w}^{(2)}$, we find:  
+We refer to $a^{(1)}_j(\M{x})$ and $a^{(2)}_k(\M{x})$ as the \emph{activations} for a fixed value of $\M{x}$.  It follows that $h_{k}(\M{x},\M{w}) = \sigma(a^{(2)}_k(\M{x}))$.  Taking partial derivatives of $J$ with respect to $\M{w}^{(2)}_{kj}$ and $\M{w}^{(1)}_{ji}$, we find:  
 
 \begin{equation}
-\nabla_{\M{w}^{(2)}_{kj}} J(\M{w}) = \frac{1}{h(\M{x},\M{w})}\sum_k \sigma(a_2) (1 - \sigma(a_2))
+\frac{\partial J(\M{w})}{\partial \M{w}^{(2)}_{kj}} = \sum_{n=1}^{N} \left(\frac{-y_k^{(n)}}{h_k(\M{x}^{(n)},\M{w})} +  \frac{1-y_k^{(n)}}{1 - h_k(\M{x}^{(n)},\M{w})}\right) h_k(\M{x}^{(n)},\M{w}) (1 - h_k(\M{x}^{(n)},\M{w})) \sigma(a^{(1)}_j(\M{x})) + 2 \lambda \M{w}^{(2)}_{kj}
+\end{equation}
+\begin{equation}
+\frac{\partial J(\M{w})}{\partial \M{w}^{(2)}_{kj}} = \sum_{n=1}^{N} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right) \sigma(a^{(1)}_j(\M{x})) + 2 \lambda \M{w}^{(2)}_{kj}
+\end{equation}
+
+\begin{equation}
+\frac{\partial J(\M{w})}{\partial \M{w}^{(1)}_{ji}} = \frac{1}{h_k(\M{x},\M{w})}\sum_k \sigma(a_2) (1 - \sigma(a_2)) + 2 \lambda \M{w}^{(1)}_{ji}
+\end{equation}
+
+Therefore, the gradients of $J$ with respect to the different groups of parameters $\M{w}^{(2)}$ and $\M{w}^{(1)}$ are:
+
+\begin{equation}
+\nabla_{\M{w}^{(1)}} J(\M{w}) = 
 \end{equation}
 
 \begin{equation}

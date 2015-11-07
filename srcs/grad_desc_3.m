@@ -1,4 +1,4 @@
-function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps)
+function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps, iter_lim)
     
     N = size(X, 1);
     
@@ -10,7 +10,7 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps)
     w1_old = w1_0; 
     w2_old = w2_0;
     
-    while abs(f_new - f_old) > eps  && counter < 3000
+    while abs(f_new - f_old) > eps  && counter < iter_lim
         
         f_old = fun(w1_old, w2_old, X, Y)
         grad1_sum = zeros(size(w1_0));
@@ -22,7 +22,7 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps)
             grad2_sum = grad2_sum + grad2;
         end
         
-        step_size = step/(counter + 50)^0.55;
+        step_size = step/(counter + 50)^0.6;
         
         w1_new = w1_old - step_size*grad1_sum;
         w2_new = w2_old - step_size*grad2_sum;   
@@ -38,6 +38,6 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps)
     end
     
         
-    if counter >= 2999
-        disp('Not converge in 3000 iterations')
+    if counter >= iter_lim-1
+        disp('Not converge in iteration limits')
     end

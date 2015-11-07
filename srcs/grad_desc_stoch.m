@@ -1,4 +1,4 @@
-function [w1_new, w2_new] = grad_desc_stoch(fun, w1_0, w2_0, X, Y, step, eps)
+function [w1_new, w2_new] = grad_desc_stoch(fun, w1_0, w2_0, X, Y, step, eps, iter_lim)
     
     N = size(X, 1);
     
@@ -12,7 +12,7 @@ function [w1_new, w2_new] = grad_desc_stoch(fun, w1_0, w2_0, X, Y, step, eps)
     
     i = 0;
     
-    while abs(f_new - f_old) > eps && counter < 3000
+    while abs(f_new - f_old) > eps && counter < iter_lim
         i = mod(i, N) + 1;
         
         if i == 1
@@ -25,7 +25,7 @@ function [w1_new, w2_new] = grad_desc_stoch(fun, w1_0, w2_0, X, Y, step, eps)
         f_old = fun(w1_old, w2_old, X, Y);
         [grad1, grad2] = ANN_grad(w1_old, w2_old, X(i, :), Y(i, :));
         
-        step_size = step/(counter + 50)^0.55;
+        step_size = step/(counter + 100)^0.6;
         
         w1_new = w1_old - step_size*grad1;
         w2_new = w2_old - step_size*grad2;    
@@ -40,7 +40,8 @@ function [w1_new, w2_new] = grad_desc_stoch(fun, w1_0, w2_0, X, Y, step, eps)
         
     end
     
-    if counter >= 2999
-        disp('Not converge in 3000 iterations')
+    disp(f_new)
+    if counter >= iter_lim-1
+        disp('Not converge in iteration limits')
     end
     

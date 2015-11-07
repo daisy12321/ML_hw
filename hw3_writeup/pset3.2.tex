@@ -15,7 +15,7 @@ h_{k}(\M{x},\M{w}) = \sigma\left(\sum_{j=0}^{M} w^{(2)}_{kj} \sigma\left(\sum_{i
 \subsubsection{Gradient Descent}
 We implemented a 2-layer regularized neural network using gradient descent.  The loss function, which is the negative log-likelihood, is equal to:
 \begin{equation}
-l(\M{w}) := \sum_{i=1}^{N} \sum_{k=1}^{K} \left[ -y_k^{(i)} \log(h_{k}(\M{x}^{(i)}, \M{w}) - (1-y_k^{(i)}) \log(1 - h_{k}(\M{x}^{(i)}, \M{w})\right]
+l(\M{w}) := \sum_{i=1}^{N} \sum_{k=1}^{K} \left[ -y_k^{(i)} \log(h_{k}(\M{x}^{(i)}, \M{w})) - (1-y_k^{(i)}) \log(1 - h_{k}(\M{x}^{(i)}, \M{w}))\right]
 \end{equation}
 
 We add a regularizer term, and the final cost function becomes:
@@ -32,9 +32,7 @@ a^{(1)}_j(\M{x}) \equiv \sum_{i=1}^D w_{ji}^{(1)} x_i + w_{j0}^{(1)}
 a^{(2)}_k(\M{x}) \equiv \sum_{j=1}^M w_{kj}^{(2)} \sigma(a^{(1)}_j(\M{x})) + w_{k0}^{(2)}
 \end{equation}
 
-
-
-We refer to $a^{(1)}_j(\M{x})$ and $a^{(2)}_k(\M{x})$ as the \emph{activations} for a fixed value of $\M{x}$.  Taking the gradient of $J$ with respect to the different sets of parameters $\M{w}^{(1)}$ and $\M{w}^{(2)}$, we find:  
+We refer to $a^{(1)}_j(\M{x})$ and $a^{(2)}_k(\M{x})$ as the \emph{activations} for a fixed value of $\M{x}$.  It follows that $h_{k}(\M{x},\M{w}) = \sigma(a^{(2)}_k(\M{x}))$.  Taking the gradient of $J$ with respect to the different sets of parameters $\M{w}^{(1)}$ and $\M{w}^{(2)}$, we find:  
 
 \begin{equation}
 \nabla_{\M{w}^{(1)}} J(\M{w}) = \frac{1}{h(\M{x},\M{w})}\sum_k \sigma(a_2) (1 - \sigma(a_2))

@@ -12,13 +12,13 @@ function [w1_new, w2_new] = grad_desc_stoch(fun, w1_0, w2_0, X, Y, step, eps)
     
     i = 0;
     
-    while abs(f_new - f_old) > eps && counter < 1000
+    while abs(f_new - f_old) > eps % && counter < 2000
         i = mod(i, N) + 1;
         
         f_old = fun(w1_old, w2_old, X, Y);
         [grad1, grad2] = ANN_grad(w1_old, w2_old, X(i, :), Y(i, :));
         
-        step_size = 50/(counter + 100)^0.6;
+        step_size = 50/(counter + 50)^0.55;
         
         w1_new = w1_old - step_size*grad1;
         w2_new = w2_old - step_size*grad2;    
@@ -33,6 +33,3 @@ function [w1_new, w2_new] = grad_desc_stoch(fun, w1_0, w2_0, X, Y, step, eps)
         
     end
     
-
- %   while abs(f_new - f_old) > eps && counter < 1000
-%       

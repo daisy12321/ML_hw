@@ -10,7 +10,7 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps)
     w1_old = w1_0; 
     w2_old = w2_0;
     
-    while abs(f_new - f_old) > eps && counter < 1000
+    while abs(f_new - f_old) > eps  % && counter < 1000
         
         f_old = fun(w1_old, w2_old, X, Y)
         grad1_sum = zeros(size(w1_0));

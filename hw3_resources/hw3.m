@@ -42,7 +42,7 @@ w2_0 = 10*rand(K,M+1)-5;
 [w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.01, 1 ,1e-5, 3000);
 
 % stochastic gradient descent
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.01, 25, 1e-5, 3000);
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.001, 25, 1e-5, 3000);
 
 predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
 [predict_all, predict_class] = predict_ANN(X_train);
@@ -63,9 +63,9 @@ K = size(Y_train, 2);
 % size of hidden units
 M = 3;
 w1_0 = 10*rand(M,D)-5;
-w2_0 = 10*rand(K,M)-5;
+w2_0 = 10*rand(K,M+1)-5;
 
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 50, 0.001, 6000);
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.1, 50, 1e-5, 6000);
 predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
 % calculate accuracy in training set
 [predict_all predict_class] = predict_ANN(X_train);

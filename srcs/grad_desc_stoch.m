@@ -25,7 +25,7 @@ function [w1_new, w2_new] = grad_desc_stoch(fun, w1_0, w2_0, X, Y, step, eps)
         f_old = fun(w1_old, w2_old, X, Y);
         [grad1, grad2] = ANN_grad(w1_old, w2_old, X(i, :), Y(i, :));
         
-        step_size = 25/(counter + 50)^0.55;
+        step_size = step/(counter + 50)^0.55;
         
         w1_new = w1_old - step_size*grad1;
         w2_new = w2_old - step_size*grad2;    

@@ -29,7 +29,7 @@ accu = sum(predict_class' == Y(:,1))/length(Y(:,1))
 
 
 %% 3.2.4 Toy Problem
-name = 'toy_multiclass_1';
+name = 'toy_multiclass_2';
 [X_train, Y_train_lab, Y_train, X_valid, Y_valid_lab, Y_valid, X_test, Y_test_lab, Y_test] = read_data(name);
 [N, D] = size(X_train);
 K = size(Y_train, 2);
@@ -39,8 +39,9 @@ M = 3;
 w1_0 = 5*rand(M,D);
 w2_0 = 5*rand(K,M);
 
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1, 0.001)
-[w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1, 0.01)
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 25, 0.001)
+[w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X_train, Y_train, 5, 0.001);
+ANN_grad(w1_est, w2_est, X_train(4,:), Y_train(4,:))
 
 predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
 % calculate accuracy in training set
@@ -63,6 +64,25 @@ plotDecisionBoundary3Class(X_train(:, 2:3), Y_train, predict_ANN, [-0.05, 0.0, 0
 
 
 %% 3.2.5 MNIST Data
-train = importdata('hw3_resources/data/mnist_train.csv');
-valid = importdata('hw3_resources/data/mnist_validate.csv');
-test = importdata('hw3_resources/data/mnist_test.csv');
+name = 'mnist';
+[X_train, Y_train_lab, Y_train, X_valid, Y_valid_lab, Y_valid, X_test, Y_test_lab, Y_test] = read_data(name);
+[N, D] = size(X_train);
+K = size(Y_train, 2);
+
+% size of hidden units
+M = 3;
+w1_0 = 5*rand(M,D);
+w2_0 = 5*rand(K,M);
+
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 25, 0.001);
+[w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X_train, Y_train, 4, 0.001);
+%ANN_grad(w1_est, w2_est, X_train(4,:), Y_train(4,:))
+
+predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
+% calculate accuracy in training set
+[predict_all predict_class] = predict_ANN(X_train);
+accu = sum(predict_class' == Y_train_lab)/length(Y_train_lab)
+% calculate accuracy in test set
+[predict_all predict_class] = predict_ANN(X_test);
+accu = sum(predict_class' == Y_test_lab)/length(Y_test_lab)
+%disp(strcat('Accuracy is: ', num2str(accu)));

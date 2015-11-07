@@ -13,6 +13,8 @@ M = 3;
 w1_0 = ones(M,D);
 w2_0 = ones(K,M);
 
+frob = @(A) sum(dot(A,A));
+
 [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001);
 
 %% 3.2.4 Toy Problem

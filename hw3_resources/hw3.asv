@@ -45,10 +45,9 @@ w2_0 = 10*rand(K,M+1)-5;
 predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
 % calculate accuracy in training set
 [predict_all, predict_class] = predict_ANN(X_train);
-train_accu = sum(predict_class' == Y_train_lab)/length(Y_train_lab)
-% calculate accuracy in test set
+accu = sum(predict_class' == Y_train_lab)/length(Y_train_lab)
 [predict_all, predict_class] = predict_ANN(X_test);
-test_accu = sum(predict_class' == Y_test_lab)/length(Y_test_lab)
+accu = sum(predict_class' == Y_test_lab)/length(Y_test_lab)
 
 plotDecisionBoundary3Class(X_train(:, 2:3), Y_train, predict_ANN, [0.0, 0.0], '', strcat('hw3_writeup/plot_',name,'.pdf'))
 
@@ -70,8 +69,8 @@ w2_0 = 10*rand(K,M+1)-5;
 predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
 % calculate accuracy in training set
 [predict_all, predict_class] = predict_ANN(X_train);
-train_accu = sum(predict_class' == Y_train_lab)/length(Y_train_lab)
+accu = sum(predict_class' == Y_train_lab)/length(Y_train_lab)
 % calculate accuracy in test set
 [predict_all, predict_class] = predict_ANN(X_test);
-test_accu = sum(predict_class' == Y_test_lab)/length(Y_test_lab)
+accu = sum(predict_class' == Y_test_lab)/length(Y_test_lab)
 %disp(strcat('Accuracy is: ', num2str(accu)));

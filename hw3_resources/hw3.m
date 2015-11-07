@@ -10,14 +10,13 @@ Y = dummyvar(Y_lab);
 [N, D] = size(X);
 [N, K] = size(Y);
 
-M = 3;
+M = 2;
 
 w1_0 = rand(M,D);
 w2_0 = rand(K,M+1);
-lambda = 1;
 
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X, Y, 0, 1, 0.001, 3000);
-[w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X, Y, 0, 1, 0.001, 3000);
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X, Y, 0.1, 1, 1e-5, 3000);
+[w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X, Y, 0.1, 1, 1e-5, 3000);
 
 predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
 [predict_all predict_class] = predict_ANN(X);
@@ -28,18 +27,18 @@ plotDecisionBoundary3Class(X(:,2:3), Y, predict_ANN, [-0.05, 0.0, 0.05], '', str
 
 
 %% 3.2.4 Toy Problem
-name = 'toy_multiclass_2';
+name = 'toy_multiclass_1';
 [X_train, Y_train_lab, Y_train, X_valid, Y_valid_lab, Y_valid, X_test, Y_test_lab, Y_test] = read_data(name);
 [N, D] = size(X_train);
 K = size(Y_train, 2);
 
 % size of hidden units
-M = 2;
+M = 3;
 w1_0 = 10*rand(M,D)-5;
 w2_0 = 10*rand(K,M+1)-5;
 
 % batch gradient descent
-[w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.01, 1 ,1e-5, 3000);
+[w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.001, 1 ,1e-5, 3000);
 
 % stochastic gradient descent
 [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.001, 25, 1e-5, 3000);
@@ -68,9 +67,9 @@ w2_0 = 10*rand(K,M+1)-5;
 [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.1, 50, 1e-5, 6000);
 predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
 % calculate accuracy in training set
-[predict_all predict_class] = predict_ANN(X_train);
+[predict_all, predict_class] = predict_ANN(X_train);
 accu = sum(predict_class' == Y_train_lab)/length(Y_train_lab)
 % calculate accuracy in test set
-[predict_all predict_class] = predict_ANN(X_test);
+[predict_all, predict_class] = predict_ANN(X_test);
 accu = sum(predict_class' == Y_test_lab)/length(Y_test_lab)
 %disp(strcat('Accuracy is: ', num2str(accu)));

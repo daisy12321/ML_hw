@@ -16,14 +16,14 @@ w2_0 = ones(K,M);
 [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001);
 
 %% 3.2.4 Toy Problem
-[X_train, Y_train, X_valid, Y_valid, X_test, Y_test] = read_data('toy_multiclass_1');
+[X_train, Y_train_lab, Y_train, X_valid, Y_valid_lab, Y_valid, X_test, Y_test_lab, Y_test] = read_data('toy_multiclass_1');
 [N, D] = size(X_train);
 K = size(Y_train, 2);
 
 % size of hidden units
-M = 3;
-w1_0 = rand(M,D);
-w2_0 = rand(K,M);
+M = 2;
+w1_0 = 5*rand(M,D);
+w2_0 = 5*rand(K,M);
 
 [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1, 0.01)
 [w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1, 0.01)
@@ -33,17 +33,18 @@ predictANN = @(x) sigmoid(fwd_prop(x, w1_est, w2_est));
 % calculate accuracy in training set
 predict_all = zeros(K, N);
 predict_class = zeros(1, N);
-for i = 1:size(test,1)
+for i = 1:N
     predict_all(:, i) = predictANN(X_train(i, :));
     [tmp, predict_class(i)] = max(predict_all(:,i));
 end
-predict_class
+accu = sum(predict_class' == Y_train_lab)/length(Y_train_lab)
 
 
 % calculate accuracy in test set
-predict_all = zeros(K, N);
-predict_class = zeros(1, N);
-for i = 1:size(test,1)
+N_test = size(X_test, 1)
+predict_all = zeros(K, N_test);
+predict_class = zeros(1, N_test);
+for i = 1:N_test
     predict_all(:, i) = predictANN(X_test(i, :));
     [tmp, predict_class(i)] = max(predict_all(:,i));
 end

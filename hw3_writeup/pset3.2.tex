@@ -2,7 +2,7 @@
 
 \section{Neural Networks}\label{sec:neural_networks}
 
-Neural networks are used in machine learning to make predictions, similar to logistic regression, SVM, or regression.  We can represent neural networks using a graph with nodes and edges (see Bishop figure 5.1).  Assume that we observe data $(\M{x}^{(i)},\M{y}^{(i)}), i = 1, \ldots, N$,  where $\M{x}^{(i)} \in \mathbb{R}^D$ and $\M{y}^{(i)} \in \{0,1\}^K$.  Let $(\M{x},\M{y}) = ([x_0, x_1, \ldots, x_D],[y_1, \ldots, y_K])$ be a general observation.  We create nodes for each of the features $x_i$, referred to as \emph{inputs}, and nodes for each of the class labels $y_i$, referred to as \emph{outputs}.  Next, we introduce a series of nodes in the middle of the graph, called \emph{hidden units}, and we draw edges connecting the {\bf inputs} $\rightarrow ${\bf hidden units}$ \rightarrow$ \emph{\bf outputs}.  The key idea in neural networks is that we can model the hidden units as functions of the inputs, and model the outputs as functions of the hidden units.   
+Neural networks are used in machine learning to make predictions, similar to logistic regression, SVM, or regression.  We can represent neural networks using a graph with nodes and edges (see Bishop figure 5.1).  Assume that we observe data $(\M{x}^{(i)},\M{y}^{(i)}), i = 1, \ldots, N$,  where $\M{x}^{(i)} \in \mathbb{R}^{D+1}$ and $\M{y}^{(i)} \in \{0,1\}^K$.  Let $(\M{x},\M{y}) = ([x_0, x_1, \ldots, x_D],[y_1, \ldots, y_K])$ be a general observation.  We create nodes for each of the features $x_i$, referred to as \emph{inputs}, and nodes for each of the class labels $y_i$, referred to as \emph{outputs}.  Next, we introduce a series of nodes in the middle of the graph, called \emph{hidden units}, and we draw edges connecting the {\bf inputs} $\rightarrow ${\bf hidden units}$ \rightarrow$ \emph{\bf outputs}.  The key idea in neural networks is that we can model the hidden units as functions of the inputs, and model the outputs as functions of the hidden units.   
 
 For 2-layer neural networks, we have one layer of hidden units denoted by $[z_0, z_1,\ldots, z_m]$.   There are weights $\M{w}^{(1)}_{ji}$ for each edge $x_i \rightarrow z_j$ and $\M{w}^{(2)}_{kj}$ for each edge $z_j \rightarrow y_k$, which are unknown and will be learned through training the model.  Let $\sigma(\cdot)$ denote the logistic function, which we will use as the \emph{activation function} for both the hidden and output layers of our neural network.  The predicted value for output $k$ given parameters $\M{w} = \{\M{w}^{(1)}, \M{w}^{(2)}\}$ and input $\M{x}$ will be:
 
@@ -23,7 +23,18 @@ We add a regularizer term, and the final cost function becomes:
 J(\M{w}) := l(\M{w}) + \lambda(\|\M{w}^{(1)}\|^2_F + \|\M{w}^{(2)}\|^2_F),
 \end{equation}
 
-where $\|A\|_F = \sqrt{\sum_{i,j} A^2_{ij}}$ is the matrix Frobenius norm.  Taking the gradient of $J$ with respect to the different sets of parameters $\M{w}^{(1)}$ and $\M{w}^{(2)}$, we find:  
+where $\|A\|_F = \sqrt{\sum_{i,j} A^2_{ij}}$ is the matrix Frobenius norm.  To take the derivative of this function, we introduce some more notation:
+
+\begin{equation}
+a^{(1)}_j(\M{x}) \equiv \sum_{i=1}^D w_{ji}^{(1)} x_i + w_{j0}^{(1)}
+\end{equation}
+\begin{equation}
+a^{(2)}_k(\M{x}) \equiv \sum_{j=1}^M w_{kj}^{(2)} \sigma(a^{(1)}_j(\M{x})) + w_{k0}^{(2)}
+\end{equation}
+
+
+
+We refer to $a^{(1)}_j(\M{x})$ and $a^{(2)}_k(\M{x})$ as the \emph{activations} for a fixed value of $\M{x}$.  Taking the gradient of $J$ with respect to the different sets of parameters $\M{w}^{(1)}$ and $\M{w}^{(2)}$, we find:  
 
 \begin{equation}
 \nabla_{\M{w}^{(1)}} J(\M{w}) = \frac{1}{h(\M{x},\M{w})}\sum_k \sigma(a_2) (1 - \sigma(a_2))

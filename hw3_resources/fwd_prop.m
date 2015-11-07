@@ -10,6 +10,7 @@ function [F,a1, Z, a2] = fwd_prop(x, W1, W2)
          a1(j) = W1(j, :)*x;
     end
     Z = sigmoid(a1);
+    Z = [1; Z];
     
     % level 2
     K = size(W2, 1);

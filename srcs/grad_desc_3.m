@@ -10,14 +10,14 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps)
     w1_old = w1_0; 
     w2_old = w2_0;
     
-    while abs(f_new - f_old) > eps  % && counter < 1000
+    while abs(f_new - f_old) > eps   && counter < 2000
         
-        f_old = fun(w1_old, w2_old, X, Y)
+        f_old = fun(w1_old, w2_old, X, Y);
         grad1_sum = zeros(size(w1_0));
         grad2_sum = zeros(size(w2_0));
     
         for i = 1:N
-            [grad1, grad2] = ANN_grad(w1_old, w2_old, X(i, :), Y(i, :))
+            [grad1, grad2] = ANN_grad(w1_old, w2_old, X(i, :), Y(i, :));
             grad1_sum = grad1_sum + grad1;
             grad2_sum = grad2_sum + grad2;
         end
@@ -35,3 +35,7 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps)
         
     end
     
+        
+    if counter >= 1999
+        disp('Not converge in 2000 iterations')
+    end

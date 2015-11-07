@@ -29,20 +29,23 @@ where $\|A\|_F = \sqrt{\sum_{i,j} A^2_{ij}}$ is the matrix Frobenius norm, and $
 a^{(1)}_j(\M{x}) \equiv \sum_{i=0}^D w_{ji}^{(1)} x_i
 \end{equation}
 \begin{equation}
-a^{(2)}_k(\M{x}) \equiv \sum_{j=1}^M w_{kj}^{(2)} \sigma(a^{(1)}_j(\M{x})) + w_{k0}^{(2)}
+z_j(\M{x}) \equiv \left\{\begin{array}{rl}
+\sigma(a^{(1)}_j(\M{x})), & ~~~ i = 1,\ldots, M\\
+0, & ~~~i = 0 \end{array} \right.
+\end{equation}
+\begin{equation}
+a^{(2)}_k(\M{x}) \equiv \sum_{j=0}^M w_{kj}^{(2)} z_j(\M{x})
 \end{equation}
 
 We refer to $a^{(1)}_j(\M{x})$ and $a^{(2)}_k(\M{x})$ as the \emph{activations} for a fixed value of $\M{x}$.  It follows that $h_{k}(\M{x},\M{w}) = \sigma(a^{(2)}_k(\M{x}))$.  Taking partial derivatives of $J$ with respect to $\M{w}^{(2)}_{kj}$ and $\M{w}^{(1)}_{ji}$, we find:  
 
-\begin{equation}
-\frac{\partial J(\M{w})}{\partial \M{w}^{(2)}_{kj}} = \sum_{n=1}^{N} \left(\frac{-y_k^{(n)}}{h_k(\M{x}^{(n)},\M{w})} +  \frac{1-y_k^{(n)}}{1 - h_k(\M{x}^{(n)},\M{w})}\right) h_k(\M{x}^{(n)},\M{w}) (1 - h_k(\M{x}^{(n)},\M{w})) \sigma(a^{(1)}_j(\M{x})) + 2 \lambda \M{w}^{(2)}_{kj}
-\end{equation}
-\begin{equation}
-\frac{\partial J(\M{w})}{\partial \M{w}^{(2)}_{kj}} = \sum_{n=1}^{N} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right) \sigma(a^{(1)}_j(\M{x})) + 2 \lambda \M{w}^{(2)}_{kj}
-\end{equation}
+\begin{align}
+\frac{\partial J(\M{w})}{\partial \M{w}^{(2)}_{kj}} &= \sum_{n=1}^{N} \left(\frac{-y_k^{(n)}}{h_k(\M{x}^{(n)},\M{w})} +  \frac{1-y_k^{(n)}}{1 - h_k(\M{x}^{(n)},\M{w})}\right) h_k(\M{x}^{(n)},\M{w}) (1 - h_k(\M{x}^{(n)},\M{w})) z_j(\M{x}^{(n)}) + 2 \lambda \M{w}^{(2)}_{kj}\\
+&= \sum_{n=1}^{N} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right) z_j(\M{x}^{(n)}) + 2 \lambda \M{w}^{(2)}_{kj}
+\end{align}
 
 \begin{equation}
-\frac{\partial J(\M{w})}{\partial \M{w}^{(1)}_{ji}} = \frac{1}{h_k(\M{x},\M{w})}\sum_k \sigma(a_2) (1 - \sigma(a_2)) + 2 \lambda \M{w}^{(1)}_{ji}
+\frac{\partial J(\M{w})}{\partial \M{w}^{(1)}_{ji}} = \sum_{n=1}^{N} \sum_{k=1}^{K} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right)w_{kj}^{(2)} z_j(\M{x}^{(n)})(1-z_j(\M{x}^{(n)}))+ 2 \lambda \M{w}^{(1)}_{ji}
 \end{equation}
 
 Therefore, the gradients of $J$ with respect to the different groups of parameters $\M{w}^{(2)}$ and $\M{w}^{(1)}$ are:

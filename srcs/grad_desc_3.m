@@ -1,4 +1,4 @@
-function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps, iter_lim)
+function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, lambda, step, eps, iter_lim)
     
     N = size(X, 1);
     
@@ -12,12 +12,12 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps, iter_l
     
     while abs(f_new - f_old) > eps  && counter < iter_lim
         
-        f_old = fun(w1_old, w2_old, X, Y)
+        f_old = fun(w1_old, w2_old, X, Y, lambda)
         grad1_sum = zeros(size(w1_0));
         grad2_sum = zeros(size(w2_0));
         
         for i = 1:N
-            [grad1, grad2] = ANN_grad(w1_old, w2_old, X(i, :), Y(i, :));
+            [grad1, grad2] = ANN_grad(w1_old, w2_old, X(i, :), Y(i, :), lambda);
             grad1_sum = grad1_sum + grad1;
             grad2_sum = grad2_sum + grad2;
         end
@@ -26,7 +26,7 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, step, eps, iter_l
         
         w1_new = w1_old - step_size*grad1_sum;
         w2_new = w2_old - step_size*grad2_sum;   
-        f_new = fun(w1_new, w2_new, X, Y)
+        f_new = fun(w1_new, w2_new, X, Y, lambda)
         
         %disp('Difference between objective values is '); 
         %disp(abs(f_old - f_new));

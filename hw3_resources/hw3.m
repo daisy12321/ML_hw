@@ -15,6 +15,7 @@ addpath('srcs', 'hw3_resources')
 % 
 % [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001);
 
+
 %% 3.2.4 Toy Problem
 [X_train, Y_train_lab, Y_train, X_valid, Y_valid_lab, Y_valid, X_test, Y_test_lab, Y_test] = read_data('toy_multiclass_2');
 [N, D] = size(X_train);
@@ -44,7 +45,7 @@ accu = sum(predict_class' == Y_test_lab)/length(Y_test_lab)
 %disp(strcat('Accuracy is: ', num2str(accu)));
 
 
-plotDecisionBoundary(X_train(:, 2:3), Y_train, predictANN, [0.3, 0.5, 0.7], '', strcat('hw3_writeup/toy_1_class_3.pdf'))
+plotDecisionBoundary3Class(X_train(:, 2:3), Y_train, predictANN, [0.3, 0.5, 0.7], '', strcat('hw3_writeup/toy_1_class_3.pdf'))
 
 
 

@@ -7,7 +7,7 @@ Neural networks are used in machine learning to make predictions, similar to log
 For 2-layer neural networks, we have one layer of hidden units denoted by $[z_0, z_1,\ldots, z_m]$.   There are weights $\M{w}^{(1)}_{ji}$ for each edge $x_i \rightarrow z_j$ and $\M{w}^{(2)}_{kj}$ for each edge $z_j \rightarrow y_k$, which are unknown and will be learned through training the model.  Let $\sigma(\cdot)$ denote the logistic function, which we will use as the \emph{activation function} for both the hidden and output layers of our neural network.  The predicted value for output $k$ given parameters $\M{w} = \{\M{w}^{(1)}, \M{w}^{(2)}\}$ and input $\M{x}$ will be:
 
 \begin{equation}
-h_{k}(\M{x},\M{w}) = \sigma\left(\sum_{j=0}^{M} w^{(2)}_{kj} \sigma\left(\sum_{i=0}^{D} w^{(1)}_{ji}\right)\right).
+h_{k}(\M{x},\M{w}) = \sigma\left(\sum_{j=0}^{M} w^{(2)}_{kj} \sigma\left(\sum_{i=0}^{D} w^{(1)}_{ji} x_i\right)\right).
 \end{equation}
 
 \subsection{Implementation}
@@ -26,11 +26,11 @@ J(\M{w}) := l(\M{w}) + \lambda(\|\M{w}^{(1)}\|^2_F + \|\M{w}^{(2)}\|^2_F),
 where $\|A\|_F = \sqrt{\sum_{i,j} A^2_{ij}}$ is the matrix Frobenius norm.  Taking the gradient of $J$ with respect to the different sets of parameters $\M{w}^{(1)}$ and $\M{w}^{(2)}$, we find:  
 
 \begin{equation}
-\Delta_{\M{w}^{(1)}} J(\M{w}) = 
+\nabla_{\M{w}^{(1)}} J(\M{w}) = \frac{1}{h(\M{x},\M{w})}\sum_k \sigma(a_2) (1 - \sigma(a_2))
 \end{equation}
 
 \begin{equation}
-\Delta_{\M{w}^{(2)}} J(\M{w}) = 
+\nabla_{\M{w}^{(2)}} J(\M{w}) = 
 \end{equation}
 
 \subsubsection{Stochastic Gradient Descent}

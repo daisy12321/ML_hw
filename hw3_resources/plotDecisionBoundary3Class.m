@@ -17,15 +17,23 @@ h = max((maxes(1)-mins(1))/200., (maxes(2)-mins(2))/200.);
 arr=[xx(:),yy(:)];
 zz = zeros(length(arr),3);
 for i=1:length(arr),
-    zz(i,:) = scoreFn(arr(i,:)'); 
-end  
-zz=reshape(zz,size(xx));
-   
+    zz(i,:) = scoreFn([1, arr(i,:)]); 
+end
+zz_1=reshape(zz(:,1),size(xx));
+zz_2=reshape(zz(:,2),size(xx));
+zz_3=reshape(zz(:,3),size(xx));
+zz_1_best = zz_1 - max(zz_2, zz_3);
+zz_2_best = zz_2 - max(zz_1, zz_3);
+zz_3_best = zz_3 - max(zz_1, zz_2);
+
+
 fig = figure;
 hold on;
 title(mytitle);
 colormap cool
-[C,h]=contour(xx, yy, zz, values);
+[C,h]=contour(xx, yy, zz_1_best, values);
+[C,h]=contour(xx, yy, zz_2_best, values);
+[C,h]=contour(xx, yy, zz_3_best, values);
 set(h,'ShowText','on');
 %Plot the training points
 scatter(X(:,1),X(:,2),50,1-Y);

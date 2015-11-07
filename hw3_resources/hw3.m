@@ -12,8 +12,10 @@ Y = [1, 0; 0, 1; 0, 1; 1, 0; 1, 0; 1,0];
 M = 3;
 w1_0 = ones(M,D);
 w2_0 = ones(K,M);
+lambda = 1;
 
-frob = @(A) sum(dot(A,A));
+F = @(A) sum(dot(A,A));
+reg_cost = @(W1, W2, X, Y, lambda) ANN_loss(W1, W2, X, Y) + lambda*(F(W1) + F(W2));
 
 [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X, Y, 1, 0.001);
 

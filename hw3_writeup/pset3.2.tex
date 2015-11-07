@@ -4,7 +4,7 @@
 
 Neural networks are used in machine learning to make predictions, similar to logistic regression, SVM, or regression.  We can represent neural networks using a graph with nodes and edges (see Bishop figure 5.1).  Assume that we observe data $(\M{x}^{(n)},\M{y}^{(n)}), n = 1, \ldots, N$,  where $\M{x}^{(n)} \in \mathbb{R}^{D+1}$ and $\M{y}^{(n)} \in \{0,1\}^K$.  Let $(\M{x},\M{y}) = ([x_0, x_1, \ldots, x_D],[y_1, \ldots, y_K])$ be a general observation, where $x_0 = 1$ is a constant term for the bias.  We create nodes for each of the features $x_i$, referred to as \emph{inputs}, and nodes for each of the class labels $y_i$, referred to as \emph{outputs}.  Next, we introduce a series of nodes in the middle of the graph, called \emph{hidden units}, and we draw edges connecting the {\bf inputs} $\rightarrow ${\bf hidden units}$ \rightarrow$ \emph{\bf outputs}.  The key idea in neural networks is that we can model the hidden units as functions of the inputs, and model the outputs as functions of the hidden units.   
 
-For 2-layer neural networks, we have one layer of hidden units denoted by $[z_0, z_1,\ldots, z_M]$.   There are weights $\M{w}^{(1)}_{ji}$ for each edge $x_i \rightarrow z_j$ and $\M{w}^{(2)}_{kj}$ for each edge $z_j \rightarrow y_k$, which are unknown and will be learned through training the model.  However, there are no edges from the inputs to $z_0$, because we assume $z_0 = 1$ is a constant term for the bias.  Let $\sigma(\cdot)$ denote the logistic function, which we will use as the \emph{activation function} for both the hidden and output layers of our neural network.  The predicted value for output $k$ given parameters $\M{w} = \{\M{w}^{(1)}, \M{w}^{(2)}\}$ and input $\M{x}$ will be:
+For 2-layer neural networks, we have one layer of hidden units denoted by $[z_0, z_1,\ldots, z_M]$.   There are weights $\M{w}^{(1)}_{ji}$ for each edge $x_i \rightarrow z_j$ and $\M{w}^{(2)}_{kj}$ for each edge $z_j \rightarrow y_k$, which are unknown and will be learned through training the model.  However, there are no edges from the inputs to $z_0$, because we assume $z_0 = 1$ is a constant term for the bias.  Let $\sigma(\cdot)$ denote the logistic function, which we will use as the \emph{activation function} for both the hidden and output layers of our neural network.  The predicted value for output $k$ given parameters $\M{w} = (\M{w}^{(1)}, \M{w}^{(2)})$ and input $\M{x}$ will be:
 
 \begin{equation}
 h_{k}(\M{x},\M{w}) = \sigma\left(\sum_{j=1}^{M} w^{(2)}_{kj} \sigma\left(\sum_{i=0}^{D} w^{(1)}_{ji} x_i\right)  + w_{k0}^{(2)} \right).
@@ -18,12 +18,12 @@ We implemented a 2-layer regularized neural network using gradient descent.  The
 \ell(\M{w}) \equiv \sum_{n=1}^{N} \sum_{k=1}^{K} \left[ -y_k^{(n)} \log(h_{k}(\M{x}^{(n)}, \M{w})) - (1-y_k^{(n)}) \log(1 - h_{k}(\M{x}^{(n)}, \M{w}))\right]
 \end{equation}
 
-We add a regularizer term, and the final cost function becomes:
+Let $\M{\tilde w}^{(1)} = (\M{w}^{(1)}_{ji})_{i \neq 0}$ and $\M{\tilde w}^{(2)} = (\M{w}^{(2)}_{kj})_{j \neq 0}$. We add a regularizer term, and the final cost function becomes:
 \begin{equation}
-J(\M{w}) \equiv \ell(\M{w}) + \lambda(\|\M{w}^{(1)}\|^2_F + \|\M{w}^{(2)}\|^2_F),
+J(\M{w}) \equiv \ell(\M{w}) + \lambda(\|\M{\tilde w}^{(1)}\|^2_F + \|\M{\tilde w}^{(2)}\|^2_F),
 \end{equation}
 
-where $\|A\|_F = \sqrt{\sum_{i,j} A^2_{ij}}$ is the matrix Frobenius norm, and $\lambda$ is a fixed parameter chosen via cross-validation.  To take the derivative of this function, we introduce some more notation:
+where $\|A\|_F = \sqrt{\sum_{i,j} A^2_{ij}}$ is the matrix Frobenius norm, and $\lambda$ is a fixed parameter chosen via cross-validation.  Note that we exclude the bias terms from our regularizer in order to avoid penalty if the data is shifted.  To take the derivative of this function, we introduce some more notation:
 
 \begin{equation}
 a^{(1)}_j(\M{x}) \equiv \sum_{i=0}^D w_{ji}^{(1)} x_i
@@ -31,40 +31,47 @@ a^{(1)}_j(\M{x}) \equiv \sum_{i=0}^D w_{ji}^{(1)} x_i
 \begin{equation}
 z_j(\M{x}) \equiv \left\{\begin{array}{rl}
 \sigma(a^{(1)}_j(\M{x})), & ~~~ j = 1,\ldots, M\\
-0, & ~~~j = 0 \end{array} \right.
+1, & ~~~j = 0 \end{array} \right.
 \end{equation}
 \begin{equation}
 a^{(2)}_k(\M{x}) \equiv \sum_{j=0}^M w_{kj}^{(2)} z_j(\M{x})
 \end{equation}
 
-We refer to $a^{(1)}_j(\M{x})$ and $a^{(2)}_k(\M{x})$ as the \emph{activations} for a fixed value of $\M{x}$.  It follows that $h_{k}(\M{x},\M{w}) = \sigma(a^{(2)}_k(\M{x}))$.  Taking partial derivatives of $J$ with respect to $\M{w}^{(2)}_{kj}$ and $\M{w}^{(1)}_{ji}$, we find:  
+We refer to $a^{(1)}_j(\M{x})$ and $a^{(2)}_k(\M{x})$ as the \emph{activations} for a fixed value of $\M{x}$.  It follows that $h_{k}(\M{x},\M{w}) = \sigma(a^{(2)}_k(\M{x}))$. Taking partial derivatives of $J$ with respect to $\M{w}^{(2)}_{kj}$ and $\M{w}^{(1)}_{ji}$ for $i \neq 0$ and $j \neq 0$, we find:  
 
 \begin{align}
-\frac{\partial J(\M{w})}{\partial \M{w}^{(2)}_{kj}} &= \sum_{n=1}^{N} \left(\frac{-y_k^{(n)}}{h_k(\M{x}^{(n)},\M{w})} +  \frac{1-y_k^{(n)}}{1 - h_k(\M{x}^{(n)},\M{w})}\right) h_k(\M{x}^{(n)},\M{w}) (1 - h_k(\M{x}^{(n)},\M{w})) z_j(\M{x}^{(n)}) + 2 \lambda \M{w}^{(2)}_{kj}\\
-&= \sum_{n=1}^{N} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right) z_j(\M{x}^{(n)}) + 2 \lambda \M{w}^{(2)}_{kj}
+\frac{\partial J(\M{w})}{\partial \M{w}^{(2)}_{kj}} &= 2 \lambda \M{w}^{(2)}_{kj} + \sum_{n=1}^{N} \left(\frac{-y_k^{(n)}}{h_k(\M{x}^{(n)},\M{w})} +  \frac{1-y_k^{(n)}}{1 - h_k(\M{x}^{(n)},\M{w})}\right) h_k(\M{x}^{(n)},\M{w}) (1 - h_k(\M{x}^{(n)},\M{w})) z_j(\M{x}^{(n)})\\
+&= 2 \lambda \M{w}^{(2)}_{kj} + \sum_{n=1}^{N} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right) z_j(\M{x}^{(n)})
 \end{align}
 
 \begin{equation}
-\frac{\partial J(\M{w})}{\partial \M{w}^{(1)}_{ji}} = \sum_{n=1}^{N} \sum_{k=1}^{K} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right)w_{kj}^{(2)} z_j(\M{x}^{(n)})(1-z_j(\M{x}^{(n)}))+ 2 \lambda \M{w}^{(1)}_{ji}
+\frac{\partial J(\M{w})}{\partial \M{w}^{(1)}_{ji}} =  2 \lambda \M{w}^{(1)}_{ji} + \sum_{n=1}^{N} \sum_{k=1}^{K} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right)w_{kj}^{(2)} z_j(\M{x}^{(n)})(1-z_j(\M{x}^{(n)})) x_i
 \end{equation}
 
-Therefore, the gradients of $J$ with respect to the different groups of parameters $\M{w}^{(2)}$ and $\M{w}^{(1)}$ are:
-
+For the bias terms, there is no regularizer penalty, so we obtain:
 \begin{equation}
-\nabla_{\M{w}^{(1)}} J(\M{w}) = 
+\frac{\partial J(\M{w})}{\partial \M{w}^{(2)}_{k0}} = \sum_{n=1}^{N} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right)
+\end{equation}
+\begin{equation}
+\frac{\partial J(\M{w})}{\partial \M{w}^{(1)}_{j0}} =  \sum_{n=1}^{N} \sum_{k=1}^{K} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right)w_{kj}^{(2)} z_j(\M{x}^{(n)})(1-z_j(\M{x}^{(n)}))
 \end{equation}
 
-\begin{equation}
-\nabla_{\M{w}^{(2)}} J(\M{w}) = 
-\end{equation}
+Therefore, we have calculated analytic expressions for the gradients of $J$ with respect to the different groups of parameters $\M{w}^{(2)}$ and $\M{w}^{(1)}$.  From these expressions, we coded a function in MATLAB to train a our neural network using gradient descent.  The function inputs are the data $(\M{x}^{(n)},\M{y}^{(n)}), n = 1, \ldots, N$, regularization parameter $\lambda$, number of nodes in the hidden layer $M$, and initial solution $(\M{w}^{(1)}_{init}, \M{w}^{(2)}_{init})$.  The function outputs the optimal solution $\M{w} = (\M{w}^{(1)}, \M{w}^{(2)})$ that minimizes the final cost function $J(\M{w})$.  
+
+Because the objective function is non-convex, we run our training function with multiple initial solutions to avoid reporting a single local optimum.  After running multiple times, we report the optimal solution $\M{w} = (\M{w}^{(1)}, \M{w}^{(2)})$ that minimizes $J(\M{w})$ over all trials.  The gradient descent function used 
 
 \subsubsection{Stochastic Gradient Descent}
 
+We implemented an alternate function in MATLAB to train our neural network using stochastic gradient descent.  
 
 
 \subsection{Computational Results}
 
+We tested our neural network on various 
+
 \subsubsection{Toy Problem}
+
+
 
 \subsubsection{MNIST Data}
 

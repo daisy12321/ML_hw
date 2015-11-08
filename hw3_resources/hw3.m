@@ -57,16 +57,18 @@ plotDecisionBoundary3Class(X_train(:, 2:3), Y_train, predict_ANN, [0.0, 0.0], ''
 %% 3.2.5 MNIST Data
 name = 'mnist';
 [X_train, Y_train_lab, Y_train, X_valid, Y_valid_lab, Y_valid, X_test, Y_test_lab, Y_test] = read_data(name);
+%X_train = X_train(:, sum(X_train) ~= 0);
+
 [N, D] = size(X_train);
 K = size(Y_train, 2);
 
 % size of hidden units
-M = 3;
+M = 4;
 w1_0 = 10*rand(M,D)-5;
 w2_0 = 10*rand(K,M+1)-5;
 
 % stochastic gradient descent
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.1, 50, 1e-5, 6000);
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 100, 0.1, 1e-5, 6000);
 predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
 % calculate accuracy in training set
 [predict_all, predict_class] = predict_ANN(X_train);

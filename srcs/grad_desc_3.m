@@ -12,7 +12,7 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, lambda, step, eps
     
     while abs(f_new - f_old) > eps  && counter < iter_lim
         
-        f_old = fun(w1_old, w2_old, X, Y, lambda)
+        f_old = fun(w1_old, w2_old, X, Y, lambda);
         grad1_sum = zeros(size(w1_0));
         grad2_sum = zeros(size(w2_0));
         
@@ -26,7 +26,7 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, lambda, step, eps
         
         w1_new = w1_old - step_size*grad1_sum;
         w2_new = w2_old - step_size*grad2_sum;   
-        f_new = fun(w1_new, w2_new, X, Y, lambda)
+        f_new = fun(w1_new, w2_new, X, Y, lambda);
         
         %disp('Difference between objective values is '); 
         %disp(abs(f_old - f_new));
@@ -37,7 +37,8 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, lambda, step, eps
         
     end
     
-        
+    
+    disp(f_new)    
     if counter >= iter_lim-1
         disp('Not converge in iteration limits')
     end

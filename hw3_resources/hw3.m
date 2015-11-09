@@ -82,12 +82,13 @@ name = 'mnist';
 K = size(Y_train, 2);
 
 % size of hidden units
-M = 40;
-w1_0 = 10*rand(M,D)-5;
-w2_0 = 10*rand(K,M+1)-5;
+M = 20;
+rng(0)
+w1_0 = .1*rand(M,D)-.05;
+w2_0 = .1*rand(K,M+1)-.05;
 
 % stochastic gradient descent
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.1, 20, 1e-5, 6000);
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1e-6, 10, 1e-6, 6000);
 test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
 train_accu  = get_accu_ANN(w1_est, w2_est, X_train, Y_train_lab)
 

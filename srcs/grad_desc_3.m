@@ -28,12 +28,16 @@ function [w1_new, w2_new] = grad_desc_3(fun, w1_0, w2_0, X, Y, lambda, step, eps
         w2_new = w2_old - step_size*grad2_sum;   
         f_new = fun(w1_new, w2_new, X, Y, lambda);
         
+        if (mod(counter, 50) == 0) 
+            disp(f_new) 
+        end;
         %disp('Difference between objective values is '); 
         %disp(abs(f_old - f_new));
         
         w1_old = w1_new;
         w2_old = w2_new;
         counter = counter + 1;
+        
         
     end
     

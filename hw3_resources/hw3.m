@@ -79,7 +79,7 @@ w1_0 = .1*rand(M,D)-.05;
 w2_0 = .1*rand(K,M+1)-.05;
 
 % stochastic gradient descent
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1e-5, 10, 1e-4, 6000);
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1e-6, 10, 1e-6, 6000);
 test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
 train_accu  = get_accu_ANN(w1_est, w2_est, X_train, Y_train_lab)
 

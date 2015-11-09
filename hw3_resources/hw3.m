@@ -34,16 +34,20 @@ K = size(Y_train, 2);
 
 % size of hidden units
 M = 3;
+% set initial weights
+rng(10);
 w1_0 = 10*rand(M,D)-5;
 w2_0 = 10*rand(K,M+1)-5;
 
 % batch gradient descent
 [w1_est, w2_est] = grad_desc_3(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.001, 1 ,1e-5, 3000);
+test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
 
 % stochastic gradient descent
 [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.00, 25, 1e-5, 3000);
-% predict_ANN = @(x) predict_multi_class(x, w1_est, w2_est);
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1, 0.1, 1e-5, 3000);
+test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
+
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 10, 0.5, 1e-5, 3000);
 
 % cross validation
 LAMBDA_RANGE = [0, 0.001, 0.01, 0.1, 1, 10, 100];
@@ -54,7 +58,6 @@ for i = 1:size(LAMBDA_RANGE,2)
     [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, lambda, 25, 1e-5, 3000);
     valid_accu(i) = get_accu_ANN(w1_est, w2_est, X_valid, Y_valid_lab)
 end
-    
 test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
 
 plotDecisionBoundary3Class(X_train(:, 2:3), Y_train, @(x) predict_multi_class(x, w1_est, w2_est), [0.0, 0.0], '', strcat('hw3_writeup/plot_',name,'.pdf'))
@@ -70,11 +73,13 @@ name = 'mnist';
 K = size(Y_train, 2);
 
 % size of hidden units
-M = 4;
+M = 10;
 w1_0 = 10*rand(M,D)-5;
 w2_0 = 10*rand(K,M+1)-5;
 
 % stochastic gradient descent
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 100, 0.1, 1e-5, 6000);
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1e-10, 0.1, 1e-5, 6000);
 test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
+train_accu  = get_accu_ANN(w1_est, w2_est, X_train, Y_train_lab)
+
 

@@ -74,11 +74,12 @@ K = size(Y_train, 2);
 
 % size of hidden units
 M = 20;
-w1_0 = 10*rand(M,D)-5;
-w2_0 = 10*rand(K,M+1)-5;
+rng(0)
+w1_0 = .1*rand(M,D)-.05;
+w2_0 = .1*rand(K,M+1)-.05;
 
 % stochastic gradient descent
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1e-10, 1, 1e-5, 6000);
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1e-5, 10, 1e-4, 6000);
 test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
 train_accu  = get_accu_ANN(w1_est, w2_est, X_train, Y_train_lab)
 

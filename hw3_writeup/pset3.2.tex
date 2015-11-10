@@ -76,15 +76,10 @@ We implemented an alternate function in MATLAB to train our neural network using
 We tested our neural network on various data sets, including toy problems and real-world MNIST data on hand-written digits. Both batch gradient descent and stochastic gradient descent methods are tested on the sets. 
 
 
-\subsubsection{Toy Problem}
+\subsubsection{Toy Problems}
 
-The first toy problem is on a linearly separable 3-class data. The decision boundary of a good ANN classifier we found is illustrated in Figure~\ref{fig:toy_1}. We present the validation set accuracy results in Table~\ref{tab:toy_1_cv}, under different the number of units in the hidden layer and the trade-off parameter in regularization. We see from the table that we achieve highest validation accuracy under $\lambda = 0.001$ and $M = 2$. This gives us test accuracy of $99.3\%$. 
+The first toy problem is on a linearly separable 3-class data. The decision boundary of a good ANN classifier we found is illustrated in Figure~\ref{fig:toy_1}. We present the validation set accuracy results in Table~\ref{tab:toy_1_cv}, under different number of units in the hidden layer and the trade-off parameter in regularization. We see from the table that we achieve highest validation accuracy under $\lambda = 0.001$ and $M = 2$. This gives us test accuracy of $99.3\%$. 
 
-The second problem we considered is another 3-class data with points that are more closely spaced. The decision boundary of our ANN classifier is presented in Figure~\ref{fig:toy_2}. 
-
-%TODO Discuss choice of initial values, etc.
-%TODO Compare between SGD and batch
-%TODO Discuss impact of lambda and M
 
 \begin{figure}[h!]
 \centering
@@ -100,10 +95,7 @@ The second problem we considered is another 3-class data with points that are mo
     \caption{Plots of decision boundaries from Artificial Neural Networks on training toy data.}  \label{fig:LR_plots}  
 \end{figure}
 
-
-\subsubsection{MNIST Data}
-
-There are some computational considerations when choosing the parameters for the model. In particular, it is very important to choose reasonable initial values for $\M w$ and the step size. We chose the initial values to be a random numbers between $[-0.05, 0.05]$ because if the initial values are close to zero, the gradient on the logistic function would have a sizable magnitude. The step size is chosen to satisfy the Robbins-Monro criterion: we chose $\eta = ss/(iter + 100)^{0.6}$, where $iter$ is the number of current iteration, and $ss$ is chosen to be 25 for this data set.
+The second problem we considered is another 3-class data with points that are more closely spaced. The decision boundary of our ANN classifier is presented in Figure~\ref{fig:toy_2}. Similarly, the accuracy from cross-validation is given in Table~\ref{tab:toy_2_cv}. The best accuracy is obtained when $M = 4$ and $\lambda = 0.001$. This gives the testing set accuracy of $91.3\%$.
 
 
 \begin{table}[h!]
@@ -133,3 +125,11 @@ $\lambda$ / $M$ 		& 2 		& 3			&4			&5		&6\\
 \hline\hline
 \end{tabular}
 \end{table}
+
+
+There are some computational considerations when choosing the parameters for the model. In particular, it is very important to choose reasonable initial values for $\M w$ and the step size. We chose the initial values to be a random numbers between $[-0.05, 0.05]$ because when the initial values are close to zero, the gradient on the logistic function would have a sizable magnitude. The step size is chosen to satisfy the Robbins-Monro criterion: we chose $\eta = ss/(iter + 100)^{0.6}$, where $iter$ is the number of current iteration, and $ss$ is chosen to be 25 for these toy data sets. Regarding the convergence criteria, the lower it is, the better accuracy we have generally; however the longer run-time it takes as well.
+
+Between batch and stochastic gradient descent implementations, we found that the batch method is more sensitive to the choice of initial $\M w$. We think this might be because when doing stochastic gradient descent, some data points can pull the variables from local minimum, whereas batch gradient descent tends to get stuck somewhere more easily. The numbers we present here are from stochastic gradient descent, but can also replicated by batch method if the parameters are chosen carefully.
+
+
+\subsubsection{MNIST Data}

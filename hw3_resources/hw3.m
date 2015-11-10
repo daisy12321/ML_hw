@@ -83,7 +83,7 @@ K = size(Y_train, 2);
 
 % size of hidden units
 M = 20;
-rng(0)
+rng(0);
 w1_0 = .1*rand(M,D)-.05;
 w2_0 = .1*rand(K,M+1)-.05;
 
@@ -91,5 +91,32 @@ w2_0 = .1*rand(K,M+1)-.05;
 [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1e-6, 10, 1e-6, 6000);
 test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
 train_accu  = get_accu_ANN(w1_est, w2_est, X_train, Y_train_lab)
+
+%% MNIST cross validation
+name = 'mnist';
+[X_train, Y_train_lab, Y_train, X_valid, Y_valid_lab, Y_valid, X_test, Y_test_lab, Y_test] = read_data(name);
+[N, D] = size(X_train);
+K = size(Y_train, 2);
+
+% cross validation
+LAMBDA_RANGE = [0, 1e-10, 1e-8, 1e-6, 1e-4, 1e-2];
+M_RANGE = [5:5:30];
+valid_accu = zeros(size(LAMBDA_RANGE, 2), length(M_RANGE));
+
+%%
+for m = 1:length(M_RANGE) % columns of matrix have constant M
+    M = M_RANGE(m);
+    disp(M)
+    for i = 1:size(LAMBDA_RANGE,2) % rows of matrix have constant lambda
+        rng(0);
+        w1_0 = .1*rand(M,D)-.05;
+        w2_0 = .1*rand(K,M+1)-.05;
+
+        lambda = LAMBDA_RANGE(i);
+        [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, lambda, 10, 1e-6, 6000);
+        valid_accu(i, m) = get_accu_ANN(w1_est, w2_est, X_valid, Y_valid_lab)
+    end
+end
+valid_accu
 
 

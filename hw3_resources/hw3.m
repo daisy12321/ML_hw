@@ -44,12 +44,12 @@ w2_0 = 0.1*rand(K,M+1)-0.05;
 test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
 
 % stochastic gradient descent
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.001, 25, 1e-5, 3000);
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 0.01,1, 1e-6, 5000);
 valid_accu  = get_accu_ANN(w1_est, w2_est, X_valid, Y_valid_lab)
 test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
 
 % cross validation
-LAMBDA_RANGE = [0.01];
+LAMBDA_RANGE = [0.0001];
 M_RANGE = 6;
 valid_accu = zeros(size(LAMBDA_RANGE, 2), M_RANGE);
 % what to do when not converge in iteration limits?
@@ -61,7 +61,7 @@ for M = 2:6
         w2_0 = 0.1*rand(K,M+1)-0.05;
 
         lambda = LAMBDA_RANGE(i);
-        [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, lambda, 80, 1e-6, 3000);
+        [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, lambda, 25, 1e-6, 6000);
         valid_accu(i, M) = get_accu_ANN(w1_est, w2_est, X_valid, Y_valid_lab);
     end
 end

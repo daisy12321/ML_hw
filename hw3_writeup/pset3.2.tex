@@ -95,7 +95,7 @@ The first toy problem is on a linearly separable 3-class data. The decision boun
     \caption{Plots of decision boundaries from Artificial Neural Networks on training toy data.}  \label{fig:LR_plots}  
 \end{figure}
 
-The second problem we considered is another 3-class data with points that are more closely spaced. The decision boundary of our ANN classifier is presented in Figure~\ref{fig:toy_2}. Similarly, the accuracy from cross-validation is given in Table~\ref{tab:toy_2_cv}. The best accuracy is obtained when $M = 4$ and $\lambda = 0.001$. This gives the testing set accuracy of $91.3\%$.
+The second problem we considered is another 3-class data with points that are more closely spaced. The decision boundary of our ANN classifier is presented in Figure~\ref{fig:toy_2}. Similarly, the accuracy from cross-validation is given in Table~\ref{tab:toy_2_cv}. The best accuracy is obtained when $M = 4$ and $\lambda = 0.001$. The accuracy decreases when $\lambda \geq 0.005$. This gives the testing set accuracy of $90.7\%$.
 
 
 \begin{table}[h!]
@@ -120,9 +120,11 @@ $\lambda$ / $M$ 		& 2 		& 3			&4			&5		&6\\
 \hline\hline
 $\lambda$ / $M$ 		& 2 		& 3			&4			&5		&6\\
 \hline         
-0    & 0.9100    & 0.9167    & 0.9267    & 0.9167    & 0.9267\\
+0        & 0.9100    & 0.9167    & 0.9267    & 0.9167    & 0.9267\\
+0.0001   & 0.9267  	& 0.9100 	& 0.9133   &  0.9167   & 0.9233\\
 0.001    & 0.8967    & 0.8233    & 0.9333    & 0.9167    & 0.9333\\
 0.01								& 0.8900   & 0.9233\\
+0.005	& 0.9100    &  0.8833    & 0.9133   & 0.8967    & 0.8933\\
 \hline\hline
 \end{tabular}
 \end{table}

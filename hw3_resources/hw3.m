@@ -33,7 +33,7 @@ name = 'toy_multiclass_2';
 K = size(Y_train, 2);
 
 % size of hidden units
-M = 3;
+M = 4;
 % set initial weights
 rng(10);
 w1_0 = 0.1*rand(M,D)-0.05;
@@ -49,7 +49,7 @@ valid_accu  = get_accu_ANN(w1_est, w2_est, X_valid, Y_valid_lab)
 test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
 
 % cross validation
-LAMBDA_RANGE = [0.0001];
+LAMBDA_RANGE = [0.005];
 M_RANGE = 6;
 valid_accu = zeros(size(LAMBDA_RANGE, 2), M_RANGE);
 % what to do when not converge in iteration limits?

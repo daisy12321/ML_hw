@@ -118,5 +118,9 @@ for m = 1:length(M_RANGE) % columns of matrix have constant M
     end
 end
 valid_accu
-
+for i= 1:size(LAMBDA_RANGE,2)
+    fprintf('%.4f & ',valid_accu(i,:))
+    fprintf('\\\\\n')
+end
+% csvwrite('hw3_resources/valid_accu',valid_accu)
 

@@ -123,9 +123,25 @@ for m = 1:length(M_RANGE) % columns of matrix have constant M
     end
 end
 valid_accu
-for i= 1:size(LAMBDA_RANGE,2)
-    fprintf('%.4f & ',valid_accu(i,:))
-    fprintf('\\\\\n')
-end
 % csvwrite('hw3_resources/valid_accu',valid_accu)
+% for i= 1:size(LAMBDA_RANGE,2)
+%     fprintf('%.4f & ',valid_accu(i,:))
+%     fprintf('\\\\\n')
+% end
+%%
+% heatmap of neural network accuracy on the validation set
+h = figure;
+colormap('jet')
+x = [5 30];
+y = 2*[-5 -1];
+imagesc(x, y, valid_accu(2:end,:));
+z = colorbar
+ylabel(z, 'Lambda');
+xlabel('M')
+ylabel('Log_{10}(\lambda)') 
+set(h,'Units','Inches');
+pos = get(h,'Position');
+set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+print(h, 'hw3_writeup/mnist_cv.pdf', '-dpdf', '-r0')
 
+% Find optimal pair lambda = 10^-6, M = 30

@@ -144,6 +144,31 @@ pos = get(h,'Position');
 set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
 print(h, 'hw3_writeup/mnist_cv.pdf', '-dpdf', '-r0')
 
+%% New cross-validation: M = 35, 40
+name = 'mnist';
+[X_train, Y_train_lab, Y_train, X_valid, Y_valid_lab, Y_valid, X_test, Y_test_lab, Y_test] = read_data(name);
+[N, D] = size(X_train);
+K = size(Y_train, 2);
+% cross validation
+LAMBDA_RANGE = [0, 1e-10, 1e-8, 1e-6, 1e-4, 1e-2];
+M_RANGE = [35 40];
+valid_accu_2 = zeros(size(LAMBDA_RANGE, 2), length(M_RANGE));
+
+for m = 1:length(M_RANGE) % columns of matrix have constant M
+    M = M_RANGE(m);
+    disp(M)
+    for i = 1:size(LAMBDA_RANGE,2) % rows of matrix have constant lambda
+        rng(0);
+        w1_0 = .1*rand(M,D)-.05;
+        w2_0 = .1*rand(K,M+1)-.05;
+
+        lambda = LAMBDA_RANGE(i);
+        [w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, lambda, 10, 1e-6, 6000);
+        valid_accu_2(i, m) = get_accu_ANN(w1_est, w2_est, X_valid, Y_valid_lab)
+    end
+end
+valid_accu_2
+
 %%
 % Find optimal pair lambda = 10^-6, M = 30
 M = 30;

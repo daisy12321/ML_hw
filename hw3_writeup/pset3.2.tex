@@ -56,7 +56,13 @@ For the bias terms, there is no regularizer penalty, so we obtain:
 \frac{\partial J(\M{w})}{\partial \M{w}^{(1)}_{j0}} =  \frac{1}{N} \sum_{n=1}^{N} \sum_{k=1}^{K} \left(-y_k^{(n)}(1 - h_k(\M{x}^{(n)},\M{w})) + (1-y_k^{(n)})h_k(\M{x}^{(n)},\M{w}) \right)w_{kj}^{(2)} z_j(\M{x}^{(n)})(1-z_j(\M{x}^{(n)})) \M x^{(n)}
 \end{equation}
 
-Therefore, we have calculated analytic expressions for the gradients of $J$ with respect to the different groups of parameters $\M{w}^{(2)}$ and $\M{w}^{(1)}$.  From these expressions, we coded a function in MATLAB to train a our neural network using \textit{batch gradient descent}. The function takes in all the input data $(\M{x}^{(n)},\M{y}^{(n)}), n = 1, \ldots, N$ at once, and does gradient descent on the total objective value over the $N$ data points each time, until convergence. Model parameters are regularization parameter $\lambda$, number of nodes in the hidden layer $M$, and initial solution $(\M{w}^{(1)}_{init}, \M{w}^{(2)}_{init})$.  The function outputs the optimal solution $\M{w} = (\M{w}^{(1)}, \M{w}^{(2)})$ that minimizes the final cost function $J(\M{w})$.  
+Therefore, we have calculated analytic expressions for the gradients of $J$ with respect to the different groups of parameters $\M{w}^{(2)}$ and $\M{w}^{(1)}$.  From these expressions, we coded a function in MATLAB to train a our neural network using \textit{batch gradient descent}. The function takes in all the input data $(\M{x}^{(n)},\M{y}^{(n)}), n = 1, \ldots, N$ at once, and does gradient descent on the total objective value over the $N$ data points each time, until convergence. Model parameters are regularization parameter $\lambda$, number of nodes in the hidden layer $M$, and initial solution $(\M{w}^{(1)}_{init}, \M{w}^{(2)}_{init})$. The function outputs the optimal solution $\M{w} = (\M{w}^{(1)}, \M{w}^{(2)})$ that minimizes the final cost function $J(\M{w})$. The formula for the update is as follows:
+
+\begin{equation}
+\M w^{(1)}_{new} = \M w^{(1)}_{old} - \eta \nabla_{w^{(1)}}J(\M w_{old}),~~~~~~\\
+\M w^{(2)}_{new} = \M w^{(2)}_{old} - \eta \nabla_{w^{(2)}}J(\M w_{old})
+\end{equation}
+
 
 Because the objective function is non-convex, we run our training function with multiple initial solutions to avoid reporting a single local optimum.  After running multiple times, we report the optimal solution $\M{w} = (\M{w}^{(1)}, \M{w}^{(2)})$ that minimizes $J(\M{w})$ over all trials. % The gradient descent function used 
 
@@ -67,18 +73,13 @@ We implemented an alternate function in MATLAB to train our neural network using
 
 \subsection{Computational Results}
 
-We tested our neural network on various data sets, including toy problems and real-world MNIST data on hand-written digits. 
+We tested our neural network on various data sets, including toy problems and real-world MNIST data on hand-written digits. Both batch gradient descent and stochastic gradient descent methods are tested on the sets. 
 
 
-\subsubsection{Toy Problem}
+\subsubsection{Toy Problems}
 
-The first toy problem is on a linearly separable 3-class data. The decision boundary of a good ANN classifier we found is illustrated in Figure~\ref{fig:toy_1}. Through cross-validation on the number of units in the hidden layer and the trade-off parameter in regularization, we see the validation set accuracy results in Table~\ref{tab:toy_1_cv}. Therefore we choose $\lambda = 0.001$ and $M = 2$. We obtain test accuracy of $99.3\%$. 
+The first toy problem is on a linearly separable 3-class data. The decision boundary of a good ANN classifier we found is illustrated in Figure~\ref{fig:toy_1}. We present the validation set accuracy results in Table~\ref{tab:toy_1_cv}, under different number of units in the hidden layer and the trade-off parameter in regularization. We see from the table that we achieve highest validation accuracy under $\lambda = 0.001$ and $M = 2$. This gives us test accuracy of $99.3\%$. 
 
-The second problem we considered is another 3-class data with points that are more closely spaced. The decision boundary of our ANN classifier is presented in Figure~\ref{fig:toy_2}. 
-
-%TODO Discuss choice of initial values, etc.
-%TODO Compare between SGD and batch
-%TODO Discuss impact of lambda and M
 
 \begin{figure}[h!]
 \centering
@@ -94,16 +95,12 @@ The second problem we considered is another 3-class data with points that are mo
     \caption{Plots of decision boundaries from Artificial Neural Networks on training toy data.}  \label{fig:LR_plots}  
 \end{figure}
 
-
-\subsubsection{MNIST Data}
-
-There are some computational considerations when choosing the parameters for the model. 
+The second problem we considered is another 3-class data with points that are more closely spaced. The decision boundary of our ANN classifier is presented in Figure~\ref{fig:toy_2}. Similarly, the accuracy from cross-validation is given in Table~\ref{tab:toy_2_cv}. The best accuracy is obtained when $M = 4$ and $\lambda = 0.001$. This gives the testing set accuracy of $91.3\%$.
 
 
-%table
-\begin{table}[h!]\label{tab:toy_1_cv}
+\begin{table}[h!]
 \centering
-\caption{Validation accuracy on Toy Data 1 under different parameter specification}
+\caption{Validation accuracy on Toy Data 1 under different parameter specification}\label{tab:toy_1_cv}
 \begin{tabular}{ lccccc }
 \hline\hline
 $\lambda$ / $M$ 		& 2 		& 3			&4			&5		&6\\
@@ -115,3 +112,25 @@ $\lambda$ / $M$ 		& 2 		& 3			&4			&5		&6\\
 \end{tabular}
 \end{table}
          
+         
+\begin{table}[h!]
+\centering
+\caption{Validation accuracy on Toy Data 2 under different parameter specification}\label{tab:toy_2_cv}
+\begin{tabular}{ lccccc }
+\hline\hline
+$\lambda$ / $M$ 		& 2 		& 3			&4			&5		&6\\
+\hline         
+0    & 0.9100    & 0.9167    & 0.9267    & 0.9167    & 0.9267\\
+0.001    & 0.8967    & 0.8233    & 0.9333    & 0.9167    & 0.9333\\
+0.01								& 0.8900   & 0.9233
+\hline\hline
+\end{tabular}
+\end{table}
+
+
+There are some computational considerations when choosing the parameters for the model. In particular, it is very important to choose reasonable initial values for $\M w$ and the step size. We chose the initial values to be a random numbers between $[-0.05, 0.05]$ because when the initial values are close to zero, the gradient on the logistic function would have a sizable magnitude. The step size is chosen to satisfy the Robbins-Monro criterion: we chose $\eta = ss/(iter + 100)^{0.6}$, where $iter$ is the number of current iteration, and $ss$ is chosen to be 25 for these toy data sets. Regarding the convergence criteria, the lower it is, the better accuracy we have generally; however the longer run-time it takes as well.
+
+Between batch and stochastic gradient descent implementations, we found that the batch method is more sensitive to the choice of initial $\M w$. We think this might be because when doing stochastic gradient descent, some data points can pull the variables from local minimum, whereas batch gradient descent tends to get stuck somewhere more easily. The numbers we present here are from stochastic gradient descent, but can also replicated by batch method if the parameters are chosen carefully.
+
+
+\subsubsection{MNIST Data}

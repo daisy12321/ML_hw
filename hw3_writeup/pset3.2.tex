@@ -137,8 +137,16 @@ Between batch and stochastic gradient descent implementations, we found that the
 
 \subsubsection{MNIST Data}
 
-\begin{figure}[h!]
+The MNIST dataset is a set of handwritten digits (0-9) that is widely used in the machine learning community to benchmark classification methods.  Each observation is a single digit 0-9 written in a 28 x 28 pixel square, and the task is to classify new digits using the pixel intensities as predictive features.  Therefore, there are 10 possible classes (the digits 0-9) and 784 features (total number of pixels), so this a high-dimensional, challenging classification problem.  
+
+For this paper, we used a subset of MNIST data containing digits (1-6), which has been pre-split into a training, validation, and test set.  We implemented our neural network using stochastic gradient descent on this dataset, using the analytic formula for the gradient for computational purposes. We used a multistep procedure to determine the multiple input parameters that must be specified for the neural network.  First, we fixed $\lambda$ (regularization parameter),  $M$ (number of hidden nodes), and $iter$ (number of iterations) to arbitrary values $(\lambda, M, iter) = (10^{-10}, 20, 6000)$ which were reasonable parameter values found through trial-and-error exploration.  Then, we varied the step size by modifying the $ss$ parameter in the Robbins-Monro criterion, and we found $ss = 10$ to be the best value.  Therefore, we determined the solver parameters for our implementation of stochastic gradient descent to be $ss = 10$, $iter = 6000$, and convergence threshold $10^{-6}$.  
+
+With these fixed solver parameters, we then used cross-validation techniques to select the optimal parameter values for the $\lambda$ and $M$. We trained our neural network model on the training dataset using stochastic gradient descent for various pairs of parameters $\lambda$ and $M$, and the validation results are presented in Figure \ref{fig:mnist_cv}.  For the ranges that we searched over, $\lambda \in \{0, 10^{-2}, 10^{-4}, 10^{-6}, 10^{-8}, 10^{-10}\}$ and $M \in \{5, 10, 15, 25, 30\}$, we found the optimal parameter pair to be $(\lambda, M) = (10^{-6}, 30)$.  (Note that 0 is not included in the heatmap for consistency, however, we explored the non-regularized option but it was suboptimal).  We did cross-validation procedures for model parameters $(\lambda, M)$ separately from the solver parameters $(ss, iter)$ because there are not significant interactions between these groups of variables.  In particular, we made the assumption that the optimal choice of step-size will be constant for any choice of $(\lambda, M)$ within a large range of possible values.  
+
+Finally, we ran our model with $(\lambda, M, ss, iter) = (10^{-6}, 30, 10, 6000)$ on the training set with a smaller convergence criterion $10^{-10}$, in order to achieve higher accuracy. This model did not reach the convergence criterion, but the stochastic gradient algorithm terminated when the iteration limit was attained instead.  Our 2-layer neural network with these parameter values and random seed=0 yielded training accuracy: 98.8\%, validation accuracy: 93.2\%, and test accuracy: 93.4\% on the MNIST data set.  
+
+\begin{figure}
 \centering
 	\includegraphics[height=70mm]{mnist_cv.pdf}
-    \caption{Plots of decision boundaries from Artificial Neural Networks on training toy data.}  \label{fig:mnist_cv}  
+    \caption{Heat map of validation accuracies for Artificial Neural Network on MNIST data, varying the number of hidden units $M$ and the regularization parameter $\lambda$.}  \label{fig:mnist_cv}  
 \end{figure}

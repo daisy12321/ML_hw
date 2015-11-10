@@ -144,4 +144,13 @@ pos = get(h,'Position');
 set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
 print(h, 'hw3_writeup/mnist_cv.pdf', '-dpdf', '-r0')
 
+%%
 % Find optimal pair lambda = 10^-6, M = 30
+M = 30;
+rng(0);
+w1_0 = .1*rand(M,D)-.05;
+w2_0 = .1*rand(K,M+1)-.05;
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1e-6, 10, 1e-10, 6000);
+test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
+train_accu  = get_accu_ANN(w1_est, w2_est, X_train, Y_train_lab)
+valid_accu_1  = get_accu_ANN(w1_est, w2_est, X_valid, Y_valid_lab)

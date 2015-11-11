@@ -129,12 +129,14 @@ valid_accu
 %     fprintf('\\\\\n')
 % end
 %%
+
+%%
 % heatmap of neural network accuracy on the validation set
 h = figure;
 colormap('jet')
-x = [5 30];
+x = [5 40];
 y = 2*[-5 -1];
-imagesc(x, y, valid_accu(2:end,:));
+imagesc(x, y, cv_matrix(2:end,:));
 z = colorbar
 ylabel(z, 'Lambda');
 xlabel('M')
@@ -142,7 +144,7 @@ ylabel('Log_{10}(\lambda)')
 set(h,'Units','Inches');
 pos = get(h,'Position');
 set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-print(h, 'hw3_writeup/mnist_cv.pdf', '-dpdf', '-r0')
+print(h, 'hw3_writeup/mnist_cv_2.pdf', '-dpdf', '-r0')
 
 %% New cross-validation: M = 35, 40
 name = 'mnist';
@@ -168,14 +170,18 @@ for m = 1:length(M_RANGE) % columns of matrix have constant M
     end
 end
 valid_accu_2
-
+% csvwrite('hw3_resources/valid_accu_2',valid_accu_2)
 %%
-% Find optimal pair lambda = 10^-6, M = 30
-M = 30;
+cv_matrix_1 = csvread('hw3_resources/valid_accu');
+cv_matrix_2 = csvread('hw3_resources/valid_accu_2');
+cv_matrix = [cv_matrix_1, cv_matrix_2];
+%%
+% Find optimal pair lambda = 10^-4, M = 35
+M = 35;
 rng(0);
 w1_0 = .1*rand(M,D)-.05;
 w2_0 = .1*rand(K,M+1)-.05;
-[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1e-6, 10, 1e-10, 6000);
+[w1_est, w2_est] = grad_desc_stoch(@ANN_loss, w1_0, w2_0, X_train, Y_train, 1e-4, 10, 1e-10, 6000);
 test_accu  = get_accu_ANN(w1_est, w2_est, X_test, Y_test_lab)
 train_accu  = get_accu_ANN(w1_est, w2_est, X_train, Y_train_lab)
 valid_accu_1  = get_accu_ANN(w1_est, w2_est, X_valid, Y_valid_lab)
